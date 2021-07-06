@@ -1,4 +1,4 @@
-#SİRİ USERBOT / ERDEM-BEY
+# / ERDEM-BEY
 
 from userbot.cmdhelp import CmdHelp
 from userbot.events import register
