@@ -1,5 +1,5 @@
 
-# SİRİ USERBOT / ALL PLUGİNİ / ERDEM BEY
+# / ALL PLUGİNİ / ERDEM BEY
 from telethon.tl.types import ChannelParticipantsAdmins as cp
 from userbot import CMD_HELP, bot
 from userbot.events import register
