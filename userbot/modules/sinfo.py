@@ -1,4 +1,4 @@
-# SİRİ USERBOT / Mİdy - Erdem Bey
+# / Mİdy - Erdem Bey
 # Bu bize ait birşeydir alıyorsan silme burayı dostum anladın sen zaten
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
