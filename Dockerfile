@@ -1,6 +1,6 @@
 # FROM kısmını Değiştirmeyiniz Epicye DockerFile Kullanın
 
-FROM epicuserbot/epicuserbot:latest
+FROM erdembey/epicuserbot:latest
 RUN git clone https://github.com/ByMisakiMey/EpicUserBot /root/EpicUserBot
 WORKDIR /root/EpicUserBot/
 RUN pip3 install -r requirements.txt
