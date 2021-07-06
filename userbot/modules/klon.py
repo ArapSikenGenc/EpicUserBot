@@ -1,4 +1,4 @@
-# SİRİ UserBot / ERDEM BEY 
+# / ERDEM BEY 
 import html
 import os
 from telethon.tl.functions.photos import GetUserPhotosRequest
