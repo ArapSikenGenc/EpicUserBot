@@ -137,7 +137,7 @@
       "description": ".yt komutu için YouTube Veri API'sı keyidir. https://console.cloud.google.com adresinden alın.",
       "required": false
     },
-    "OCR_SİRİ_API_KEY": {
+    "OCR_EPİC_API_KEY": {
       "description": ".ocr komutu için OCR API Key. https://ocr.epic/ocrapi adresinden alın.",
       "required": false
     },
