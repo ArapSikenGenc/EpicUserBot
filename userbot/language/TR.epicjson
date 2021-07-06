@@ -612,7 +612,7 @@
         },
 
         "updater": {
-            "DETECTING": "`💠𝙎𝙄𝙍𝙄 𝙐𝙎𝙀𝙍𝘽𝙊𝙏💠 \n 💫 Güncellemeler kontrol ediliyor... \n⚡️ Yeni Özellikler Kontrol Ediliyor`",
+            "DETECTING": "`Güncellemeler denetleniyor...`",
             "FAILED": "Güncelleme başarısız oldu! Bazı sorunlarla karşılaştık.",
             "NOT_FOUND": "klasörü bulunamadı.",
             "GIT_ERROR": "Git hatası!",
