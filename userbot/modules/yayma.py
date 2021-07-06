@@ -1,4 +1,4 @@
-# Erdem Bey / SİRİ USERBOT
+# Erdem Bey / 
 
 from telethon import events
 import asyncio
