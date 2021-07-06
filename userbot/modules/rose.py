@@ -1,5 +1,4 @@
-# SİRİ USERBOT - PLUGİN
-
+# Epic 
 import os
 from telethon.errors import ChatAdminRequiredError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
