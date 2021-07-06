@@ -29,11 +29,11 @@ import re
 import userbot.cmdhelp
 
 ALIVE_MSG = [
-    "✨ `NewEpic Çalışıyor...`",
+    "✨ `Epic Çalışıyor...`",
     "`Userbotunuz çalışıyor ve sana bişey demek istiyor.. Seni seviyorum` **{epicsahip}** ❤️",
     "🎆 `Endişelenme! Seni yanlız bırakmam.` **{epicsahip}**, `userbot çalışıyor.`",
-    "`⛈️ Elimden gelenin en iyisini yapmaya hazırım`, **{epicsahip}:3**",
-    "✨ `Epic sahibinin emirlerine hazır...`",
+    "`⛈️ Elimden gelenin en iyisini yapmaya hazırım`, **{epicsahip}**",
+    "✨ `EpicUserBot sahibinin emirlerine hazır...`",
     "😔 `Gitmez dediğiniz insanlar bile gidiyor olmalı ki alive yazarak beni kontrol ediyorsun! Ben dynom bitene kadar` **{epicsahip}'i** `bırakmam!`",
     "`Şuan en gelişmiş userbotun düzenlediği mesajı okuyor olmalısın` **{epicsahip}**.",
     "`Huh!` **{epicsahip}** `beni çağırıyor 🍰 yiyordum ee şey en azından yemiş gibi yapıyorum..`",
