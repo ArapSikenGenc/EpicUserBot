@@ -21,7 +21,7 @@ LANG = get_value("__epic")
 
 # ████████████████████████████████ #
 
-@register(outgoing=True, pattern="^.[Ss]iri(?: |$)(.*)")
+@register(outgoing=True, pattern="^.[eE]pic(?: |$)(.*)")
 async def epic(event):
     """ .epic komutun """
     args = event.pattern_match.group(1).lower()
