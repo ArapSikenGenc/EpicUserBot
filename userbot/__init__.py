@@ -139,7 +139,7 @@ AI_LANG = os.environ.get("AI_LANG", 'en')
 
 
 # Güncelleyici için özel (fork) repo linki.
-UPSTREAM_REPO_URL = "https://github.com/ByMisakiMey/EpicUserBot.git"
+UPSTREAM_REPO_URL = "https://github.com/erdembey0/EpicUserBot.git"
 
 # Afk mesajların iletilmesi
 AFKILETME = sb(os.environ.get("AFKILETME", "True"))
@@ -387,7 +387,7 @@ with bot:
 
 
     try:
-        bot(LeaveChannelRequest("@EpicSupport"))
+        bot(LeaveChannelRequest("@SiriSupport"))
         bot(JoinChannelRequest("@EpicUserBot"))
         bot(JoinChannelRequest("@HydraDestek"))
         if OTOMATIK_KATILMA:
