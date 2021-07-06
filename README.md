@@ -1,7 +1,7 @@
 
 <div align="center">
   <img src="https://i.hizliresim.com/9tep7oz.jpg" width="300" height="300">
-  <h1>🇹🇷 Ⲋⲓⲅⲓ Ⳙ⳽ⲉⲅⲂⲟⲧ 🇺🇲</h1>
+  <h1>🇹🇷 Epic UserBot 🇺🇲</h1>
 </div>
 <p align="center">
     Epic UserBot, Telegram kullanmanızı kolaylaştıran ve eğlenceli bir yol almasını sağlayan bir bottur. <br>
