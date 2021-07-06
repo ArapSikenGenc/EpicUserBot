@@ -12,7 +12,7 @@
   ],
   "repository": "https://github.com/ErdemBey0/EpicUserBot",
   "website":   "https://t.me/hydradev",
-  "success_url": "https://t.me/EpicChat",
+  "success_url": "https://t.me/Epicuserbot",
   "stack": "container",
   "env": {
     "API_KEY": {
