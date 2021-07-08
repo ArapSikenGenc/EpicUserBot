@@ -29,15 +29,11 @@ import re
 import userbot.cmdhelp
 
 ALIVE_MSG = [
-    "✨ `Epic Çalışıyor...`",
     "`Userbotunuz çalışıyor ve sana bişey demek istiyor.. Seni seviyorum` **{epicsahip}** ❤️",
-    "🎆 `Endişelenme! Seni yanlız bırakmam.` **{epicsahip}**, `userbot çalışıyor.`",
+    "🎆 `Endişelenme! Seni yanlız bırakmam.` **{epicsahip}**, `EpicUserbot çalışıyor.`",
     "`⛈️ Elimden gelenin en iyisini yapmaya hazırım`, **{epicsahip}**",
     "✨ `EpicUserBot sahibinin emirlerine hazır...`",
-    "😔 `Gitmez dediğiniz insanlar bile gidiyor olmalı ki alive yazarak beni kontrol ediyorsun! Ben dynom bitene kadar` **{epicsahip}'i** `bırakmam!`",
     "`Şuan en gelişmiş userbotun düzenlediği mesajı okuyor olmalısın` **{epicsahip}**.",
-    "`Huh!` **{epicsahip}** `beni çağırıyor 🍰 yiyordum ee şey en azından yemiş gibi yapıyorum..`",
-    "`Hokus Pokus 🔮! Ee şey sanırım büyücülükle pek aram yok ama özelliklerime` **{epicsahip}** `düşüyor..`",
     "`Benimi Aramıştın ❓ Ben Buradayım Merak Etme`"
 ]
 
@@ -87,9 +83,7 @@ KICKME_MSG = [
     "Güle güle ben gidiyorum 👋🏻",
     "Sessizce çıkıyorum 🥴",
     "Haberin olmadan çıkarsam bir gün benim grupta olmadığı farkedeceksin.. O yüzden bu mesajı bırakıyorum🚪",
-    "Hemen burayı terk etmeliyim🤭",
-    "7 deniz ve 7 ülke,\n7 su ve 7 kıta,\n7 dağ ve 7 tepe,\n7 ovala ve 7 höyük,\n7 havuz ve 7 göl,\n7 bahar ve 7 çayır,\n7 şehir ve 7 mahalle,\n7 blok ve 7 ev...\n\nKısaca bu gruptan uzak bi yere..!",
-    "Hadi Ben Kaçtım"
+    "Hemen burayı terk etmeliyim🤭"
 ]
 
 
