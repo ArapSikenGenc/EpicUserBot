@@ -10,8 +10,6 @@ telegraph = Telegraph()
 r = telegraph.create_account(short_name="telegraph")
 auth_url = r["auth_url"]
 
-
-
 @register(pattern="^.tg (m|t)$")
 async def telegraphs(graph):
     await graph.edit("`🔄 Hazırlanıyor...`")
@@ -44,7 +42,7 @@ async def telegraphs(graph):
                 else:
                     os.remove(downloaded_file_name)
                     await graph.edit(
-                        "[telegra.ph](https://telegra.ph{}) 'a yüklendi.".format(
+                        "```https://telegra.ph{}``` **'a yüklendi.**".format(
                             media_urls[0]
                         ),
                         link_preview=True,
@@ -71,7 +69,7 @@ async def telegraphs(graph):
                     title_of_page, html_content=page_content
                 )
                 await graph.edit(
-                    "✨```Dosya Linki: https://telegra.ph/{}```".format(
+                    "```https://telegra.ph/{}``` **'a yüklendi!**".format(
                         response["path"]
                     ),
                     link_preview=True,
@@ -85,5 +83,5 @@ def resize_image(image):
     im.save(image, "PNG")
     
 CmdHelp('telegraph').add_command(
-    'tg', '<m/t>', 'Mesaja yanıt vererek .tg t (yazı) veya .tg m (medya) yazarak Telegrapha yükleyin Bölelikle Tek Bir link İle Medya/Yazınıza Ulaşabilirsiniz. Thx @ByMisakiMey'
+    'tg', '<m/t>', 'Mesaja yanıt vererek .tg t (yazı) veya .tg m (medya) yazarak Telegrapha yükleyin Bölelikle Tek Bir link İle Medya/Yazınıza Ulaşabilirsiniz.'
 ).add()
