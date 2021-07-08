@@ -135,7 +135,7 @@ async def pipcheck(pip):
     else:
         await pip.edit(LANG['EXAMPLE'])
 
-@register(outgoing=True, pattern="^.alive$")
+@register(outgoing=True, pattern="^.[Aa]live$")
 async def amialive(e):
         sahipp = f"{DEFAULT_NAME}" if DEFAULT_NAME else "Sir"
         me = await e.client.get_me()
