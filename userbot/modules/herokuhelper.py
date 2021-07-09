@@ -33,7 +33,7 @@ else:
 
 """Config Vars değeri ilave edin veya silin..."""
 
-
+"""
 @register(outgoing=True,
           pattern=r"^.(get|del) var(?: |$)(\w*)")
 async def variable(var):
@@ -95,7 +95,7 @@ async def variable(var):
         else:
             await var.edit("`Bilgiler Yok!`")
             return True
-
+"""
 
 @register(outgoing=True, pattern=r'^.set var (\w*) ([\s\S]*)')
 async def set_var(var):
