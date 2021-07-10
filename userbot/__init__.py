@@ -10,23 +10,22 @@
 
 import os
 import time
-import heroku3
 from re import compile
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
+from telethon.tl.functions.channels import GetFullChannelRequest as getchat
+from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from dotenv import load_dotenv
-from sqlite3 import connect
 from requests import get
 from telethon.tl.functions.channels import JoinChannelRequest, LeaveChannelRequest
 from telethon.sync import TelegramClient, custom
 from telethon.sessions import StringSession
 from telethon.events import callbackquery, InlineQuery, NewMessage
-from .utils.pip_install import install_pip
 from math import ceil
-import time
+
 
 load_dotenv("config.env")
 
