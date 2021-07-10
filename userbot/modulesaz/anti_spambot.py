@@ -81,12 +81,12 @@ async def anti_spambot(welcm):
 
                     # Hata ayıklama. İlerideki durumlar için bırakıldı. ###
                     print(
-                        f"Katılan kullanıcı: {check_user.first_name} [ID: {check_user.id}]"
+                        f"Qatılan istifadəçi: {check_user.first_name} [ID: {check_user.id}]"
                     )
-                    print(f"Sohbet: {welcm.chat.title}")
-                    print(f"Zaman: {join_time}")
+                    print(f"Söhbət: {welcm.chat.title}")
+                    print(f"Vaxt: {join_time}")
                     print(
-                        f"Gönderdiği mesaj: {message.text}\n\n[Zaman: {message_date}]"
+                        f"Göndərdiyi mesaj: {message.text}\n\n[Vaxt: {message_date}]"
                     )
                     ##############################################
 
@@ -96,40 +96,40 @@ async def anti_spambot(welcm):
                         data = r.json()
                     except BaseException:
                         print(
-                            "CAS kontrolü başarısız, eski anti_spambot kontrolüne dönülüyor."
+                            "CAS kontrolu uğursuz, köhnə anti_spambot-a keçid edilir."
                         )
                         data = None
                         pass
 
                     if data and data['ok']:
-                        reason = f"[Combot Anti Spam tarafından banlandı.](https://cas.chat/query?u={check_user.id})"
+                        reason = f"[Combot Anti Spam tərəfindən qadağan edildi.](https://cas.chat/query?u={check_user.id})"
                         spambot = True
                     elif "t.cn/" in message.text:
-                        reason = "`t.cn` URL'leri tespit edildi."
+                        reason = "`t.cn` URL'leri aşkarlandı."
                         spambot = True
                     elif "t.me/joinchat" in message.text:
                         reason = "Potansiyel reklam mesajı"
                         spambot = True
                     elif message.fwd_from:
-                        reason = "Başkasından iletilen mesaj"
+                        reason = "Başqasından yönləndirilən mesaj"
                         spambot = True
                     elif "?start=" in message.text:
                         reason = "Telegram botu `start` linki"
                         spambot = True
                     elif "bit.ly/" in message.text:
-                        reason = "`bit.ly` URL'leri tespit edildi."
+                        reason = "`bit.ly` URL'leri aşkarlandı."
                         spambot = True
                     elif "tr.link/" in message.text:
-                        reason = "`tr.link` URL'leri tespit edildi."
+                        reason = "`tr.link` URL'leri aşkarlandı."
                         spambot = True
                     elif "ay.live/" in message.text:
-                        reason = "`ay.live` URL'leri tespit edildi."
+                        reason = "`ay.live` URL'leri aşkarlandı."
                         spambot = True
                     elif "exe.io/" in message.text:
-                        reason = "`exe.io` URL'leri tespit edildi."
+                        reason = "`exe.io` URL'leri aşkarlandı."
                         spambot = True
                     elif "ouo.io/" in message.text:
-                        reason = "`ouo.io` URL'leri tespit edildi."
+                        reason = "`ouo.io` URL'leri aşkarlandı."
                         spambot = True
                     else:
                         if check_user.first_name in ("Bitmex", "Promotion",
@@ -142,7 +142,7 @@ async def anti_spambot(welcm):
                                 spambot = True
 
                     if spambot:
-                        print(f"Potansiyel Spam Mesajı: {message.text}")
+                        print(f"Spam Mesajı: {message.text}")
                         await message.delete()
                         break
 
@@ -157,18 +157,18 @@ async def anti_spambot(welcm):
                         await welcm.reply(
                             "@admins\n"
                             "`ANTI SPAMBOT TESPİT EDİLDİ!\n"
-                            "BU KULLANICI BENİM SPAMBOT ALGORİTMALARIMLA EŞLEŞİYOR!`"
-                            f"SEBEP: {reason}")
+                            "BU İSTİFADƏÇİ MƏNİM SPAMBOT ALQORİTMAM İLƏ EŞLEŞİYOR!`"
+                            f"Səbəb: {reason}")
                         kicked = False
                         reported = True
                 else:
                     try:
 
                         await welcm.reply(
-                            "`Potansiyel Spambot Tespit Edildi !!`\n"
-                            f"`SEBEP:` {reason}\n"
-                            "Şu anlık gruptan kickleniyor, bu ID ilerideki durumlar için kaydedilecek.\n"
-                            f"`KULLANICI:` [{check_user.first_name}](tg://user?id={check_user.id})"
+                            "`Spambot Aşkarlandı !!`\n"
+                            f"`Səbəb:` {reason}\n"
+                            "İstifadəçi qrupdan atıldı.\n"
+                            f"`İstifadəçi:` [{check_user.first_name}](tg://user?id={check_user.id})"
                         )
 
                         await welcm.client.kick_participant(
@@ -189,12 +189,12 @@ async def anti_spambot(welcm):
                 if BOTLOG:
                     if kicked or reported:
                         await welcm.client.send_message(
-                            BOTLOG_CHATID, "#ANTI_SPAMBOT RAPORU\n"
-                            f"Kullanıcı: [{check_user.first_name}](tg://user?id={check_user.id})\n"
-                            f"Kullanıcı IDsi: `{check_user.id}`\n"
-                            f"Sohbet: {welcm.chat.title}\n"
-                            f"Sohbet IDsi: `{welcm.chat_id}`\n"
-                            f"Sebep: {reason}\n"
+                            BOTLOG_CHATID, "#ANTI_SPAMBOT BİLDİRİŞİ\n"
+                            f"İstifadəçi: [{check_user.first_name}](tg://user?id={check_user.id})\n"
+                            f"İstifadəçi IDsi: `{check_user.id}`\n"
+                            f"Qrup: {welcm.chat.title}\n"
+                            f"Qrup IDsi: `{welcm.chat_id}`\n"
+                            f"Səbəb: {reason}\n"
                             f"Mesaj:\n\n{message.text}")
     except ValueError:
         pass
