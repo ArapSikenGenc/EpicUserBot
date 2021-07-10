@@ -4,6 +4,7 @@ import bs4
 import requests
 
 from userbot.events import register
+from userbot.cmdhelp import CmdHelp
 
 # ██████ LANGUAGE CONSTANTS ██████ #
 
@@ -42,7 +43,12 @@ async def play_store(message):
         app_details += f'\n<code>{LANG["PUAN"]}</code> ' + app_rating.replace(
             "Rated ", "").replace(" out of ", "/").replace(
                 " stars", "", 1).replace(" stars", "⭐️").replace("five", "5")
-        app_details += f"\n<code>{LANG['OZLLK']}</code> <a href='" + app_link + "'>Google Play'da göster</a>"
+        app_details += f"\n<code>{LANG['OZLLK']}</code> <a href='" + app_link + "'>Google Play'da göstər</a>"
         await message.edit(app_details, parse_mode='html')
     except IndexError:
         await message.edit(LANG["NOT_FOUND"])
+
+        
+Help = CmdHelp('playstore')
+Help.add_command('playstore', '<proqram adı>', 'Qeyd etdiyiniz proqram haqqında məlumat verər.')
+Help.add()                  
