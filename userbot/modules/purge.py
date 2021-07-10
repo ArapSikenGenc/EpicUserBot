@@ -84,7 +84,7 @@ async def purgeme(delme):
     await smsg.delete()
 
 
-@register(outgoing=True, pattern="^.del$")
+@register(outgoing=True, pattern="^.(sil|del)$")
 async def delete_it(delme):
     """ .del komutu yanıtlanan mesajı siler. """
     msg_src = await delme.get_reply_message()
@@ -139,7 +139,7 @@ CmdHelp('purge').add_command(
 ).add_command(
     'purgeme', '<sayı>', 'Hedeflenen yanıttan başlayarak kendi mesajlarınızı temizler.'
 ).add_command(
-    'del', '<yanıt>', 'Yanıt verilen mesajı siler.'
+    'del/sil', '<yanıt>', 'Yanıt verilen mesajı siler.'
 ).add_command(
     'edit', '<yeni mesaj>', 'Yanıt verdiğiniz mesajı yeni mesaj ile değiştirir.'
 ).add_command(
