@@ -12,11 +12,13 @@ import os
 import time
 import heroku3
 from re import compile
+from .utils.pip_install import install_pip
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
+from sqlite3 import connect
 from telethon.tl.functions.channels import GetFullChannelRequest as getchat
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from dotenv import load_dotenv
