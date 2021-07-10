@@ -12,7 +12,7 @@ auth_url = r["auth_url"]
 
 @register(pattern="^.tg (m|t)$")
 async def telegraphs(graph):
-    await graph.edit("`🔄 Hazırlanıyor...`")
+    await graph.edit("`🔄 Hazırlanır...`")
     if not graph.text[0].isalpha() and graph.text[0] not in ("/", "#", "@", "!"):
         if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
             os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -27,22 +27,22 @@ async def telegraphs(graph):
                 end = datetime.now()
                 ms = (end - start).seconds
                 await graph.edit(
-                    "✨ ```{}``` __saniye içinde__ ```{}``` __noktasına yüklendi.__".format(ms,downloaded_file_name)
+                    "✨ ```{}``` __saniyə içində__ ```{}``` __yükləndi.__".format(ms,downloaded_file_name)
                 )
                 try:
                     if downloaded_file_name.endswith((".webp")):
                         resize_image(downloaded_file_name)
                 except AttributeError:
-                    return await graph.edit("`🥺 Medya sağlanamadı`")
+                    return await graph.edit("`🥺 Medya aşkar edilmədi`")
                 try:
                     media_urls = upload_file(downloaded_file_name)
                 except exceptions.TelegraphException as exc:
-                    await graph.edit("Hata: " + str(exc))
+                    await graph.edit("Xəta: " + str(exc))
                     os.remove(downloaded_file_name)
                 else:
                     os.remove(downloaded_file_name)
                     await graph.edit(
-                        "```https://telegra.ph{}``` **'a yüklendi.**".format(
+                        "```https://telegra.ph{}``` **'a yükləndi.**".format(
                             media_urls[0]
                         ),
                         link_preview=True,
@@ -69,13 +69,13 @@ async def telegraphs(graph):
                     title_of_page, html_content=page_content
                 )
                 await graph.edit(
-                    "```https://telegra.ph/{}``` **'a yüklendi!**".format(
+                    "```https://telegra.ph/{}``` **'a yükləndi!**".format(
                         response["path"]
                     ),
                     link_preview=True,
                 )
         else:
-            await graph.edit("`❎ Kalıcı bir telegra.ph bağlantısı elde etmek için mesajı yanıtlayın.`")
+            await graph.edit("`❎ Qalıcı bir telegra.ph bağlantısı əldə etmək üçün mesajı yanıtlayın.`")
 
 
 def resize_image(image):
@@ -83,5 +83,5 @@ def resize_image(image):
     im.save(image, "PNG")
     
 CmdHelp('telegraph').add_command(
-    'tg', '<m/t>', 'Mesaja yanıt vererek .tg t (yazı) veya .tg m (medya) yazarak Telegrapha yükleyin Bölelikle Tek Bir link İle Medya/Yazınıza Ulaşabilirsiniz.'
-).add()
+    'tg', '<m/t>', 'Mesaja yanıt verərək .tg t (yazı) və ya .tg m (mediya) yazaraq Telegrapha yükləyin.'
+).add()   
