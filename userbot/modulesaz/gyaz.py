@@ -1,4 +1,4 @@
-# SİRİUSERBOT - ERDEMBEY
+# EPİCUSERBOT - ERDEMBEY
 
 import re
 import os
@@ -24,17 +24,17 @@ async def remoteaccess(event):
     mssg = await event.get_reply_message() 
     if event.reply_to_msg_id:
         await event.client.send_message(chat_id, mssg)
-        await event.edit("`@EpicUserBot Mesajınızı iletti ✔️`")
+        await event.edit("`@EpicUserBot mesajınızı göndərdi ✔️`")
     for i in m[1:]:
         msg += i + " "
     if msg == "":
         return
     try:
         await event.client.send_message(chat_id, msg)
-        await event.edit("`@EpicUserBot Mesajınızı iletti`")
+        await event.edit("`@EpicUserBot mesajınızı göndərdi`")
     except BaseException:
-        await event.edit("** @EpicUserBot Mesajınızı Gönderemedi Belirttiğin Grupta Olduğuna Eminmisin Sahip ? **")
+        await event.edit("** @EpicUserBot mesajınızı göndərə bilmədi! **")
         
 CmdHelp('gyaz').add_command(
-    'gyaz', ' <gruplinki> <mesajınız> ', 'İstediğiniz Gruba Uzaktan Mesaj Göndermeye Yarar. '
+    'gyaz', ' <qruplinki> <mesajınız> ', 'İstədiyiniz qrupa uzaqdan mesaj göndərmək üçün. '
 ).add()
