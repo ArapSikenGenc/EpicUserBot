@@ -58,7 +58,7 @@ LastLog = False
 @register(outgoing=True, pattern="^.lastfm$")
 async def last_fm(lastFM):
     """ .lastfm komutu last.fm'den verileri çeker. """
-    await lastFM.edit("İşleniyor...")
+    await lastFM.edit("Hazırlanır...")
     preview = None
     playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
     username = f"https://www.last.fm/user/{LASTFM_USERNAME}"
@@ -74,10 +74,10 @@ async def last_fm(lastFM):
         rectrack = sub("^", "https://www.youtube.com/results?search_query=",
                        rectrack)
         if image:
-            output = f"[‎]({image})[{LASTFM_USERNAME}]({username}) __şu an şunu dinliyor:__\n\n• [{playing}]({rectrack})\n`{tags}`"
+            output = f"[‎]({image})[{LASTFM_USERNAME}]({username}) __indi bunu dinləyir:__\n\n• [{playing}]({rectrack})\n`{tags}`"
             preview = True
         else:
-            output = f"[{LASTFM_USERNAME}]({username}) __şu an şunu dinliyor:__\n\n• [{playing}]({rectrack})\n`{tags}`"
+            output = f"[{LASTFM_USERNAME}]({username}) __indi bunu dinləyir:__\n\n• [{playing}]({rectrack})\n`{tags}`"
     else:
         recent = User(LASTFM_USERNAME, lastfm).get_recent_tracks(limit=3)
         playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
@@ -151,7 +151,7 @@ async def get_curr_track(lfmbio):
                     if BOTLOG and LastLog:
                         await bot.send_message(
                             BOTLOG_CHATID,
-                            f"Biyografi şuna çevrildi: \n{lfmbio}")
+                            f"Biyografi buna çevrildi: \n{lfmbio}")
                     await bot(UpdateProfileRequest(about=lfmbio))
                 except AboutTooLongError:
                     short_bio = f"🎧: {SONG}"
@@ -162,7 +162,7 @@ async def get_curr_track(lfmbio):
                     await bot(UpdateProfileRequest(about=DEFAULT_BIO))
                     if BOTLOG and LastLog:
                         await bot.send_message(
-                            BOTLOG_CHATID, f"Biyografi geri şuna çevrildi: \n{DEFAULT_BIO}")
+                            BOTLOG_CHATID, f"Biyografi geri buna çevrildi: \n{DEFAULT_BIO}")
         except AttributeError:
             try:
                 if user_info.about != DEFAULT_BIO:
@@ -170,19 +170,19 @@ async def get_curr_track(lfmbio):
                     await bot(UpdateProfileRequest(about=DEFAULT_BIO))
                     if BOTLOG and LastLog:
                         await bot.send_message(
-                            BOTLOG_CHATID, f"Biyografi geri şuna çevrildi \n{DEFAULT_BIO}")
+                            BOTLOG_CHATID, f"Biyografi geri buna çevrildi \n{DEFAULT_BIO}")
             except FloodWaitError as err:
                 if BOTLOG and LastLog:
                     await bot.send_message(BOTLOG_CHATID,
-                                           f"Biyografi değiştirilirken hata oluştu :\n{err}")
+                                           f"Biyografi dəyişdirilərkən xəta baş verdi:\n{err}")
         except FloodWaitError as err:
             if BOTLOG and LastLog:
                 await bot.send_message(BOTLOG_CHATID,
-                                       f"Biyografi değiştirilirken hata oluştu :\n{err}")
+                                       f"Biyografi dəyişdirilərkən xəta baş verdi:\n{err}")
         except WSError as err:
             if BOTLOG and LastLog:
                 await bot.send_message(BOTLOG_CHATID,
-                                       f"Biyografi değiştirilirken hata oluştu: \n{err}")
+                                       f"Biyografi dəyişdirilərkən xəta baş verdi: \n{err}")
         await sleep(2)
     RUNNING = False
 
