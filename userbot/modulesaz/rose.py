@@ -2,6 +2,7 @@
 import os
 from telethon.errors import ChatAdminRequiredError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
@@ -13,9 +14,9 @@ async def fstat(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
-        epic = event.pattern_match.group(1)
+        text_ = event.pattern_match.group(1)
     else:
-        epic = ""
+        text_ = ""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -24,7 +25,9 @@ async def fstat(event):
         kullanıcı = str(replied_user.user.id)
         async with event.client.conversation(chat) as conv:
             try:
-                await conv.send_message("/fedstat " + kullanıcı + " " + epic)
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedstat " + kullanıcı + " " + text_)
                 fedstat = await conv.get_response()
                 if "file" in fedstat.text:
                     await fedstat.click(0)
@@ -33,13 +36,25 @@ async def fstat(event):
                 else:
                     await event.client.send_message(event.chat_id, fedstat)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Engellenmiş Yeniden Başlatın Tekrar deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedstat " + kullanıcı + " " + text_)
+                fedstat = await conv.get_response()
+                if "file" in fedstat.text:
+                    await fedstat.click(0)
+                    reply = await conv.get_response()
+                    await event.client.send_message(event.chat_id, reply)
+                else:
+                    await event.client.send_message(event.chat_id, fedstat)
+                await event.delete()
     else:
         async with event.client.conversation(chat) as conv:
             try:
-                await conv.send_message("/fedstat " + epic)
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedstat " + text_)
                 fedstat = await conv.get_response()
                 if "file" in fedstat.text:
                     await fedstat.click(0)
@@ -48,9 +63,19 @@ async def fstat(event):
                 else:
                     await event.client.send_message(event.chat_id, fedstat)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Engellenmiş Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedstat " + text_)
+                fedstat = await conv.get_response()
+                if "file" in fedstat.text:
+                    await fedstat.click(0)
+                    reply = await conv.get_response()
+                    await event.client.send_message(event.chat_id, reply)
+                else:
+                    await event.client.send_message(event.chat_id, fedstat)
+                await event.delete()
 
 
 @register(outgoing=True, pattern="^.info ?(.*)")
@@ -58,10 +83,10 @@ async def info(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
-        epic = event.pattern_match.group(1)
+        text_ = event.pattern_match.group(1)
         
     else:
-        epic = ""
+        text_ = ""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -70,50 +95,78 @@ async def info(event):
         kullanıcı = str(replied_user.user.id)
         async with event.client.conversation(chat) as conv:
             try:
+                await conv.send_message("/start")
+                await conv.get_response()
                 await conv.send_message("/info " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
-    else:
-        async with event.client.conversation(chat) as conv:
-            try:
-                await conv.send_message("/info " + epic)
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/info " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
+    else:
+        async with event.client.conversation(chat) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/info " + text_)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/info " + kullanıcı)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
 
 
 @register(outgoing=True, pattern="^.fedinfo ?(.*)")
 async def fedinfo(event):
     if event.fwd_from:
         return
-    epic = event.pattern_match.group(1)
-    if epic == "" and not event.reply_to_msg_id:
+    text_ = event.pattern_match.group(1)
+    if text_ == "" and not event.reply_to_msg_id:
         async with event.client.conversation(chat) as conv:
             try:
+                await conv.send_message("/start")
+                await conv.get_response()
                 await conv.send_message("/fedinfo")
                 fedinfo = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, fedinfo)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
-    else:
-        async with event.client.conversation(chat) as conv:
-            try:
-                await conv.send_message("/fedinfo " + epic)
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedinfo")
                 fedinfo = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, fedinfo)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
+    else:
+        async with event.client.conversation(chat) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedinfo " + text_)
+                fedinfo = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, fedinfo)
+                await event.delete()
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fedinfo")
+                fedinfo = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, fedinfo)
+                await event.delete()
 
 
 @register(outgoing=True, pattern="^.myfeds ?(.*)")
@@ -122,6 +175,8 @@ async def myfeds(event):
         return
     async with event.client.conversation(chat) as conv:
         try:
+            await conv.send_message("/start")
+            await conv.get_response()
             await conv.send_message("/myfeds")
             myfed = await conv.get_response()
             if "file" in myfed.text:
@@ -131,19 +186,29 @@ async def myfeds(event):
             else:
                 await event.client.send_message(event.chat_id, myfed)
                 await event.delete()
-            await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+            await event.client(UnblockRequest("609517172"))
+            await conv.send_message("/start")
+            await conv.get_response()
+            await conv.send_message("/myfeds")
+            myfed = await conv.get_response()
+            if "file" in myfed.text:
+                await fedstat.click(0)
+                reply = await conv.get_response()
+                await event.client.send_message(event.chat_id, reply)
+            else:
+                await event.client.send_message(event.chat_id, myfed)
+                await event.delete()
             
 @register(outgoing=True, pattern="^.fban ?(.*)")
 async def fban(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
-        epic = event.pattern_match.group(1)
+        text_ = event.pattern_match.group(1)
         
     else:
-        epic = ""
+        text_ = ""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -152,33 +217,47 @@ async def fban(event):
         kullanıcı = str(replied_user.user.id)
         async with event.client.conversation(chat) as conv:
             try:
+                await conv.send_message("/start")
+                await conv.get_response()
                 await conv.send_message("/fban " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
-    else:
-        async with event.client.conversation(chat) as conv:
-            try:
-                await conv.send_message("/fban " + epic)
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fban " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
+    else:
+        async with event.client.conversation(chat) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fban " + text_)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fban " + kullanıcı)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
                 
 @register(outgoing=True, pattern="^.unfban ?(.*)")
 async def unfban(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
-        epic = event.pattern_match.group(1)
+        text_ = event.pattern_match.group(1)
         
     else:
-        epic = ""
+        text_ = ""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -187,33 +266,47 @@ async def unfban(event):
         kullanıcı = str(replied_user.user.id)
         async with event.client.conversation(chat) as conv:
             try:
+                await conv.send_message("/start")
+                await conv.get_response()
                 await conv.send_message("/unfban " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
-    else:
-        async with event.client.conversation(chat) as conv:
-            try:
-                await conv.send_message("/unfban " + epic)
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/unfban " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
+    else:
+        async with event.client.conversation(chat) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/unfban " + text_)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/unfban " + kullanıcı)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
                 
 @register(outgoing=True, pattern="^.feddemote ?(.*)")
 async def feddemote(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
-        epic = event.pattern_match.group(1)
+        text_ = event.pattern_match.group(1)
         
     else:
-        epic = ""
+        text_ = ""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -222,33 +315,47 @@ async def feddemote(event):
         kullanıcı = str(replied_user.user.id)
         async with event.client.conversation(chat) as conv:
             try:
+                await conv.send_message("/start")
+                await conv.get_response()
                 await conv.send_message("/feddemote " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
-    else:
-        async with event.client.conversation(chat) as conv:
-            try:
-                await conv.send_message("/unfban " + epic)
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/feddemote " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
+    else:
+        async with event.client.conversation(chat) as conv:
+            try:
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/unfban " + text_)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/feddemode " + kullanıcı)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
                 
-@register(outgoing=True, pattern="^.fpromode ?(.*)")
+@register(outgoing=True, pattern="^.fpromote ?(.*)")
 async def fpromode(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
-        epic = event.pattern_match.group(1)
+        text_ = event.pattern_match.group(1)
         
     else:
-        epic = ""
+        text_ = ""
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         replied_user = await event.client(
@@ -257,39 +364,53 @@ async def fpromode(event):
         kullanıcı = str(replied_user.user.id)
         async with event.client.conversation(chat) as conv:
             try:
-                await conv.send_message("/fpromode " + kullanıcı)
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fpromote " + kullanıcı)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fpromote " + kullanıcı)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
     else:
         async with event.client.conversation(chat) as conv:
             try:
-                await conv.send_message("/fpromode " + epic)
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fpromote " + text_)
                 audio = await conv.get_response()
                 await event.client.forward_messages(event.chat_id, audio)
                 await event.delete()
-                await event.client.send_read_acknowledge(conv.chat_id)
             except YouBlockedUserError:
-                await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
+                await event.client(UnblockRequest("609517172"))
+                await conv.send_message("/start")
+                await conv.get_response()
+                await conv.send_message("/fpromote " + kullanıcı)
+                audio = await conv.get_response()
+                await event.client.forward_messages(event.chat_id, audio)
+                await event.delete()
             
 CmdHelp('rose').add_command(
-    'fstat', '<tag/id>', 'Sadece .fstat Yazarsanız Kendiniz İçin Fban Listesini Verir. \n ID veya @KULLANICI ADI Verirseniz O Kişinin Fban Listesini Verir '
+    'fstat', '<tag/id>', 'Sadəcə .rfstat yazsanız özünüz üçün fban siyahısı verər. \n ID və ya istifafəçi adı yazsanız o istifadəçinin fban siyahısını göstərər. '
 ).add_command(
-    'info', '<tag/id>', 'Sadece .info Yazarsanız kendiniz için Bilgi verir. \n ID veya @KULLANICI ADI Verirseniz O Kişi İçin Bilgi Veri.'
+    'info', '<tag/id>', 'Sadəcə .rinfo yazsanıx özünüz üçün məlumat verər. \n ID və ya istifadəçi adı yazsanız o istifadəçi üçün məlumat verər.'
 ).add_command(
-    'fedinfo', '<fed id>', 'Sadece .fedinfo yazarsanız Sizin Federasyonunuz İçin Bilgi Verir. \n FED İD Girerseniz O Federasyonun Bilgisini Verir'
+    'fedinfo', '<fed id>', 'Sadəcə .rfedinfo yazsanız sizin Federasiyanız üçün məlumat verər. \n FED ID yazsanız o federasiyanın məlumatını verər.'
 ).add_command(
-    'myfeds', 'Hangi Federasyonlardan Yetkinizin Olduğunu Gösterir.'
+    'myfeds', 'Hansı federasyonlarda adminliyiniz olduğunu göstərər..'
 ).add_command(
-    'fban', '<tag/id>', 'Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fban atabilirsiniz. '
+    'fban', '<tag/id>', 'Bunu federasiya sahibləri işlədə bilər.\n Qrupdakı birinə öz federasiyanızdan fban ata bilərsiniz. '
 ).add_command(
-    'unfban', '<tag/id>', ' Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fbanını Açabilirsiniz. '
+    'unfban', '<tag/id>', ' Bunu federasiya sahibləri işlədə bilər.\n Qrupdakı birinə öz federasiyanızda olan fban-ı aça bilərsiniz. '
 ).add_command(
-    'fpromote', '<tag/id>', ' Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fban Yetkisi Verebilirsiniz. '
+    'fpromote', '<tag/id>', ' Bunu federasiya sahibləri işlədə bilər.\n Qrupdakı birinə öz federasiyanızda icazə verə bilərsiniz. '
 ).add_command(
-    'feddemote', '<tag/id>', ' Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fban yetkisini Alabilirsiniz. \n NOT: BU KOMUTLAR HER YERDE ÇALIŞMAKTADIR ÖZEL MESAJLARDA VER HANGİ BİR GRUPTA KULLANA BİLİRSİNİZ @EpicUserBot '
+    'feddemote', '<tag/id>', ' Bunu federasiya sahibləri işlədə bilər.\n Qrupdakı birindən öz federasiyanızda olan yetkisini ala bilərsiniz. '
     
 ).add()
