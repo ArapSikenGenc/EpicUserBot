@@ -1,4 +1,3 @@
-
 # / ALL PLUGİNİ / ERDEM BEY
 from telethon.tl.types import ChannelParticipantsAdmins as cp
 from userbot import CMD_HELP, bot
@@ -50,10 +49,9 @@ async def _(q):
 
 
 CmdHelp("all").add_command(
-	"all", "<sebep>", "Gruptaki Üyeleri Etiketler.. En Fazla 3000 Kişi (Flood Wait Nedeniyle)"
+	"all", "<səbəb>", "Qrupdaki istifadəçiləri etiketləyər.. Ən çox 3000 istifadəçi (Flood Wait Səbəbi ilə)"
 	).add_command(
-	"alladmin", "<sebep>", "Gruptaki Adminleri Etiketler "
+	"alladmin", "<səbəb>", "Qrupdaki adminləri etiketləyər "
         ).add_command(
-        "kill all", None, "Etiketleme işlemini durdurur."
+        "kill all", None, "Etiketləməni dayandırar."
 ).add()
-
