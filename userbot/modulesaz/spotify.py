@@ -146,7 +146,7 @@ async def set_biostgraph(setstbio):
         await setstbio.edit(SPO_BIO_RUNNING)
 
 
-@register(outgoing=True, pattern="^.spotify kapa$")
+@register(outgoing=True, pattern="^.spotify bağla$")
 async def set_biodgraph(setdbio):
     global SPOTIFYCHECK
     global RUNNING
@@ -206,22 +206,22 @@ def get_spotify_info(TIME=5):
         totaltime = int(item['duration_ms'])
         if len(item['album']['images']) > 0:
             telegraph.create_account(short_name='spotify')
-            if path.exists("@EpicUserBot-Spotify.jpg"):
-                remove("@EpicUserBot-Spotify.jpg")          
+            if path.exists("@TheCyberUserBot-Spotify.jpg"):
+                remove("@TheCyberUserBot-Spotify.jpg")          
             try:
                 r = get(str(item['album']['images'][0]['url']))
-                with open("@EpicUserBot-Spotify.jpg", 'wb') as f:
+                with open("@TheCyberUserBot-Spotify.jpg", 'wb') as f:
                     f.write(r.content)    
 
-                with open('EpicUserBot-Spotify.jpg', 'rb') as f:
+                with open('@TheCyberUserBot-Spotify.jpg', 'rb') as f:
                     req = post('https://telegra.ph/upload', 
                     files={'Hey': ('Hey', f, 'image/jpeg')}  # image/gif, image/jpeg, image/jpg, image/png, video/mp4
                     ).json()
                     image = "[🔄](https://telegra.ph"+req[0]['src']+")"
             except Exception:
                 pass
-        if path.exists("@EpicUserBot-Spotify.jpg"):
-            remove("@EpicUserBot-Spotify.jpg") 
+        if path.exists("@TheCyberUserBot-Spotify.jpg"):
+            remove("@TheCyberUserBot-Spotify.jpg") 
         art = []
         message = ""
         Stop = False
@@ -331,11 +331,11 @@ async def getmp3(event):
                 await sleep(1)
 
 CmdHelp('spotify').add_command(
-    'spotify aç', None, 'Spotify bio aktifleştirir.'
+    'spotify aç', None, 'Spotify bio aktivləşdirər.'
 ).add_command(
-    'spotify kapa', None, 'Spotify bio devredışı bırakır.'
+    'spotify bağla', None, 'Spotify bio deaktiv edər.'
 ).add_command(
-    'spotify np', '<animasyon süre = 5>', "Süre kadar player animasyonlu şekilde Spotify'da çalan şarkınızı gösterir. (Kısaltma komut: .snp)"
+    'spotify np', '<animasyon vaxt = 5>', "Vaxt qədər player animasyonlu şəkildə Spotify'da oxunan musiqinizi göstərər. (Qısaltma komut: .snp)"
 ).add_command(
-    'spotify mp3', None, "Spotify'da çalan şarkınızı deezer botunda bulup ascii art haliyle gönderir. (Kısaltma komut: .smp3)"
+    'spotify mp3', None, "Spotify'da oxunan musiqinizi deezer botunda bulub ascii art halı ilə göndərər. (Qısaltma komut: .smp3)"
 ).add()
