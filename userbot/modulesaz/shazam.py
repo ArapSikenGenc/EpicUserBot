@@ -19,13 +19,13 @@ from userbot.cmdhelp import CmdHelp
 @register(outgoing=True, pattern="^.shazam")
 async def shazam(event):
     if not event.is_reply:
-        return await event.edit('`Lütfen Bir Ses Dosyasına Yanıt Veriniz!`')
+        return await event.edit('`Zəhmət olmasa bir səs dosyasına cavab verin!`')
     else:
-        await event.edit('`⬇️ Ses dosyası yükleniyor...`')
+        await event.edit('`⬇️ Səs faylı yüklənir...`')
         reply_message = await event.get_reply_message()
         dosya = await reply_message.download_media()
 
-        await event.edit('`🛠 Ses dosyası fingerprint formatına çevirilir...`')
+        await event.edit('`🛠 Səs dosyası fingerprint formatına çevirilir...`')
         audio = AudioSegment.from_file(dosya)
         audio = audio.set_sample_width(2)
         audio = audio.set_frame_rate(16000)
@@ -40,7 +40,7 @@ async def shazam(event):
             
         results = '{"error": "Not found"}'
         sarki = None
-        await event.edit('`🎧 🎤 Shazamlanıyor...`')
+        await event.edit('`🎧 🎤 Shazamlanır...`')
         while True:
             signature = signature_generator.get_next_signature()
             if not signature:
@@ -54,13 +54,13 @@ async def shazam(event):
                 await event.edit(f'`İlk {(signature_generator.samples_processed / 16000)} saniyede hiçbir şey bulunamadı... Biraz daha deniyorum.`')
         
         if not 'track' in sarki:
-            return await event.edit('`Ehh Shazam verdiğiniz sesi anlamadı 😔. Biraz daha açık ses göndere bilir misiniz?`')
-        await event.edit('`✅ Müziği Buldum... Veriler Toplanıyor...`')
-        Caption = f'**Müzik:** [{sarki["track"]["title"]}]({sarki["track"]["url"]})\n'
+            return await event.edit('`Ehh Shazam verdiyiniz səsi anlamadı 😔. Biraz daha açıq səs göndərə bilərsən?`')
+        await event.edit('`✅ Musiqini tapdım... Məlumatlar toplanır...`')
+        Caption = f'**Musiqi:** [{sarki["track"]["title"]}]({sarki["track"]["url"]})\n'
         if 'artists' in sarki['track']:
-            Caption += f'**Sanatçı(lar):** [{sarki["track"]["subtitle"]}](https://www.shazam.com/artist/{sarki["track"]["artists"][0]["id"]})\n'
+            Caption += f'**Sənətçi(lər):** [{sarki["track"]["subtitle"]}](https://www.shazam.com/artist/{sarki["track"]["artists"][0]["id"]})\n'
         else:
-            Caption += f'**Sanatçı(lar):** `{sarki["track"]["subtitle"]}`\n'
+            Caption += f'**Sənətçi(lər):** `{sarki["track"]["subtitle"]}`\n'
 
         if 'genres'in sarki['track']:
             Caption += f'**Janr:** `{sarki["track"]["genres"]["primary"]}`\n'
@@ -69,7 +69,7 @@ async def shazam(event):
             for metadata in sarki["track"]["sections"][0]["metadata"]:
                 Caption += f'**{"İl" if metadata["title"] == "Sorti" else metadata["title"]}:** `{metadata["text"]}`\n'
 
-        Caption += '\n**Müzik Platformları:** '
+        Caption += '\n**Musiqi Platformaları:** '
         for provider in sarki['track']['hub']['providers']:
             if provider['actions'][0]['uri'].startswith('spotify:track'):
                 Url = provider['actions'][0]['uri'].replace(
@@ -106,5 +106,5 @@ async def shazam(event):
         remove(dosya)
 
 CmdHelp('shazam').add_command(
-    'shazam', '<yanıt>', 'Cevap verdiğiniz ses dosyasını Shazamda aratır.'
+    'shazam', '<cavan>', 'Cavab verdiyiniz səs faylını Shazamda axtarar.'
 ).add()
