@@ -1,13 +1,4 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-
-# EpicUserBot - ErdemBey - Midy
-
-
-""" Sunucuya dosya indirme/yükleme yapmayı sağlayan UserBot modülüdür. """
+""" Upload """
 
 import json
 import os
@@ -72,7 +63,7 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
 
 
 def humanbytes(size):
-    """ Boyut okunabilir olması için bayt olarak gösterilir """
+    """  """
     # https://stackoverflow.com/a/49361727/4723940
     if not size:
         return ""
@@ -87,22 +78,22 @@ def humanbytes(size):
 
 
 def time_formatter(milliseconds: int) -> str:
-    """ Daha güzel görünmesi için zamanı milisaniye olarak belirtir. """
+    """ . """
     seconds, milliseconds = divmod(int(milliseconds), 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = ((str(days) + f" {LANG['DAY']}, ") if days else "") + \
         ((str(hours) + " saat, ") if hours else "") + \
-        ((str(minutes) + " dakika, ") if minutes else "") + \
-        ((str(seconds) + " saniye, ") if seconds else "") + \
-        ((str(milliseconds) + " milisaniye, ") if milliseconds else "")
+        ((str(minutes) + " dəqiqə, ") if minutes else "") + \
+        ((str(seconds) + " saniyə, ") if seconds else "") + \
+        ((str(milliseconds) + " millisaniyə, ") if milliseconds else "")
     return tmp[:-2]
 
 
 @register(pattern=r".download(?: |$)(.*)", outgoing=True)
 async def download(target_file):
-    """ .download komutu userbot sunucusuna dosya indirmenizi sağlar. """
+    """ .downland """
     await target_file.edit(LANG['DOWNLOADING'])
     input_str = target_file.pattern_match.group(1)
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -175,7 +166,7 @@ async def download(target_file):
 
 @register(pattern=r".uploadir (.*)", outgoing=True)
 async def uploadir(udir_event):
-    """ .uploadir komutu bir klasördeki tüm dosyaları uploadlamanıza yarar """
+    """ .uploadir  """
     input_str = udir_event.pattern_match.group(1)
     if os.path.exists(input_str):
         await udir_event.edit(LANG['TRYING'])
@@ -436,7 +427,7 @@ async def wupload(event):
             await event.edit(urll)
 
 def get_video_thumb(file, output=None, width=90):
-    """ Video kapak resmini gösterir """
+    """  """
     metadata = extractMetadata(createParser(file))
     popen = subprocess.Popen(
         [
@@ -462,7 +453,7 @@ def get_video_thumb(file, output=None, width=90):
 
 
 def extract_w_h(file):
-    """ Bir medyanın yüksekliğini-genişliğini gösterir. """
+    """ . """
     command_to_run = [
         "ffprobe",
         "-v",
@@ -489,7 +480,7 @@ def extract_w_h(file):
 
 @register(pattern=r".uploadas(stream|vn|all) (.*)", outgoing=True)
 async def uploadas(uas_event):
-    """ .uploadas komutu size upload yaparken bazı argümanlar belirtmenizi sağlar. """
+    """ .uploadas """
     await uas_event.edit("Lütfen bekleyin...")
     type_of_upload = uas_event.pattern_match.group(1)
     supports_streaming = False
@@ -545,7 +536,7 @@ async def uploadas(uas_event):
                     ],
                     progress_callback=lambda d, t: asyncio.get_event_loop(
                     ).create_task(
-                        progress(d, t, uas_event, c_time, "Uploadlanıyor...",
+                        progress(d, t, uas_event, c_time, "Yüklənir...",
                                  file_name)))
             elif round_message:
                 c_time = time.time()
@@ -567,26 +558,26 @@ async def uploadas(uas_event):
                     ],
                     progress_callback=lambda d, t: asyncio.get_event_loop(
                     ).create_task(
-                        progress(d, t, uas_event, c_time, "Uploadlanıyor...",
+                        progress(d, t, uas_event, c_time, "Yüklənir...",
                                  file_name)))
             elif spam_big_messages:
-                await uas_event.edit("TBD: Halihazırda uygulanamadı.")
+                await uas_event.edit("TBD: Uğursuz oldu.")
                 return
             os.remove(thumb)
-            await uas_event.edit("Upload başarılı !!")
+            await uas_event.edit("Yüklənmə uğurlu oldu!!")
         except FileNotFoundError as err:
             await uas_event.edit(str(err))
     else:
-        await uas_event.edit("404: Dosya bulunamadı.")
+        await uas_event.edit("404: Fayl tapılmadı.")
 
 CmdHelp('updown').add_command(
-    'download', '<bağlantı-dosya adı> (ya da bir şeye cevap vererek)', 'Sunucuya dosyayı indirir.'
+    'download', '<link-fayl adı> (ya da nəyəsə cavab verərək)', 'Serverə faylı yükləyər.'
 ).add_command(
-    'upload', '<sunucudaki dosya yolu>', 'Sunucunuzdaki bir dosyayı sohbete upload eder.'
+    'upload', '<serverdəki fayl yolu>', 'Serverinizdəki bir faylı söhbətə yükləyər.'
 ).add_command(
-    'wupload', ' <dosyaya yanıt verin> anonfiles|transfer|filebin|tmpninja|anonymousfiles|megaupload|bayfiles|letsupload|vshare', 'Seçtiğiniz websiteye yükler.'
+    'wupload', ' <fayla cavab olaraq yazın> anonfiles|transfer|filebin|tmpninja|anonymousfiles|megaupload|bayfiles|letsupload|vshare', 'Seçdiyiniz web sayta yükləyər.'
 ).add_command(
-    'unzip', '<yanıt>', 'Yanıt verdiğiniz Zip dosyasını çıkarır.'
+    'unzip', '<cavab>', 'Cavab verdiyiniz Zip faylını çıxardar.'
 ).add_command(
-    'uploadir', '<klasör>', 'Tüm klasöru yükler.'
+    'uploadir', '<qovluq>', 'Bütün qovluğu yükləyər.'
 ).add()
