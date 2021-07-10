@@ -9,7 +9,7 @@
     <br>
         <a href="https://github.com/ErdemBey0/EpicUserBot/blob/master/README.md#kurulum">| Kurulum/Setup</a> |
         <a href="https://github.com/ErdemBey0/EpicUserBot/wiki/G%C3%BCncelleme">Güncelleme/Update</a> |
-        <a href="https://t.me/EpicUserBot">Telegram </a> |
+        <a href="https://t.me/EpicUserBot">Kanal/Channel </a> |
         <a href="https://t.me/HydraDestek">Destek/Support</a> |
     <br>
 </p>
