@@ -212,7 +212,7 @@ async def pins(event):
             if re.search(r'CmdHelp\(.*\)', dosy):
                 cmdhelp = re.findall(r"CmdHelp\([\"'](.*)[\"']\)", dosy)[0]
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                return await event.edit(f'**Modül Başarıyla Yüklendi!**\n__Modülün Kullanımını Öğrenmek İçin__ `.epic {cmdhelp}` __yazın.__')
+                return await event.edit(f'**Modul uğurla yükləndi!**\n__Modulun istifadəsini öyrənmək üçün__ `.epic {cmdhelp}` __yazın.__')
             else:
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
                 userbot.cmdhelp.CmdHelp(dosya).add_warning('Komutlar bulunamadı!').add()
@@ -221,12 +221,12 @@ async def pins(event):
             if re.search(r'CmdHelp\(.*\)', dosy):
                 cmdhelp = re.findall(r"CmdHelp\([\"'](.*)[\"']\)", dosy)[0]
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                return await event.edit(f'**Modül Başarıyla Yüklendi!**\n__Modülün Kullanımını Öğrenmek İçin__ `.epic {cmdhelp}` __yazın.__')
+                return await event.edit(f'**Modul uğurla yükləndi!**\n__Modulun istifadəsini öyrənmək üçün__ `.epic {cmdhelp}` __yazın.__')
             else:
                 dosyaAdi = reply_message.file.name.replace('.py', '')
                 extractCommands(dosya)
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                return await event.edit(f'**Modül Başarıyla Yüklendi**\n__Modülün  Kullanımını Öğrenmek İçin__ `.epic {dosyaAdi}` __yazın.__')
+                return await event.edit(f'**Modul uğurla yükləndi!**\n__Modulun istifadəsini öyrənmək üçün__ `.epic {dosyaAdi}` __yazın.__')
 
 @register(outgoing=True, pattern="^.ptest")
 async def ptest(event):
@@ -250,8 +250,8 @@ async def ptest(event):
         await event.edit(f"{LANG['PLUGIN_BUGGED']} {e}`")
         return os.remove("./userbot/temp_plugins/" + dosya)
 
-    return await event.edit(f'**Modül Başarıyla Yüklendi!**\
-    \n__Modülü Test Edebilirsiniz. Botu yeniden başlattığınızda plugin silinecektir.__')
+    return await event.edit(f'**Modul uğurla yükləndi!**\
+    \n__Modulu test edə bilərsiniz. Botu yenidən başlatdığınızda modul silinəcəkdir.__')
 
 @register(outgoing=True, pattern="^.psend ?(.*)")
 async def psend(event):
@@ -296,8 +296,8 @@ async def premove(event):
         await event.edit(LANGG['RESTARTING'])
         try: 
             if BOTLOG:
-                await event.client.send_message(BOTLOG_CHATID, "#OTORESTART \n"
-                                        "Plugin silme sonrası bot yeniden başlatıldı.")
+                await event.client.send_message(BOTLOG_CHATID, "#AUTORESTART \n"
+                                        "Plugin silindiyi üçün bot yenidən başladıldı.")
 
             await bot.disconnect()
         except:
@@ -336,8 +336,8 @@ async def asistanpremove(ups):
                     await usp.edit(LANGG['RESTARTING'])
                     try: 
                         if BOTLOG:
-                            await ups.client.send_message(BOTLOG_CHATID, "#OTORESTART \n"
-                                                    "Plugin silme sonrası bot yeniden başlatıldı.")
+                            await ups.client.send_message(BOTLOG_CHATID, "#AUTORESTART \n"
+                                                    "Plugin silindiyi üçün bot yenidən başladıldı.")
 
                         await bot.disconnect()
                     except:
@@ -398,21 +398,18 @@ async def pinsasistan(ups):
             if re.search(r'CmdHelp\(.*\)', dosy):
                 cmdhelp = re.findall(r"CmdHelp\([\"'](.*)[\"']\)", dosy)[0]
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                return await usp.edit(f'**Modül Başarıyla Yüklendi!**\n__Modülün Kullanımını Öğrenmek İçin__ `.epic {cmdhelp}` __yazın.__')
+                return await usp.edit(f'**Modul uğurla yükləndi!**\n__Modulun istifadəsini öyrənmək üçün__ `.epic {cmdhelp}` __yazın.__')
             else:
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                userbot.cmdhelp.CmdHelp(dosya).add_warning('Komutlar bulunamadı!').add()
+                userbot.cmdhelp.CmdHelp(dosya).add_warning('Əmrləri tapa bilmədim!').add()
                 return await usp.edit(LANG['PLUGIN_DESCLESS'])
         else:
             if re.search(r'CmdHelp\(.*\)', dosy):
                 cmdhelp = re.findall(r"CmdHelp\([\"'](.*)[\"']\)", dosy)[0]
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                return await usp.edit(f'**Modül Başarıyla Yüklendi!**\n__Modülün Kullanımını Öğrenmek İçin__ `.epic {cmdhelp}` __yazın.__')
+                return await usp.edit(f'**Modul uğurla yükləndi!**\n__Modulun istifadəsini öyrənmək üçün__ `.epic {cmdhelp}` __yazın.__')
             else:
                 dosyaAdi = reply_message.file.name.replace('.py', '')
                 extractCommands(dosya)
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
-                return await usp.edit(f'**Modül Başarıyla Yüklendi**\n__Modülün  Kullanımını Öğrenmek İçin__ `.epic {dosyaAdi}` __yazın.__')
-
-
-
+                return await usp.edit(f'**Modul uğurla yükləndi!**\n__Modulun istifadəsini öyrənmək üçün__ `.epic {dosyaAdi}` __yazın.__')
