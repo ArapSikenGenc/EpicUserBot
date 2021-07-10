@@ -9,7 +9,7 @@
 # Teşekkürler @kandnub
 #
 
-""" Google'da görsel aramak için kullanılabilen UserBot modülü """
+""" Google Axtarış """
 
 import io
 import os
@@ -37,7 +37,7 @@ opener.addheaders = [('User-agent', useragent)]
 
 @register(outgoing=True, pattern=r"^.reverse(?: |$)(\d*)")
 async def okgoogle(img):
-    """ .reverse komutu Google'da görsel araması yapar """
+    """ .reverse """
     if os.path.isfile("okgoogle.png"):
         os.remove("okgoogle.png")
 
@@ -110,7 +110,7 @@ async def okgoogle(img):
 
 
 async def ParseSauce(googleurl):
-    """ İstediğiniz bilgi için HTML kodunu ayrıştırın / kazıyın. """
+    """  """
 
     source = opener.open(googleurl).read()
     soup = BeautifulSoup(source, 'html.parser')
@@ -152,5 +152,5 @@ async def scam(results, lim):
     return imglinks
 
 CmdHelp('reverse').add_command(
-    'reverse', '<yanıt>', 'Fotoğraf veya çıkartmaya yanıt vererek görüntüyü Google üzerniden arayabilirsiniz.'
+    'reverse', '<cavab>', 'Foto vəya stikerə cavab verərək görüntünü Google üstündən axtara bilərsiz.'
 ).add()
