@@ -35,7 +35,7 @@ else:
 
 @register(outgoing=True, pattern=r'^.set var (\w*) ([\s\S]*)')
 async def set_var(var):
-    await var.edit("`🔄 Verilenler Herokuya Yazılıyor...`")
+    await var.edit("`🔄 Məlumatlar Herokuya Yazılır...`")
     variable = var.pattern_match.group(1)
     value = var.pattern_match.group(2)
     fix = False
@@ -44,25 +44,25 @@ async def set_var(var):
             if BOTLOG:
                 await var.client.send_message(
                     BOTLOG_CHATID, "#SETCONFIGVAR\n\n"
-                    "**ConfigVar Değişikliği**:\n"
+                    "**ConfigVar Dəyişikliyi**:\n"
                     f"`{variable}` = `{value}`"
                 )
             await var.edit("`Veriler Yazıldı!`")
         except PeerIdInvalidError:
              fix = True
-             await var.edit("😒 Botlog grubundan çıkmışsın.. Senin için düzeltiyorum..")
+             await var.edit("😒 Botlog qrupundan çıxmısan.. Sənin üçün düzəldirəm..")
     else:
         try:
             if BOTLOG:
                 await var.client.send_message(
                     BOTLOG_CHATID, "#ADDCONFIGVAR\n\n"
-                    "**Yeni ConfigVar Eklendi**:\n"
+                    "**Yeni ConfigVar Əlavə Edildi**:\n"
                     f"`{variable}` = `{value}`"
                 )
             await var.edit("`Veriler Yazıldı!`")
         except PeerIdInvalidError:
             fix = True
-            await var.edit("😒 Botlog grubundan çıkmışsın.. Senin için düzeltiyorum..")
+            await var.edit("😒 Botlog qrupundan çıxmısan.. Sənin üçün düzəldirəm..")
     if fix:
         heroku_var["BOTLOG"] = "False"
     else:
@@ -87,7 +87,7 @@ async def asistansetvar(ups):
                 if BOTLOG:
                     await ups.client.send_message(
                         BOTLOG_CHATID, "#SETCONFIGVAR\n\n"
-                        "**Asistan tarafından ConfigVar Değişikliği**:\n"
+                        "**Asistan tərəfindən ConfigVar Dəyişikliyi**:\n"
                         f"`{variable}` = `{value}`"
                     )
             else:
@@ -97,7 +97,7 @@ async def asistansetvar(ups):
                         "**Yeni ConfigVar Eklendi**:\n"
                         f"`{variable}` = `{value}`"
                     )
-            await usp.edit("`⚙️ Asistandan alınan veriler herokuya aktarıldı!`")
+            await usp.edit("`⚙️ Asistandan alınan məlumatlar herokuya yazıldı!`")
         else:
             return
     else:
@@ -152,13 +152,13 @@ async def dyno_usage(dyno):
 
     await asyncio.sleep(1.5)
 
-    return await dyno.edit("**✨ Kalan Dyno**:\n\n"
-                           f" 👉🏻 `Kullanılan Dyno Saati`  **({HEROKU_APPNAME})**:\n"
-                           f"     ⌛  `{AppHours}` **saat**  `{AppMinutes}` **dakika**  "
+    return await dyno.edit("**✨ Qalan Dyno**:\n\n"
+                           f" 👉🏻 `İstifadə Edilən Dyno Saatı`  **({HEROKU_APPNAME})**:\n"
+                           f"     ⌛  `{AppHours}` **saat**  `{AppMinutes}` **dəqiqə**  "
                            f"**|**  [`{AppPercentage}` **%**]"
                            "\n"
-                           " 👉🏻 `Bu ay için kalan dyno saati`:\n"
-                           f"     ⌛  `{hours}` **saat**  `{minutes}` **dakika**  "
+                           " 👉🏻 `Bu ay üçün qalan dyno saatı`:\n"
+                           f"     ⌛  `{hours}` **saat**  `{minutes}` **dəqiqə**  "
                            f"**|**  [`{percentage}` **%**]"
                            )
 
@@ -169,9 +169,9 @@ async def _(dyno):
         app = Heroku.app(HEROKU_APPNAME)
     except BaseException:
         return await dyno.reply(
-            "`Litfen Bekleyin ,Heroku VARS'da Heroku API Key ve Heroku APP name'in düzgün olduğundan emin olun.`"
+            "`Litfen gözləyin ,Heroku VARS'da Heroku API Key ve Heroku APP name'in düzgün olduğundan emin olun.`"
         )
-    await dyno.edit("`🔄 Log getiriliyor....`")
+    await dyno.edit("`🔄 Log gətirilir....`")
     with open("logs.txt", "w") as log:
         log.write(app.get_log())
     fd = codecs.open("logs.txt", "r", encoding="utf-8")
