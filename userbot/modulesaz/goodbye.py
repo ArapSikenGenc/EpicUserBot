@@ -101,7 +101,7 @@ async def save_goodbye(event):
             await event.client.send_message(
                 BOTLOG_CHATID, f"#GORUSURUZ_NOTU\
             \nGRUP ID: {event.chat_id}\
-            \nAşağıdaki mesaj sohbet için yeni Karşılama notu olarak kaydedildi, lütfen silmeyin !!"
+            \nAşağıdaki mesaj qrup üçün yeni qarşılama mesajı olaraq qeyd edildi, bunu silməyin !!"
             )
             msg_o = await event.client.forward_messages(
                 entity=BOTLOG_CHATID,
@@ -111,7 +111,7 @@ async def save_goodbye(event):
             msg_id = msg_o.id
         else:
             await event.edit(
-                "`Karşılama notunu kaydetmek için BOTLOG_CHATID ayarlanması gerekir.`"
+                "`Qarşılama mesajını qeyd etmək üçün BOTLOG_CHATID ayarlanmalıdır.`"
             )
             return
     elif event.reply_to_msg_id and not string:
@@ -119,9 +119,9 @@ async def save_goodbye(event):
         string = rep_msg.text
     success = "`Görüşürüz mesajı bu sohbet için {} `"
     if add_goodbye_setting(event.chat_id, 0, string, msg_id) is True:
-        await event.edit(success.format('kaydedildi'))
+        await event.edit(success.format('qeyd edildi'))
     else:
-        await event.edit(success.format('güncellendi'))
+        await event.edit(success.format('güncəlləndi'))
 
 
 @register(outgoing=True, pattern="^.checkgoodbye$")
@@ -155,9 +155,9 @@ async def del_goodbye(event):
         await event.edit("`SQL dışı modda çalışıyor!`")
         return
     if rm_goodbye_setting(event.chat_id) is True:
-        await event.edit("`Karşılama mesajı bu sohbet için silindi.`")
+        await event.edit("`Qarşılama mesajı bu söhbət üçün silindi.`")
     else:
-        await event.edit("`Burada karşılama notu var mı ?`")
+        await event.edit("`Burada qarşılama notu var?`")
 
 CmdHelp('goodbye').add_command(
     'setgoodbye', '<yanıt mesajı> veya .setgoodbye ile bir mesaja cevap verin', 'Mesajı sohbete görüşürüz notu olarak kaydeder.'
