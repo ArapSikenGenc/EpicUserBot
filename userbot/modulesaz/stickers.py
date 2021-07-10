@@ -67,7 +67,7 @@ async def kang(event):
     is_anim = message.file.mime_type == "application/x-tgsticker"
     if not is_anim:
         img = await resize_photo(sticker)
-        sticker.name = "sticker.png"
+        sticker.name = "cyber.png"
         sticker.seek(0)
         img.save(sticker, "PNG")
 
@@ -76,7 +76,7 @@ async def kang(event):
         if message.file.emoji: # ...but the sticker has one
             emoji = message.file.emoji
         else: # ...and the sticker doesn't have one either
-            emoji = "🤔"
+            emoji = "✨"
 
     packname = f"a{user.id}_by_{pack_username}_{number}{'_anim' if is_anim else ''}"
     packtitle = (f"@{user.username or user.first_name} {PAKET_ISMI} "
@@ -129,9 +129,9 @@ async def kang(event):
                     )
 
                     await event.edit(
-                        f"`Sticker {number}{'(animasyonlu)' if is_anim else ''} sayılı pakete eklendi, "
-                        f"{emoji} emojisi ile birlikte! "
-                        f"Paket `[burada](t.me/addstickers/{packname})` Ulaşılabilir...`",
+                        f"`Stiker {number}{'(animasyonlu)' if is_anim else ''} saylı paketə əlavə edildi, "
+                        f"{emoji} emojisi ilə birlikdə! "
+                        f"Paket `[burada](t.me/addstickers/{packname})`tapıla bilər`",
                         parse_mode='md')
                     return
 
@@ -149,7 +149,7 @@ async def kang(event):
                 try:
                     await bot.send_file("@ezstickerbot", message, force_document=True)
                 except YouBlockedUserError:
-                    return await event.edit("`Lütfen` @EzStickerBot `engelini açın ve tekrar deneyin!`")
+                    return await event.edit("`Xahiş` @EzStickerBot `bloku açın və təkrar yoxlayın!`")
 
                 try:
                     response = await conv.wait_event(events.NewMessage(incoming=True,from_users=350549033))
@@ -182,9 +182,9 @@ async def kang(event):
     )
 
     await event.edit(
-        f"`Sticker {number}{'(animasyonlu)' if is_anim else ''} sayılı pakete eklendi, "
-        f"{emoji} emojisi ile birlikte! "
-        f"Paket `[burada](t.me/addstickers/{packname})` Ulaşılabilir...`",
+        f"`Stiker {number}{'(animasyonlu)' if is_anim else ''} saylı paketə əlavə edildi, "
+        f"{emoji} emojisi ilə birlikdə! "
+        f"Paket `[burada](t.me/addstickers/{packname})` tapıla bilər.`",
         parse_mode='md')
 
 
@@ -257,11 +257,11 @@ async def resize_photo(photo):
     return image
 
 CmdHelp('stickers').add_command(
-    'dızla', None, 'Dızla ile bir çıkartmaya ya da resme yanıtlayarak kendi çıkartma paketinize çıkartma olarak ekleyebilirsiniz.'
+    'dızla', None, 'Bu əmr vasitəsilə bir stikerə və ya şəkilə yanıt verib onu öz paketinizə əlavə edə bilərsiniz.'
 ).add_command(
-    'dızla', '<emoji(ler)>', 'Dızla gibi çalışır fakat istediğiniz emojiyi çıkartmanın emojisi olarak belirtir.'
+    'dızla', '<emoji(lər)>', 'Oğurla kimi işləyir amma istədiyiniz emojini stikerin emojisi olaraq ayarlayar.'
 ).add_command(
-    'dızla', '<numara>', 'Çıkartmayı ya da resmi belirtilen pakete ekler fakat emoji olarak şu kullanılır: 🤔 '
+    'dızla', '<nömrə>', 'Stikeri ya da şəkili qeyd edilən paketə əlavə edər amma emoji olaraq bu istifadə edilir: ✨ '
 ).add_command(
-    'dızla', '<emoji(ler)> <numara>', 'Çıkartmayı ya da resmi belirtilen pakete ekler ve belirttiğiniz emoji çıkartmanın emojisi olarak kullanılır.'
+    'dızla', '<emoji(lər)> <nömrə>', 'Stikeri ya da şəkili qeyd edilən paketə əlavə edər və qeyd etdiyiniz emoji stikerin emojisi olaraq istifadə edilir.'
 ).add()
