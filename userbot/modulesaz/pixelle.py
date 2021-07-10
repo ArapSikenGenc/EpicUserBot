@@ -1,4 +1,4 @@
-# SİRİUSERBOT / ERDEM-BEY
+# EPİCUSERBOT / ERDEM-BEY
 
 from userbot.events import register
 from telethon.errors.rpcerrorlist import YouBlockedUserError
