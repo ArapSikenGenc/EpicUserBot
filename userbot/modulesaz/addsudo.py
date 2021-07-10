@@ -17,12 +17,12 @@ epicsudo = os.environ.get("SUDO_ID", None)
 @register(outgoing=True,
           pattern=r"^.sudoekle")
 async def addsudo(event):
-    await event.edit("Kullanıcı sudo olarak ayarlanıyor...")
+    await event.edit("İstifadəçi sudo olaraq qeyd edilir...")
     epic = "SUDO_ID"
     if HEROKU_APPNAME is not None:
         app = Heroku.app(HEROKU_APPNAME)
     else:
-        await event.edit("HEROKU:" "\nLütfen **HEROKU_APPNAME** değerini tanımlayın.")
+        await event.edit("HEROKU:" "\nXahiş edirəm **HEROKU_APPNAME** dəyərini qeyd edin.")
         return
     heroku_var = app.config()
     if event is None:
@@ -30,12 +30,12 @@ async def addsudo(event):
     try:
         epictext = await get_user(event)
     except Exception:
-        await event.edit("Lütfen bir kullanıcının mesajına cevap verin.")
+        await event.edit("Xahiş edirəm bir istifadəçinin mesajına cavab verin.")
     if epicsudo:
         yenisudo = f"{epicsudo} {epictext}"
     else:
         yenisudo = f"{epictext}"
-    await event.edit("Kullanıcı sudo olarak ayarlandı!\nBotunuz yeniden başlatılıyor...")
+    await event.edit("İstifadəçi sudo olaraq ayarlandı!\nEpic yenidən başladılır...")
     heroku_var[epic] = yenisudo
 
 
@@ -55,6 +55,6 @@ async def get_user(event):
     
     
 Help = CmdHelp('sudoekle')
-Help.add_command('sudoekle', None, 'Mesajına cevap verdiğiniz kullanıcını botunuzda admin yapar.')
+Help.add_command('sudoekle', None, 'Mesajına cavab verdiyiniz istifadəçini botunuzda admin edər.')
 Help.add_info('@faridxz tarafından @EpicUserBot için hazırlanmıştır.')
 Help.add()
