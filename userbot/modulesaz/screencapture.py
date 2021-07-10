@@ -1,12 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-
-# EpicUserBot - ErdemBey - Midy
-
-
 import io
 from re import match
 from selenium import webdriver
@@ -25,7 +16,7 @@ LANG = get_value("screencapture")
 
 @register(pattern=r".ss (.*)", outgoing=True)
 async def capture(url):
-    """ .ss komutu, belirttiğin herhangi bir siteden ekran görüntüsü alır ve sohbete gönderir. """
+    """ .ss """
     await url.edit(LANG['TRYING'])
     chrome_options = Options()
     chrome_options.add_argument("--headless")
@@ -57,13 +48,13 @@ async def capture(url):
     LANG['WAIT'] % str(wait_for))
     await sleep(int(wait_for))
     im_png = driver.get_screenshot_as_png()
-    # Sayfanın ekran görüntüsü kaydedilir.
+    # 
     driver.close()
     message_id = url.message.id
     if url.reply_to_msg_id:
         message_id = url.reply_to_msg_id
     with io.BytesIO(im_png) as out_file:
-        out_file.name = "ekran_goruntusu.png"
+        out_file.name = "cyberss.png"
         await url.edit(LANG['UPLOADING'])
         await url.client.send_file(url.chat_id,
                                    out_file,
@@ -72,5 +63,5 @@ async def capture(url):
                                    reply_to=message_id)
 
 CmdHelp('ss').add_command(
-    'ss', '<url>', 'Belirtilen web sitesinden bir ekran görüntüsü alır ve gönderir.', 'ss https://instagram.com'
+    'ss', '<url>', 'Seçdiyiniz web saytından bir ekran görüntüsü alıb göndərər.', 'ss https://github.com'
 ).add()
