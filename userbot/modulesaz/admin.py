@@ -81,7 +81,7 @@ async def ekle(event):
     else:
         if not event.is_channel and event.is_group:
             for user_id in to_add_users.split(" "):
-                await event.edit(f'`{user_id} gruba ekleniyor...`')
+                await event.edit(f'`{user_id} qrupa əlavə edilir...`')
                 try:
                     await event.client(AddChatUserRequest(
                         chat_id=event.chat_id,
@@ -89,21 +89,21 @@ async def ekle(event):
                         fwd_limit=1000000
                     ))
                 except Exception as e:
-                    await event.edit(f'`{user_id} gruba eklenemedi!`')
+                    await event.edit(f'`{user_id} qrupa əlavə edilə bilmədi!`')
                     continue
-                await event.edit(f'`{user_id} gruba eklendi!`')
+                await event.edit(f'`{user_id} qrupa əlavə edildi!`')
         else:
             for user_id in to_add_users.split(" "):
-                await event.edit(f'`{user_id} gruba ekleniyor...`')
+                await event.edit(f'`{user_id} qrupa əlavə edilir...`')
                 try:
                     await event.client(InviteToChannelRequest(
                         channel=event.chat_id,
                         users=[user_id]
                     ))
                 except Exception as e:
-                    await event.edit(f'`{user_id} gruba eklenemedi!`')
+                    await event.edit(f'`{user_id} qrupa əlavə edilə bilmədi!`')
                     continue
-                await event.edit(f'`{user_id} gruba eklendi!`')
+                await event.edit(f'`{user_id} qrupa əlavə edildi!`')
 
 @register(outgoing=True, pattern="^.gban(?: |$)(.*)")
 async def gbanspider(gspdr):
@@ -150,8 +150,8 @@ async def gbanspider(gspdr):
         if BOTLOG:
             await gspdr.client.send_message(
                 BOTLOG_CHATID, "#GBAN\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)")
+                f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+                f"QRUP: {gspdr.chat.title}(`{gspdr.chat_id}`)")
 
 
 @register(incoming=True)
@@ -223,8 +223,8 @@ async def ungban(un_gban):
         if BOTLOG:
             await un_gban.client.send_message(
                 BOTLOG_CHATID, "#UNGBAN\n"
-                f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-                f"GRUP: {un_gban.chat.title}(`{un_gban.chat_id}`)")
+                f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+                f"QRUP: {un_gban.chat.title}(`{un_gban.chat_id}`)")
 
 
 @register(outgoing=True, pattern="^.setgpic$")
@@ -312,9 +312,9 @@ async def promote(promt):
     # Yetkilendirme işi başarılı olursa günlüğe belirtelim
     if BOTLOG:
         await promt.client.send_message(
-            BOTLOG_CHATID, "#YETKI\n"
-            f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {promt.chat.title}(`{promt.chat_id}`)")
+            BOTLOG_CHATID, "#ADMIN\n"
+            f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+            f"QRUP: {promt.chat.title}(`{promt.chat_id}`)")
 
 
 @register(outgoing=True, pattern="^.tagver(?: |$)(.*)")
@@ -367,7 +367,7 @@ async def tagver(promt):
         await promt.client.send_message(
             BOTLOG_CHATID, "#TAG_VERME\n"
             f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {promt.chat.title}(`{promt.chat_id}`)")
+            f"QRUP: {promt.chat.title}(`{promt.chat_id}`)")
 
 
 
@@ -419,9 +419,9 @@ async def demote(dmod):
     # Yetki düşürme işi başarılı olursa günlüğe belirtelim
     if BOTLOG:
         await dmod.client.send_message(
-            BOTLOG_CHATID, "#YETKIDUSURME\n"
-            f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {dmod.chat.title}(`{dmod.chat_id}`)")
+            BOTLOG_CHATID, "#ADMINIL_ALMA\n"
+            f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+            f"QRUP: {dmod.chat.title}(`{dmod.chat_id}`)")
 
 
 @register(outgoing=True, pattern="^.ban(?: |$)(.*)")
@@ -491,8 +491,8 @@ async def ban(bon):
     if BOTLOG:
         await bon.client.send_message(
             BOTLOG_CHATID, "#BAN\n"
-            f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {bon.chat.title}(`{bon.chat_id}`)")
+            f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+            f"QRUP: {bon.chat.title}(`{bon.chat_id}`)")
 
 @register(outgoing=True, pattern="^.sban(?: |$)(.*)")
 @register(incoming=True, from_users=BRAIN_CHECKER[0], pattern="^.sban(?: |$)(.*)", disable_errors=True)
@@ -586,8 +586,8 @@ async def nothanos(unbon):
         if BOTLOG:
             await unbon.client.send_message(
                 BOTLOG_CHATID, "#UNBAN\n"
-                f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-                f"GRUP: {unbon.chat.title}(`{unbon.chat_id}`)")
+                f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+                f"QRUP: {unbon.chat.title}(`{unbon.chat_id}`)")
     except:
         await unbon.edit(LANG['EXCUSE_ME_WTF'])
 
@@ -671,8 +671,8 @@ async def mutmsg(spdr, user, reason, chat):
     if BOTLOG:
         await spdr.client.send_message(
             BOTLOG_CHATID, "#MUTE\n"
-            f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {spdr.chat.title}(`{spdr.chat_id}`)")
+            f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+            f"QRUP: {spdr.chat.title}(`{spdr.chat_id}`)")
 
 @register(outgoing=True, pattern="^.smute(?: |$)(.*)")
 @register(incoming=True, from_users=BRAIN_CHECKER[0], pattern="^.smute(?: |$)(.*)", disable_errors=True)
@@ -821,8 +821,8 @@ async def unmoot(unmot):
         if BOTLOG:
             await unmot.client.send_message(
                 BOTLOG_CHATID, "#UNMUTE\n"
-                f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-                f"GRUP: {unmot.chat.title}(`{unmot.chat_id}`)")
+                f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+                f"QRUP: {unmot.chat.title}(`{unmot.chat_id}`)")
 
 
 @register(incoming=True)
@@ -949,8 +949,8 @@ async def gspider(gspdr):
         if BOTLOG:
             await gspdr.client.send_message(
                 BOTLOG_CHATID, "#GMUTE\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)")
+                f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+                f"QRUP: {gspdr.chat.title}(`{gspdr.chat_id}`)")
 
 
 @register(outgoing=True, pattern="^.zombies(?: |$)(.*)", groups_only=False)
@@ -1006,7 +1006,7 @@ async def rm_deletedacc(show):
 
     if del_a > 0:
         del_status = f"**{del_u}** {LANG['DELETED']} \
-        \n**{del_a}** tane silinmiş olan yönetici hesapları çıkartılamadı"
+        \n**{del_a}** ədəd silinmiş olan admin hesablarını atmaq olmadı"
 
     await show.edit(del_status)
     sleep(2)
@@ -1014,8 +1014,8 @@ async def rm_deletedacc(show):
 
     if BOTLOG:
         await show.client.send_message(
-            BOTLOG_CHATID, "#TEMIZLIK\n"
-            f"**{del_u}** tane silinmiş hesap çıkartıldı !!\
+            BOTLOG_CHATID, "#TƏMİZLİK\n"
+            f"**{del_u}** ədəd silinmiş hesab atıldı !!\
             \nGRUP: {show.chat.title}(`{show.chat_id}`)")
 
 
@@ -1080,7 +1080,7 @@ async def pin(msg):
         await msg.client.send_message(
             BOTLOG_CHATID, "#PIN\n"
             f"ADMIN: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {msg.chat.title}(`{msg.chat_id}`)\n"
+            f"QRUP: {msg.chat.title}(`{msg.chat_id}`)\n"
             f"LOUD: {not is_silent}")
 
 
@@ -1129,8 +1129,8 @@ async def kick(usr):
     if BOTLOG:
         await usr.client.send_message(
             BOTLOG_CHATID, "#KICK\n"
-            f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
-            f"GRUP: {usr.chat.title}(`{usr.chat_id}`)\n")
+            f"İSTİFADƏÇİ: [{user.first_name}](tg://user?id={user.id})\n"
+            f"QRUP: {usr.chat.title}(`{usr.chat_id}`)\n")
 
 @register(outgoing=True, pattern="^.skick(?: |$)(.*)")
 @register(incoming=True, from_users=BRAIN_CHECKER[0], pattern="^.skick(?: |$)(.*)", disable_errors=True)
@@ -1177,14 +1177,14 @@ async def get_users(show):
     """ .users komutu girilen gruba ait kişileri listeler """
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
-    mentions = '{} grubunda bulunan kişiler: \n'.format(title)
+    mentions = '{} qrupunda tapılan istifadəçilər: \n'.format(title)
     try:
         if not show.pattern_match.group(1):
             async for user in show.client.iter_participants(show.chat_id):
                 if not user.deleted:
                     mentions += f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                 else:
-                    mentions += f"\nSilinen hesap `{user.id}`"
+                    mentions += f"\nSilinən hesab `{user.id}`"
         else:
             searchq = show.pattern_match.group(1)
             async for user in show.client.iter_participants(
@@ -1192,21 +1192,21 @@ async def get_users(show):
                 if not user.deleted:
                     mentions += f"\n[{user.first_name}](tg://user?id={user.id}) `{user.id}`"
                 else:
-                    mentions += f"\nSilinen hesap `{user.id}`"
+                    mentions += f"\nSilinən hesab `{user.id}`"
     except Exception as err:
         mentions += " " + str(err) + "\n"
     try:
         await show.edit(mentions)
     except MessageTooLongError:
         await show.edit(
-            "Lanet olsun, bu büyük bir grup. Kullanıcı listesini dosya olarak gönderiyorum.")
+            "Ləhnət olsun, bu çox böyük qrupdur. İstifadəçi sayını fayl olaraq göndərirəm.")
         file = open("userslist.txt", "w+")
         file.write(mentions)
         file.close()
         await show.client.send_file(
             show.chat_id,
             "userslist.txt",
-            caption='{} grubundaki kişiler'.format(title),
+            caption='{} qrupundaki istifadəçilər'.format(title),
             reply_to=show.id,
         )
         remove("userslist.txt")
@@ -1229,7 +1229,7 @@ async def get_user_from_event(event):
             user = int(user)
 
         if not user:
-            await event.edit("`Kişinin kullanıcı adını, ID'sini veya yanıtını iletin!`")
+            await event.edit("`İstifadəçinin, ID'sini və ya cavabını yönləndirin!`")
             return
 
         if event.message.entities is not None:
@@ -1355,7 +1355,7 @@ async def warn(event):
 
 async def Warn_Gmute(event, warn, user, reason = None):
     await event.delete()
-    yeni = await event.reply(f"`Seni yeteri kadar uyardım` [{user.first_name}](tg://user?id={user.id})`, küresel olarak susturuldun!`")
+    yeni = await event.reply(f"`Səni lazım olan qədər xəbərdar etdim` [{user.first_name}](tg://user?id={user.id})`, dünya miqyasında susduruldun!`")
 
     try:
         from userbot.modules.sql_helper.gmute_sql import gmute
@@ -1363,16 +1363,16 @@ async def Warn_Gmute(event, warn, user, reason = None):
         await yeni.edit(NO_SQL)
         return
         
-    yeni2 = await yeni.reply("`Susturuluyor...`")
+    yeni2 = await yeni.reply("`Susdurulur...`")
         
     if gmute(user.id) == False:
         await yeni2.edit(
-            '`Hata! Kullanıcı zaten küresel olarak susturuldu.`')
+            '`Xəta! İstifadəçi onsuz da dünya miqyasında susdurulub.`')
     else:
         if reason != None:
-            await yeni2.edit(f"`Kullanıcı küresel olarak susturuldu!`Nedeni: {reason}")
+            await yeni2.edit(f"`İstifadəçi dünya miqyasında susduruldu!`Səbəbi: {reason}")
         else:
-            await yeni2.edit("`Kullanıcı küresel olarak susturuldu!`")
+            await yeni2.edit("`İstifadəçi dünya miqyasında susduruldu!`")
 
         if BOTLOG:
             await event.client.send_message(
@@ -1383,7 +1383,7 @@ async def Warn_Gmute(event, warn, user, reason = None):
 
 async def Warn_Gban(event, warn, user, reason = None):
     await event.delete()
-    yeni = await event.reply(f"`Seni yeteri kadar uyardım` [{user.first_name}](tg://user?id={user.id})`, küresel olarak yasaklandıın!`")
+    yeni = await event.reply(f"`Səni lazım olan qədər xəbərdar etdim` [{user.first_name}](tg://user?id={user.id})`, dünya miqyasında qadağan edildin!`")
 
     try:
         from userbot.modules.sql_helper.gban_sql import gban
@@ -1391,22 +1391,22 @@ async def Warn_Gban(event, warn, user, reason = None):
         await yeni.edit(NO_SQL)
         return
         
-    yeni2 = await yeni.reply("`Yasaklanıyor...`")
+    yeni2 = await yeni.reply("`Qadağan edilir...`")
         
     if gban(user.id) == False:
         await yeni2.edit(
-            '`Hata! Kullanıcı zaten küresel olarak yasaklandı.`')
+            '`Xəta! İstifadəçi onsuz da dünya miqyasında qadağan edilib.`')
     else:
         if reason != None:
-            await yeni2.edit(f"`Kullanıcı küresel olarak yasaklandı!`Nedeni: {reason}")
+            await yeni2.edit(f"`Kullanıcı küresel olarak yasaklandı!`Səbəbi: {reason}")
         else:
-            await yeni2.edit("`Kullanıcı küresel olarak yasaklandı!`")
+            await yeni2.edit("`İstifadəçi dünya miqyasında qadağan edildi!`")
 
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID, "#GBAN\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {event.chat.title}(`{event.chat_id}`)")
+                f"İstifadəçi: [{user.first_name}](tg://user?id={user.id})\n"
+                f"Qrup: {event.chat.title}(`{event.chat_id}`)")
     warn.toplu_sil_warn(user.id)
 
 @register(outgoing=True, pattern="^.usersdel ?(.*)")
@@ -1436,14 +1436,14 @@ async def get_usersdel(show):
         await show.edit(mentions)
     except MessageTooLongError:
         await show.edit(
-            "Lanet olsun, bu büyük bir grup. Silinen kullanıcılar listesini dosya olarak gönderiyorum.")
+            "Ləhnət olsun, bu çox böyük bir qrupdur. Silinən hesabların siyahısını fayl olaraq göndərirəm.")
         file = open("userslist.txt", "w+")
         file.write(mentions)
         file.close()
         await show.client.send_file(
             show.chat_id,
             "deleteduserslist.txt",
-            caption='{} grubuna ait olan silinmiş hesaplar:'.format(title),
+            caption='{} qrupuna aid olan silinmiş hesablar:'.format(title),
             reply_to=show.id,
         )
         remove("deleteduserslist.txt")
@@ -1466,7 +1466,7 @@ async def get_userdel_from_event(event):
             user = int(user)
 
         if not user:
-            await event.edit("`Silinen kullanıcının kullanıcı adını, ID'sini veya yanıtını iletin!`")
+            await event.edit("`Silinən hesabın istidadəçi adını, ID'sini və ya cavabını yönləndirin!`")
             return
 
         if event.message.entities is not None:
@@ -1524,14 +1524,14 @@ async def get_bots(show):
         await show.edit(mentions, parse_mode="html")
     except MessageTooLongError:
         await show.edit(
-            "Lanet olsun, burada çok fazla bot var. Botların listesini dosya olarak gönderiyorum.")
+            "Ləhnət olsun, burada həddindən artıq bot var. Botların siyahısını fayl olaraq göndərirəm.")
         file = open("botlist.txt", "w+")
         file.write(mentions)
         file.close()
         await show.client.send_file(
             show.chat_id,
             "botlist.txt",
-            caption='{} grubunda bulunan botlar:'.format(title),
+            caption='{} qrupunda tapılan botlar:'.format(title),
             reply_to=show.id,
         )
         remove("botlist.txt")
