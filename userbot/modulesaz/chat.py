@@ -74,9 +74,9 @@ async def log(log_text):
             textx = user + log_text.pattern_match.group(1)
             await bot.send_message(BOTLOG_CHATID, textx)
         else:
-            await log_text.edit("`Bununla ne yapmam gerekiyor ?`")
+            await log_text.edit("`Bununla nə etməliyəm ?`")
             return
-        await log_text.edit("`Günlüğe Kaydedildi`")
+        await log_text.edit("`BOTLOG qrupuna göndərildi!`")
     else:
         await log_text.edit(LANG['NEED_LOG'])
     await sleep(2)
@@ -109,7 +109,7 @@ async def unmute_chat(unm_e):
     try:
         from userbot.modules.sql_helper.keep_read_sql import unkread
     except AttributeError:
-        await unm_e.edit('`SQL dışı modda çalışıyor!`')
+        await unm_e.edit('`SQL xarici modda işləyir!`')
         return
     unkread(str(unm_e.chat_id))
     await unm_e.edit(LANG['UNMUTED'])
@@ -123,7 +123,7 @@ async def mute_chat(mute_e):
     try:
         from userbot.modules.sql_helper.keep_read_sql import kread
     except AttributeError:
-        await mute_e.edit("`SQL dışı modda çalışıyor!`")
+        await mute_e.edit("`SQL xarici modda işləyir
         return
     await mute_e.edit(str(mute_e.chat_id))
     kread(str(mute_e.chat_id))
@@ -133,7 +133,7 @@ async def mute_chat(mute_e):
     if BOTLOG:
         await mute_e.client.send_message(
             BOTLOG_CHATID,
-            str(mute_e.chat_id) + " susturuldu.")
+            str(mute_e.chat_id) + " susduruldu.")
 
 
 @register(incoming=True, disable_errors=True)
@@ -168,12 +168,12 @@ async def sedNinjaToggle(event):
     global regexNinja
     if event.pattern_match.group(1) == "on":
         regexNinja = True
-        await event.edit("`Regexbot için ninja modu etkinleştirdi.`")
+        await event.edit("`Regexbot üçün ninja modu aktivləşdirildi.`")
         await sleep(1)
         await event.delete()
     elif event.pattern_match.group(1) == "off":
         regexNinja = False
-        await event.edit("`Regexbot için ninja modu devre dışı bırakıldı.`")
+        await event.edit("`Regexbot üçün ninja modu deaktiv edildi.`")
         await sleep(1)
         await event.delete()
 
