@@ -52,4 +52,4 @@ async def _(event):
 
 
 add_ = CmdHelp('botyap')
-add_.add_command("newbot", "<bot_name><bot_username>", "Yeni Bot Oluşturun").add()
+add_.add_command("newbot", "<bot_name><bot_username>", "Yeni bot yaradın").add()
