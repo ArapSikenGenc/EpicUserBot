@@ -35,7 +35,7 @@ async def galeri(event):
     try:
         import userbot.modules.sql_helper.galeri_sql as sql
     except:
-        await event.edit("`SQL dışı mod'ta galeri çalışmaz!`")
+        await event.edit("`SQL xarici mod'dadır qalereya işləməz!`")
     secenek = event.pattern_match.group(1)
     secen = secenek.split(" ")
     if secen[0] == "ekle":
