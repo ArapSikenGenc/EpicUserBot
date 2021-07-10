@@ -15,7 +15,7 @@ async def bassbooster(e):
     accentuate_db = 40
     reply = await e.get_reply_message()
     if not reply:
-        await e.edit("**Bir sesli medyaya cevap verin**")
+        await e.edit("**Bir səsli mediaya cavab verin.**")
         return
     if e.pattern_match.group(1):
         ar = e.pattern_match.group(1)
@@ -24,16 +24,16 @@ async def bassbooster(e):
             if int(ar) >= 2 and int(ar) <= 100:
                 accentuate_db = int(ar)
             else:
-                await e.edit("**BassBost** `seviyeesi 2-100 arası olmalıdır.`")
+                await e.edit("**BassBost** `səviyyəsi 2-100 arası olmalıdır.`")
                 return
         except Exception as exx:
-            await e.edit("`Bir Hata oluştu` \n**Hata:** " + str(exx))
+            await e.edit("`Bir xəta baş verdi` \n**Xəta:** " + str(exx))
             return
     else:
         accentuate_db = 2
-    await e.edit("`Dosya yükleniyor...`")
+    await e.edit("`Fayl yüklənir...`")
     fname = await e.client.download_media(message=reply.media)
-    await e.edit("`Bass effekti hazırlanıyor...`")
+    await e.edit("`Bass effekti hazırlanır...`")
     if fname.endswith(".oga") or fname.endswith(".ogg"):
         v = True
         audio = AudioSegment.from_file(fname)
@@ -41,7 +41,7 @@ async def bassbooster(e):
         audio = AudioSegment.from_file(fname)
     else:
         await e.edit(
-            "`Desteklenmeyen dosya tipi` \n**Desteklenen dosya tipleri :** `mp3, m4a, wav.`"
+            "`Dəstəklənməyən fayl tipi` \n**Dəstəklənən fayl tipləri :** `mp3, m4a, wav.`"
         )
         os.remove(fname)
         return
@@ -62,24 +62,24 @@ async def bassbooster(e):
     if v:
         m.name = "voice.ogg"
         out.split_to_mono()
-        await e.edit("`Hazırlanıyor...`")
+        await e.edit("`Hazırlanır...`")
         await asyncio.sleep(0.3)
         out.export(m, format="ogg", bitrate="64k", codec="libopus")
-        await e.edit("`Effekt hazırlandı\n Dosy gönderiliyor...`")
+        await e.edit("`Effekt hazırlandı\nFayl göndərilir...`")
         await e.client.send_file(
             e.to_id,
             m,
             reply_to=reply.id,
             voice_note=True,
-            caption=" `@EpicUserBot `ile bass boostlandı.`",
+            caption=" `@EpicUserBot `ilə bass boostlandı.`",
         )
 
     else:
         m.name = "EpicBASS.mp3"
-        await e.edit("`Hazırlanıyor...`")
+        await e.edit("`Hazırlanır...`")
         await asyncio.sleep(0.3)
         out.export(m, format="mp3")
-        await e.edit("`Effekt hazırlandı\n Dosya Gönderiliyor`")
+        await e.edit("`Effekt hazırlandı\nFayl göndərilir`")
         await e.client.send_file(
             e.to_id,
             m,
@@ -91,7 +91,7 @@ async def bassbooster(e):
                     performer="BassBoost",
                 )
             ],
-            caption="@EpicUserBot `ile bass boostlandı.",
+            caption="@EpicUserBot `ilə bass boostlandı.",
         )
     await e.delete()
     os.remove(fname)
