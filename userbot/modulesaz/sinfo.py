@@ -15,18 +15,18 @@ LANG = get_value("spaminfo")
 # ████████████████████████████████ #
 
 aylar = {
-  "Jan": "Ocak",
-  "Feb": "Şubat",
+  "Jan": "Yanvar",
+  "Feb": "Fevral",
   "Mar": "Mart",
-  "Apr": "Nisan",
-  "May": "Mayıs",
-  "Jun": "Haziran",
-  "Jul": "Temmuz",
-  "Aug": "Ağustos",
-  "Sep": "Eylül",
-  "Oct": "Ekim",
-  "Nov": "Kasım",
-  "Dec": "Aralık"
+  "Apr": "Aprel",
+  "May": "May",
+  "Jun": "İyun",
+  "Jul": "İyul",
+  "Aug": "Avqust",
+  "Sep": "Sentyabr",
+  "Oct": "Oktyabr",
+  "Nov": "Noyabr",
+  "Dec": "Dekabr"
   
 }
 @register(outgoing=True, pattern=r"^.sinfo")
@@ -56,4 +56,4 @@ async def sinfos(event):
 
 
 dnammonc_dda = CmdHelp('sinfo')
-dnammonc_dda.add_command("sinfo", None, "Hesabınızın spam durumunu kontrol edin").add()
+dnammonc_dda.add_command("sinfo", None, "Hesabınızın spam statusunu kontrol edin").add()
