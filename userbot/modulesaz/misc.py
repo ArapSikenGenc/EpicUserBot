@@ -61,7 +61,7 @@ async def sleepybot(time):
         if BOTLOG:
             await time.client.send_message(
                 BOTLOG_CHATID,
-                "Botu" + str(counter) + "saniye uykuya bıraktın.",
+                "Bot" + str(counter) + "saniyəlik yatdı.",
             )
         await sleep(counter)
         await time.edit(LANG['GOODMORNIN_YALL'])
@@ -75,7 +75,7 @@ async def shutdown(event):
 
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n"
-                                        "Bot kapatıldı.")
+                                        "Bot söndürüldü.")
     try:
         await bot.disconnect()
     except:
@@ -92,7 +92,7 @@ async def asistanshutdown(ups):
             try:
                 await event.client.send_file(event.chat_id, 'https://www.winhistory.de/more/winstart/mp3/winxpshutdown.mp3', reply_to=reply, caption=LANG['GOODBYE_MFRS'], voice_note=True)
             except:
-                await ups.reply("`Görüşmek üzere.. İsteğin üzere kendimi kapatıyorum.`") 
+                await ups.reply("`Görüşənədək :)`") 
             try:
                 await bot.disconnect()
             except:
@@ -105,7 +105,7 @@ async def restart(event):
     await event.edit(LANG['RESTARTING'])
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n"
-                                        "Bot yeniden başlatıldı.")
+                                        "Bot yenidən başladıldı.")
 
     try:
         await bot.disconnect()
