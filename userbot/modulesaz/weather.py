@@ -7,7 +7,7 @@
 # EpicUserBot - ErdemBey - Midy
 
 
-"""Bir bölgenin hava durumunu gösterir."""
+""" Hava proqnozu """
 
 import json
 from requests import get
@@ -24,7 +24,7 @@ from userbot.cmdhelp import CmdHelp
 # ===== CONSTANT =====
 # ██████ LANGUAGE CONSTANTS ██████ #
 
-from userbot.language import (get_value, LANGUAGE_JSON)
+from userbot.language import get_value
 LANG = get_value("weather")
 
 # ████████████████████████████████ #
@@ -37,8 +37,8 @@ else:
 
 
 async def get_tz(con):
-    """ Verilen ülkenin zaman dilimini alır. """
-    """ @aragon12 ve @zakaryan2004'e teşekkürler. """
+    """ Verilən ölkənin hava proqnozunu göstərər. """
+    """ @aragon12 və @zakaryan2004'a təşəkkürlər. """
     for c_code in c_n:
         if con == c_n[c_code]:
             return tz(c_tz[c_code][0])
@@ -51,7 +51,7 @@ async def get_tz(con):
 
 @register(outgoing=True, pattern="^.weather(?: |$)(.*)")
 async def get_weather(weather):
-    """ .weather komutu bir bölgenin hava durumunu OpenWeatherMap üzerinden alır. """
+    """  """
 
     if not OWM_API:
         await weather.edit(
@@ -88,7 +88,7 @@ async def get_weather(weather):
                 return
             CITY = newcity[0].strip() + "," + countrycode.strip()
 
-    url = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPID}&lang={LANGUAGE_JSON["LANGCODE"]}'
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPID}'
     request = get(url)
     result = json.loads(request.text)
 
@@ -102,10 +102,7 @@ async def get_weather(weather):
     min_temp = result['main']['temp_min']
     max_temp = result['main']['temp_max']
     desc = result['weather'][0]
-    if "description" in desc and len(desc['description']) > 0:
-        desc = desc['description']
-    else:
-        desc = desc['main']
+    desc = desc['main']
     country = result['sys']['country']
     sunrise = result['sys']['sunrise']
     sunset = result['sys']['sunset']
@@ -149,5 +146,5 @@ async def get_weather(weather):
         f"`{cityname}, {fullc_n}`\n" + f"`{time}`")
 
 CmdHelp('weather').add_command(
-    'weather', '<şehir>', 'Bir bölgenin hava durumunu verir.'
+    'weather', '<şəhər>', 'Bir bölgənin hava proqnozunu göstərər.'
 ).add()
