@@ -20,4 +20,4 @@ async def wspr(event):
     await event.delete()
     
 Help = CmdHelp('gizli')
-Help.add_command('.gizli (yazacağınız mesaj) (@göndereceğiniz kişi)',  None, 'Bu Mesajı Sadece Seçtiğiniz Kişi Görür Onun Grup İçinde Ondan Başka Kimse Göremez').add()
+Help.add_command('.gizli (yazacağınız mesaj) (@göndərəcəyiniz istifadəçi)',  None, 'Bu mesajı sadəcə seçdiyiniz istifadəçi görər').add()
