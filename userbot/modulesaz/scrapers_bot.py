@@ -312,12 +312,12 @@ async def voicy(event):
     if reply_message.sender.bot:
        await event.edit(LANG['REPLY_TO_MSG'])
        return
-    await event.edit("`Ses dinleniyor... Erkan enegtarlar...`")
+    await event.edit("`Səsi dinləyirəm...`")
     async with event.client.conversation(chat) as conv:
         try:     
             await event.client.forward_messages(chat, reply_message)
         except YouBlockedUserError:
-            await event.reply(f"`Mmmh sanırım` {chat} `engellemişsin. Lütfen engeli aç.`")
+            await event.reply(f"`Hmm deyəsən` {chat} `əngəlləmisən..`")
             return
       
         response = conv.wait_event(events.MessageEdited(incoming=True,from_users=259276793))
@@ -367,14 +367,14 @@ async def quotly(event):
             await event.edit(LANG['UNBLOCK_QUOTLY'])
             return
         except asyncio.TimeoutError:
-            await event.edit("`Botdan cevap alamadım!`")
+            await event.edit("`Botdan cavab ala bilmədim!`")
             return
         except ValueError:
             await event.edit(LANG['QUOTLY_VALUE_ERR'])
             return
             
         if not response:
-            await event.edit("`Botdan cevap alamadım!`")
+            await event.edit("`Botdan cavab ala bilmədim!`")
         elif response.text.startswith("Merhaba!"):
             await event.edit(LANG['USER_PRIVACY'])
         else: 
@@ -384,17 +384,17 @@ async def quotly(event):
         await conv.cancel_all()
 
 CmdHelp('scrapers_bot').add_command(
-    'sangmata', '<yanıt>', 'Belirtilen kullanıcının isim geçmişini görüntüleyin.'
+    'sangmata', '<cavab>', 'Seçilən istifadəçinin ad keçmişinə baxmaq.'
 ).add_command(
-    'scan', '<yanıt>', 'Belirtilen dosyada virüs var mı yok mu bakın.'
+    'drweb', '<cavab>', 'Seçilən faylda virus olub olmadığına baxın.'
 ).add_command(
-    'meme', '<font> <üst;alt>', 'Fotoğrafa yazı ekleyin. İsterseniz font büyüklüğünü de yazabilirsiniz.', 'meme 30 epic;usta'
+    'meme', '<font> <üst;alt>', 'Fotoya yazı əlavə edin. İstəyirsinizsə font böyüklüyünüdə  yaza bilərsiz.', 'meme 30 epic'
 ).add_command(
-    'voicy', '<yanıt>', 'Sesi yazıya çevirin.'
+    'voicy', '<cavab>', 'Səsi yazıya çevirin.'
 ).add_command(
-    'q', '<sayı>', 'Metninizi çıkartmaya dönüştürün.'
+    'q', '<rəqəm>', 'Mətini stikerə çəvirin.'
 ).add_command(
-    'ocr2', '<yanıt>', 'Fotoğraftaki metini okuyun.'
+    'ocr2', '<cavab>', 'Fotodakı yazını oxuyun.'
 ).add_command(
-    'creation', '<yanıt>', 'Yanıt verdiğiniz kişinin hesabı oluşturma tarihinin öğrenin.'
+    'creation', '<cavab>', 'Cavab verdiyiniz insanın hesabının yaradılış tarixini öyrənin.'
 ).add()
