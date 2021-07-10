@@ -1,4 +1,4 @@
-# SİRİUSERBOT - ERDEMBEY
+# EPİCUSERBOT - ERDEMBEY
 
 import re
 import os
@@ -24,17 +24,17 @@ async def pm(event):
     mssg = await event.get_reply_message() 
     if event.reply_to_msg_id:
         await event.client.send_message(chat_id, mssg)
-        await event.edit("`Epic Mesajı gönderdi ✔️`")
+        await event.edit("`Epic mesajı göndərdi ✔️`")
     for i in m[1:]:
         msg += i + " "
     if msg == "":
         return
     try:
         await event.client.send_message(chat_id, msg)
-        await event.edit("`Epic Mesajı gönderdi ✔️`")
+        await event.edit("`Epic Mesajı göndərdi ✔️`")
     except BaseException:
-        await event.edit("** @EpicUserBot Mesajınızı Gönderemedi :(**")
+        await event.edit("** @EpicUserBot Mesajınızı Göndərə Bilmədi :(**")
         
 CmdHelp('pmyaz').add_command(
-    'pmyaz', '.pmyaz <kullanıcı adı> <mesaj>', 'Yazdığınız mesajı seçtiğiniz kullanıcıya gönderir', '.pmyaz @epicuserbot selam'
+    'pmyaz', '.pmyaz <istifadəçi adı> <mesaj>', 'Yazdığınız mesajı seçdiyiniz istifadəçiyə göndərər', '.pmyaz @epicuserbot salam'
 ).add()
