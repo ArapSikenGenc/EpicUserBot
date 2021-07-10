@@ -44,7 +44,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 @register(pattern=r"^.gdrive(?: |$)(.*)", outgoing=True)
 async def gdrive_upload_function(dryb):
     """ .gdrive komutu dosyalarınızı Google Drive'a uploadlar. """
-    await dryb.edit("İşleniyor ...")
+    await dryb.edit("Hazırlanır ...")
     input_str = dryb.pattern_match.group(1)
     if CLIENT_ID is None or CLIENT_SECRET is None:
         return
@@ -84,10 +84,10 @@ async def gdrive_upload_function(dryb):
             try:
                 current_message = f"{status}...\
                 \nURL: {url}\
-                \nDosya adı: {file_name}\
+                \nFayl adı: {file_name}\
                 \n{progress_str}\
                 \n{humanbytes(downloaded)} of {humanbytes(total_length)}\
-                \nBitiş: {estimated_total_time}"
+                \nBitmə vaxtı: {estimated_total_time}"
 
                 if round(diff %
                          10.00) == 0 and current_message != display_message:
@@ -98,21 +98,21 @@ async def gdrive_upload_function(dryb):
                 pass
         if downloader.isSuccessful():
             await dryb.edit(
-                "`{}` dizinine indirme başarılı. \nGoogle Drive'a yükleme başlatılıyor.."
+                "`{}` yüklənməsi uğurludur. \nGoogle Drive'a yükləmə başladılır.."
                 .format(downloaded_file_name))
             required_file_name = downloaded_file_name
         else:
-            await dryb.edit("Geçersiz URL\n{}".format(url))
+            await dryb.edit("Keçərsiz URL\n{}".format(url))
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
             required_file_name = input_str
             await dryb.edit(
-                "`{}` dosyası sunucuda bulundu. Google Drive'a yükleme başlatılıyor.."
+                "`{}` faylı serverdə tapıldı. Google Drive'a yükləmə başladılır.."
                 .format(input_str))
         else:
             await dryb.edit(
-                "Sunucuda dosya bulunamadı. Lütfen doğru dosya konumunu belirtin.")
+                "Serverdə fayl tapılmadı.")
             return False
     elif dryb.reply_to_msg_id:
         try:
@@ -121,13 +121,13 @@ async def gdrive_upload_function(dryb):
                 await dryb.get_reply_message(),
                 TEMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop(
-                ).create_task(progress(d, t, dryb, c_time, "İndiriliyor...")))
+                ).create_task(progress(d, t, dryb, c_time, "Yüklənir...")))
         except Exception as e:
             await dryb.edit(str(e))
         else:
             required_file_name = downloaded_file_name
             await dryb.edit(
-                "`{}` dizinine indirme başarrılı. \nGoogle Drive'a yükleme başlatılıyor.."
+                "`{}` yüklənməsi uğurludur. \nGoogle Drive'a yükləmə başladılır.."
                 .format(downloaded_file_name))
     if required_file_name:
         if G_DRIVE_AUTH_TOKEN_DATA is not None:
@@ -147,16 +147,16 @@ async def gdrive_upload_function(dryb):
                                              file_name, mime_type, dryb,
                                              parent_id)
             await dryb.edit(
-                f"Dosya :`{required_file_name}`\nUpload başarılı! \nİndirme linki: [Google Drive]({g_drive_link})!"
+                f"Dosya :`{required_file_name}`\nUpload uğurludur! \nYükləmə linki: [Google Drive]({g_drive_link})!"
             )
         except Exception as e:
             await dryb.edit(
-                f"Google Drive'a yükleme başarısız.\nHata kodu:\n`{e}`")
+                f"Google Drive'a yükləmə uğursuzdur.\nXəta kodu:\n`{e}`")
 
 
 @register(pattern=r"^.ggd(?: |$)(.*)", outgoing=True)
 async def upload_dir_to_gdrive(event):
-    await event.edit("İşleniyor ...")
+    await event.edit("Hazırlanır ...")
     if CLIENT_ID is None or CLIENT_SECRET is None:
         return
     input_str = event.pattern_match.group(1)
@@ -176,9 +176,9 @@ async def upload_dir_to_gdrive(event):
             http, os.path.basename(os.path.abspath(input_str)), parent_id)
         await DoTeskWithDir(http, input_str, event, dir_id)
         dir_link = "https://drive.google.com/folderview?id={}".format(dir_id)
-        await event.edit(f"Google Drive bağlantın [burada]({dir_link})")
+        await event.edit(f"Google Drive linkiniz [burada]({dir_link})")
     else:
-        await event.edit(f"{input_str} dizini bulunamadı.")
+        await event.edit(f"{input_str} faylı tapılmadı.")
 
 
 @register(pattern=r"^.list(?: |$)(.*)", outgoing=True)
@@ -197,7 +197,7 @@ async def gdrive_search_list(event):
         storage = await create_token_file(G_DRIVE_TOKEN_FILE, event)
     http = authorize(G_DRIVE_TOKEN_FILE, storage)
     # Yetkilendirir, dosya parametrelerini edinir, dosyayı uploadlar ve URL'yi indirme için paylaşır.
-    await event.edit(f"Google Drive'ınızda {input_str} aranıyor...")
+    await event.edit(f"Google Drive'ınızda {input_str} axtarılır...")
     gsearch_results = await gdrive_search(http, input_str)
     await event.edit(gsearch_results, link_preview=False)
 
@@ -436,7 +436,7 @@ async def gdrive_search(http, search_query):
         except Exception as e:
             res += str(e)
             break
-    msg = f"**Google Drive Araması**:\n`{search_query}`\n\n**Sonuçlar**\n\n{res}"
+    msg = f"**Google Drive axtarması**:\n`{search_query}`\n\n**Nəticələr**\n\n{res}"
     return msg
 
 CmdHelp('gdrive').add_command(
