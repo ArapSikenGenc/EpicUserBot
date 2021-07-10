@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 @register(outgoing=True, pattern=r"^.hbilgi(?: |$)(.*)") 
 async def hesapstat(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
     """Istatistikler için bir komut"""
-    waiting_message = await event.edit('`Epic Hesap Istatistikleri toplarken biraz bekle.`')
+    waiting_message = await event.edit('`Epic hesab istatisikalarını toplayarkən biraz gözləyin.`')
     start_time = time.time()
     private_chats = 0
     bots = 0
@@ -73,21 +73,21 @@ async def hesapstat(event: NewMessage.Event) -> None:  # pylint: disable = R0912
     stop_time = time.time() - start_time
 
     full_name = inline_mention(await event.client.get_me())
-    response = f'🔸 **Şu kullanıcının istatistikleri: {full_name}** \n\n'
-    response += f'**Özel Mesajlar:** {private_chats} \n'
-    response += f'   📊 `Kullanıcılar: {private_chats - bots}` \n'
+    response = f'🔸 **Bu istifadəçinin hesab məlumatları {full_name}** \n\n'
+    response += f'**Şəxsi Mesajlar:** {private_chats} \n'
+    response += f'   📊 `İstifadəçilər: {private_chats - bots}` \n'
     response += f'   📊 `Botlar: {bots}` \n'
-    response += f'**Gruplar:** {groups} \n\n'
+    response += f'**Qruplar:** {groups} \n\n'
     response += f'**Kanallar:** {broadcast_channels} \n\n'
-    response += f'**Admin olduğun Gruplar:** {admin_in_groups} \n'
+    response += f'**Admin olduğu qruplar:** {admin_in_groups} \n'
     response += f'   📊 `Sahibi olduğun gruplar: {creator_in_groups}` \n'
-    response += f'   📊 `Admin olduğun gruplar: {admin_in_groups - creator_in_groups}` \n'
-    response += f'**Admin olduğun kanallar:** {admin_in_broadcast_channels} \n'
-    response += f'   📊 `Kurucu olduğun kanallar: {creator_in_channels}` \n'
-    response += f'   📊 `Admin olduğun kanallar: {admin_in_broadcast_channels - creator_in_channels}` \n'
-    response += f'✉️**Okunmamış Mesajlar:** {unread} \n\n'
-    response += f'📧**Okunmamış Etiketler:** {unread_mentions} \n\n'
-    response += f'__Bunları hesaplamam__ {stop_time:.02f} __saniye sürdü__ \n'
+    response += f'   📊 `Admin olduğu qruplar: {admin_in_groups - creator_in_groups}` \n'
+    response += f'**Admin olduğu kanallar:** {admin_in_broadcast_channels} \n'
+    response += f'   📊 `Sahib olduğn kanallar: {creator_in_channels}` \n'
+    response += f'   📊 `Admin olduğu kanallar: {admin_in_broadcast_channels - creator_in_channels}` \n'
+    response += f'✉️**Oxunmamış Mesajlar:** {unread} \n\n'
+    response += f'📧**Oxunmamış Etiketlər:** {unread_mentions} \n\n'
+    response += f'__Bunları hesablamağım__ {stop_time:.02f} __saniyə çəkdi.__ \n'
 
     await event.edit(response)
 
