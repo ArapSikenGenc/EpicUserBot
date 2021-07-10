@@ -1,4 +1,4 @@
-# CYBERUSERBOT - Luciferxz #
+# EPICUSERBOT - ERDEMBEY 
 
 
 """ Purge """
@@ -72,7 +72,7 @@ async def purgeme(delme):
     if BOTLOG:
         await delme.client.send_message(
             BOTLOG_CHATID,
-            "Hədəflənən " + str(count) + " mesaj uğurla silindi.")
+            "Hədəflənən " + str(count) + " mesaj uğurla silindi")
     await sleep(2)
     i = 1
     await smsg.delete()
