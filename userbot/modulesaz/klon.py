@@ -71,7 +71,7 @@ async def clone(event):
     await event.delete()
     await event.client.send_message(
       event.chat_id,
-      "`Hahahah, Epic Sayesinde Seni Çaldım.`",
+      "`Hahahah, Epic Sayəsində Səni Oğurladım.`",
       reply_to=reply_message
       )
 
@@ -84,7 +84,7 @@ async def revert(event):
     if DEFAULT_NAME:
         name = f"{DEFAULT_NAME}"
     else:
-        await event.edit("**Lütfen herhangi bi sohbete** `.set var DEFAULT_NAME isminiz` **yazıp gönderin. İsminiz yazan kısma kendi isminizi yazmayı unutmayın.**")
+        await event.edit("**Xahiş edirəm hərhansı bir qrupa** `.set var DEFAULT_NAME adınız` **yazıb göndərin. Adınız yazan qisimə öz adınızı yazmağı unutmayın.**")
         return
 
 
@@ -93,11 +93,11 @@ async def revert(event):
         await bot(functions.photos.DeletePhotosRequest(await event.client.get_profile_photos("me", limit=n)))
         await bot(functions.account.UpdateProfileRequest(first_name=DEFAULT_NAME))
         await bot(functions.account.UpdateProfileRequest(about=DEFAULT_BIO))
-        await event.edit(f"`{DEFAULT_NAME}, hesabınız başarıyla eski haline döndürüldü!`")
+        await event.edit(f"`{DEFAULT_NAME}, hesabınız uğurla köhnə halına döndürüldü!`")
     except AboutTooLongError:
         srt_bio = "🎆 @EpicUserBot"
         await bot(functions.account.UpdateProfileRequest(about=srt_bio))
-        await event.edit("`Hesabınız başarıyla eski haline döndürüldü! Fakat bio'nuz çok uzun olduğu için hazır bio kullandım.`")
+        await event.edit("`Hesabınız uğurla köhnə halına döndürüldü! Lakin bio'nuz çox uzun olduğu üçün hazır bio istifadə etdim.`")
 
 
 async def get_full_user(event):
