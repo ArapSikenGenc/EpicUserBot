@@ -22,15 +22,6 @@
 
 `bash <(curl -L https://bit.ly/3tUBVha)`
 
-**iOS:**  
-
-fixlenecek
-
-**Windows 10:** 
-
-fixlenecek
-
-
 🇹🇷**Tarayıcı Kurulum / Online Setup**🇺🇲
 
 [![Run on Repl.it](https://repl.it/badge/github/ErdemBey1/epicinstaller)](https://repl.it/@ErdemBey1/epicinstaller)
