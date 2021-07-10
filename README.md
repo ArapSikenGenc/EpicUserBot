@@ -7,7 +7,7 @@
     Epic UserBot, Telegram kullanmanızı kolaylaştıran ve eğlenceli bir yol almasını sağlayan bir bottur. <br>
     Epic UserBot is a bot that makes it easy and fun to use Telegram.
     <br>
-        <a href="https://github.com/ErdemBey0/EpicUserBot/blob/master/README.md#kurulum">| Kurulum/Setup</a> |
+        <a href="https://github.com/ErdemBey0/EpicUserBot/blob/master/README.md##kurulum/setup">| Kurulum/Setup</a> |
         <a href="https://github.com/ErdemBey0/EpicUserBot/wiki/G%C3%BCncelleme">Güncelleme/Update</a> |
         <a href="https://t.me/EpicUserBot">Kanal/Channel </a> |
         <a href="https://t.me/HydraDestek">Destek/Support</a> |
@@ -15,8 +15,8 @@
 </p>
 
 ----
-### Kurulum/Setup
-# 🇹🇷 Otomatik Kurulum / Automatic Setup 🇺🇲
+## Kurulum/Setup
+ 🇹🇷**Otomatik Kurulum / Automatic Setup**🇺🇲
 
 **Android:** 
 
