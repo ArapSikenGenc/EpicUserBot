@@ -333,7 +333,7 @@ async def asistanpremove(ups):
                 else:
                     await usp.edit(LANG['PLUG_DELETED'])
                     time.sleep(2) 
-                    await usp.edit(LANGG['RESTARTING'])
+                    await usp.edit(LANG['RESTARTING'])
                     try: 
                         if BOTLOG:
                             await ups.client.send_message(BOTLOG_CHATID, "#AUTORESTART \n"
