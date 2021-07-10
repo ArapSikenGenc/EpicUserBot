@@ -78,5 +78,5 @@ async def auto(event):
             return
 
 CmdHelp('auto').add_command(
-    'auto', 'isim ya da bio', 'Otomatik saate göre Değişir', '.auto isim(isminiz değil "isim" Kelimesi)'
+    'auto', 'isim və ya bio', 'Adınız avtomatik saata görə dəyişir', '.auto isim(adınız deyil "isim" sözü)'
 ).add()
