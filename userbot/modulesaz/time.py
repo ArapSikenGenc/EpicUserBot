@@ -7,7 +7,7 @@
 # EpicUserBot - ErdemBey - Midy
 
 
-""" Bir konumun ya da UserBot sunucusunun tarih/saatini gösterebilecek modüldür. """
+""" Tarix/Saat """
 
 from datetime import datetime as dt
 
@@ -27,7 +27,7 @@ LANG = get_value("time")
 # ████████████████████████████████ #
 
 async def get_tz(con):
-    """ Seçilen bölgenin saat dilimini elde etmek içindir. """
+    """ . """
     if "(Uk)" in con:
         con = con.replace("Uk", "UK")
     if "(Us)" in con:
@@ -53,11 +53,7 @@ async def get_tz(con):
 
 @register(outgoing=True, pattern="^.time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
 async def time_func(tdata):
-    """ .time komutu şu şekilde kullanılabilir
-        1- Bölge belirtilerek.
-        2. Varsayılan userbot bölgesi (.settime komutuyla ayarlanabilir)
-        3. UserBot'un barındığı sunucunun tarihi.
-    """
+    """ .time """
     con = tdata.pattern_match.group(1).title()
     tz_num = tdata.pattern_match.group(2)
 
@@ -115,11 +111,7 @@ async def time_func(tdata):
 
 @register(outgoing=True, pattern="^.date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
 async def date_func(dat):
-    """ .date komutu şu şekilde kullanılabilir
-        1- Bölge belirtilerek.
-        2. Varsayılan userbot bölgesi (.settime komutuyla ayarlanabilir)
-        3. UserBot'un barındığı sunucunun tarihi.
-    """
+    """ .date """
     con = dat.pattern_match.group(1).title()
     tz_num = dat.pattern_match.group(2)
 
@@ -175,7 +167,7 @@ async def date_func(dat):
         return
 
 CmdHelp('time').add_command(
-    'time', '<ülke ismi/kodu> <saat dilimi numarası>', 'Bir ülkenin saatini gösterir. Eğer bir ülke birden fazla saat dilimine sahipse, tümü birden gösterilir ve seçim sana bırakılır.'
+    'time', '<ölkə adı/kodu> <saat dilimi nömrəsi>', 'Bir ölkənin saatınıı göstərər. Əgər bir ölkə birdən çox saat diliminə sahibdirsə, Hamısı birdən göstərilir və seçim sənə buraxılır.'
 ).add_command(
-    'date', '<ülke ismi/kodu> <saat dilimi numarası>', 'Bir ülkenin tarihini gösterir. Eğer bir ülke birden fazla saat dilimine sahipse, tümü birden gösterilir. ve seçim sana bırakılır.'
+    'date', '<ölkə adı/kodu> <saat dilimi nömrəsi>', 'Bir ölkenin tarixini göstərər. Əgər bir ölkə birdən çox saat diliminə sahibdirsə, Hamısı birdən göstərilir və seçim sənə buraxılır.'
 ).add()
