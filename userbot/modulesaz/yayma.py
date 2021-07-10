@@ -8,11 +8,11 @@ from userbot.events import register
 async def yay(event):
     mesaj = event.pattern_match.group(1)
     if len(mesaj) < 1:
-        await event.edit("`Birşeyleri Yaymak için bir mesaj vermeniz gerek. Örnek: ``.yay merhaba dünya`")
+        await event.edit("`Bir şeyi yaymaq üçün bir mesaj verməlisiniz. Nümunə: ``.yay merhaba dünya`")
         return
 
     if event.is_private:
-        await event.edit("`Bu komut sadece gruplarda çalışmaktadır.`")
+        await event.edit("`Bu əmr sadəcə qruplarda işləyir.`")
         return
 
     chat = await event.get_chat()
@@ -20,10 +20,10 @@ async def yay(event):
     creator = chat.creator
 
     if not admin and not creator:
-        await event.edit("`Ciddi misin? Admin olmadığın bir grupta duyuru göndermene izin vermiyeceğim!`")
+        await event.edit("`Ciddisən? Admin olmadığın bir qrupda mesaj göndərməyinə icazə verməyəcəyəm!`")
         return
 
-    await event.edit("`Tüm üyelerinize duyurunuz gönderiliyor...`")
+    await event.edit("`Bütün istifadəçilərə mesajınız göndərilir...`")
     all_participants = await event.client.get_participants(event.chat_id, aggressive=True)
     a = 0
 
@@ -35,12 +35,12 @@ async def yay(event):
         else:
             link = "[" + user.first_name + "](" + str(user.id) + ")"
         try:
-            await event.client.send_message(uid, mesaj + "\n\n@EpicUserBot ile gönderildi.")
-            son = f"**Son duyuru gönderilen kullanıcı:** {link}"
+            await event.client.send_message(uid, mesaj + "\n\n@EpicUserBot ilə göndərildi.")
+            son = f"**Son mesaj göndərilən istifadəçi:** {link}"
         except:
-            son = f"**Son duyuru gönderilen kullanıcı:** **Gönderilemedi!**"
+            son = f"**Son mesaj göndərilən istifadəçi:** **Göndərilmədi!**"
     
-        await event.edit(f"`Tüm üyelerinize duyurunuz gönderiliyor...`\n{son}\n\n**Durum:** `{a}/{len(all_participants)}`")
+        await event.edit(f"`Bütün istifadəçilərə mesajınız göndərilir...`\n{son}\n\n**Status:** `{a}/{len(all_participants)}`")
         await asyncio.sleep(0.5)
 
-    await event.edit("`Tüm üyelerinize duyurunuz gönderildi!`\n\nby @EpicUserBot 😙")
+    await event.edit("`Bütün istifadəçilərə mesajınız göndərildi!`\n\nby @EpicUserBot 😙")
