@@ -14,9 +14,9 @@ async def gps(event):
     input_str = event.pattern_match.group(1)
 
     if not input_str:
-        return await event.edit("`Epicye Bir Bölgenin İsmini Vermezsen Bulamaz Ki.`")
+        return await event.edit("`Epic-ə bir bölgənin adını verməlisən!`")
 
-    await event.edit("**Buluyorum...**")
+    await event.edit("**Axtarıram...**")
 
     geolocator = Nominatim(user_agent="erdembey")
     geoloc = geolocator.geocode(input_str)
@@ -30,7 +30,7 @@ async def gps(event):
         )
         await event.delete()
     else:
-        await event.edit("`Özür Dilerim Bu Bölgeyi Bulamadım Şey Hata Yapmış Olabilirsin :(`")
+        await event.edit("`Bağışlayın, belə bir bölgəni tapa bilmədim :(`")
 
 Help = CmdHelp('gps')
-Help.add_command('gps <yer>',  None, 'Belirttiğiniz Bölgenin Konumunu Gösterir.').add()
+Help.add_command('gps <yer>',  None, 'Qeyd etdiyiniz bölgənin konumunu atar.').add()
