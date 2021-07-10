@@ -15,8 +15,8 @@
 </p>
 
 ----
-
-## 🇹🇷 Otomatik Kurulum / Automatic Setup 🇺🇲
+### Kurulum/Setup
+# 🇹🇷 Otomatik Kurulum / Automatic Setup 🇺🇲
 
 **Android:** 
 
