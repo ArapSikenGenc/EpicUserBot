@@ -6,7 +6,7 @@
 
 # EpicUserBot - ErdemBey - Midy
 
-""" Not tutma komutlarını içeren UserBot modülüdür. """
+""" Notes """
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
@@ -22,11 +22,11 @@ LANG = get_value("notes")
 
 @register(outgoing=True, pattern="^.notes$")
 async def notes_active(svd):
-    """ .notes komutu sohbette kaydedilmiş tüm notları listeler. """
+    """ .notes """
     try:
         from userbot.modules.sql_helper.notes_sql import get_notes
     except AttributeError:
-        await svd.edit("`Bot Non-SQL modunda çalışıyor!!`")
+        await svd.edit("`Bot Non-SQL modunda işləyir!!`")
         return
     message = LANG['NOT_FOUND']
     notes = get_notes(svd.chat_id)
@@ -41,11 +41,11 @@ async def notes_active(svd):
 
 @register(outgoing=True, pattern=r"^.clear (\w*)")
 async def remove_notes(clr):
-    """ .clear komutu istenilen notu siler. """
+    """ .clear. """
     try:
         from userbot.modules.sql_helper.notes_sql import rm_note
     except AttributeError:
-        await clr.edit("`Bot Non-SQL modunda çalışıyor!!`")
+        await clr.edit("`Bot Non-SQL modunda işləyir!!`")
         return
     notename = clr.pattern_match.group(1)
     if rm_note(clr.chat_id, notename) is False:
@@ -57,11 +57,11 @@ async def remove_notes(clr):
 
 @register(outgoing=True, pattern=r"^.save (\w*)")
 async def add_note(fltr):
-    """ .save komutu bir sohbette not kaydeder. """
+    """ .save  """
     try:
         from userbot.modules.sql_helper.notes_sql import add_note
     except AttributeError:
-        await fltr.edit("`Bot Non-SQL modunda çalışıyor!!`")
+        await fltr.edit("`Bot Non-SQL modunda işləyir!!`")
         return
     keyword = fltr.pattern_match.group(1)
     string = fltr.text.partition(keyword)[2]
@@ -71,9 +71,9 @@ async def add_note(fltr):
         if BOTLOG_CHATID:
             await fltr.client.send_message(
                 BOTLOG_CHATID, f"#NOTE\
-            \nGrup ID: {fltr.chat_id}\
-            \nAnahtar kelime: {keyword}\
-            \n\nBu mesaj sohbette notu cevaplamak için kaydedildi, lütfen bu mesajı silmeyin!"
+            \nQrup ID: {fltr.chat_id}\
+            \nAçar söz: {keyword}\
+            \n\nBu mesaj söhbətdə notu cavablamaq üçün qeyd edildi, xaiş bu mesajı silməyin!"
             )
             msg_o = await fltr.client.forward_messages(entity=BOTLOG_CHATID,
                                                        messages=msg,
@@ -82,7 +82,7 @@ async def add_note(fltr):
             msg_id = msg_o.id
         else:
             await fltr.edit(
-                "`Bir medyayı not olarak kaydetmek için BOTLOG_CHATID değerinin ayarlanmış olması gereklidir.`"
+                "`Bir medyanı not olaraq qeyd etmək üçün BOTLOG_CHATID dəyərini tənzimlənməsi lazımdır.`"
             )
             return
     elif fltr.reply_to_msg_id and not string:
@@ -90,9 +90,9 @@ async def add_note(fltr):
         string = rep_msg.text
     success = "`{} {}. ` #{} `{}`"
     if add_note(str(fltr.chat_id), keyword, string, msg_id) is False:
-        return await fltr.edit(success.format(LANG['SUCCESS'], 'güncellendi', keyword, LANG['CALL']))
+        return await fltr.edit(success.format(LANG['SUCCESS'], 'yeniləndi', keyword, LANG['CALL']))
     else:
-        return await fltr.edit(success.format(LANG['SUCCESS'], 'eklendi', keyword, LANG['CALL']))
+        return await fltr.edit(success.format(LANG['SUCCESS'], 'əlavə edildi', keyword, LANG['CALL']))
 
 
 @register(pattern=r"#\w*",
@@ -100,7 +100,7 @@ async def add_note(fltr):
           disable_errors=True,
           ignore_unsafe=True)
 async def incom_note(getnt):
-    """ Notların mantığı. """
+    """ Not """
     try:
         if not (await getnt.get_sender()).bot:
             try:
@@ -128,11 +128,11 @@ async def incom_note(getnt):
         pass
 
 CmdHelp('notes').add_command(
-    '#<notismi>', None, 'Belirtilen notu çağırır.'
+    '#<notadı>', None, 'Seçilən notu çağırar.'
 ).add_command(
-    'save', '<not adı> <not olarak kaydedilecek şey> ya da bir mesajı .save <not adı> şeklinde yanıtlayarak kullanılır', 'Yanıtlanan mesajı ismiyle birlikte bir not olarak kaydeder. (Resimler, belgeler ve çıkartmalarda da çalışır.)'
+    'save', '<not adı> <not olaraq qeyd ediləcək şey> ya da bir mesajı .save <not adı> şəklində cavablayaraq işlədilir', 'Cavablanan mesajı adı ilə birlikdə bir not olaraq qeyd edər. (Fotolar, sənədlər və stikerlərdə işləyir.)'
 ).add_command(
-    'notes', None, 'Bir sohbetteki tüm notları çağırır.'
+    'notes', None, 'Bir söhbətdəki bütün notları çağırar.'
 ).add_command(
-    'clear', '<not adı>', 'Belirtilen notu siler.'
+    'clear', '<not adı>', 'Seçilən notu silər.'
 ).add()
