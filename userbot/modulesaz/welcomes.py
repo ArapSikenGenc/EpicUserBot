@@ -1,14 +1,5 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-
-# EpicUserBot - ErdemBey - Midy
-
-
 from userbot.events import register
-from userbot import CMD_HELP, bot, LOGS, CLEAN_WELCOME, BOTLOG_CHATID
+from userbot import bot, LOGS, CLEAN_WELCOME, BOTLOG_CHATID
 from telethon.events import ChatAction
 from userbot.cmdhelp import CmdHelp
 
@@ -17,7 +8,7 @@ async def welcome_to_chat(event):
     try:
         from userbot.modules.sql_helper.welcome_sql import get_current_welcome_settings
         from userbot.modules.sql_helper.welcome_sql import update_previous_welcome
-    except:
+    except AttributeError:
         return
     cws = get_current_welcome_settings(event.chat_id)
     if cws:
@@ -83,14 +74,12 @@ async def welcome_to_chat(event):
                                                      my_mention=my_mention),
                 file=file_media)
             update_previous_welcome(event.chat_id, current_message.id)
-
-
 @register(outgoing=True, pattern=r"^.setwelcome(?: |$)(.*)")
 async def save_welcome(event):
     try:
         from userbot.modules.sql_helper.welcome_sql import add_welcome_setting
     except:
-        await event.edit("`SQL dışı modda çalışıyor!`")
+        await event.edit("`SQL xarici modda işləyir!`")
         return
     msg = await event.get_reply_message()
     string = event.pattern_match.group(1)
@@ -98,9 +87,9 @@ async def save_welcome(event):
     if msg and msg.media and not string:
         if BOTLOG_CHATID:
             await event.client.send_message(
-                BOTLOG_CHATID, f"#KARSILAMA_NOTU\
-            \nGRUP ID: {event.chat_id}\
-            \nAşağıdaki mesaj sohbet için yeni Karşılama notu olarak kaydedildi, lütfen silmeyin !!"
+                BOTLOG_CHATID, f"#QARSİLAMA_NOTU\
+            \nQRUP ID: {event.chat_id}\
+            \nAşağıdakı mesaj söhbət üçün yeni Qarşılama notu olaraq qeyd edildi, xaiş silməyin !!"
             )
             msg_o = await event.client.forward_messages(
                 entity=BOTLOG_CHATID,
@@ -110,17 +99,17 @@ async def save_welcome(event):
             msg_id = msg_o.id
         else:
             await event.edit(
-                "`Karşılama notunu kaydetmek için BOTLOG_CHATID ayarlanması gerekir.`"
+                "`Qarşılama notunu qeyd etmək üçün BOTLOG_CHATID tənzimlənməsi edilməlidir.`"
             )
             return
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "`Karşılama mesajı bu sohbet için {} `"
+    success = "`Qarşılama mesajı bu söhbət üçün{} `"
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
-        await event.edit(success.format('kaydedildi'))
+        await event.edit(success.format('qeyd edildi'))
     else:
-        await event.edit(success.format('güncellendi'))
+        await event.edit(success.format('yeniləndi'))
 
 
 @register(outgoing=True, pattern="^.checkwelcome$")
@@ -128,21 +117,21 @@ async def show_welcome(event):
     try:
         from userbot.modules.sql_helper.welcome_sql import get_current_welcome_settings
     except:
-        await event.edit("`SQL dışı modda çalışıyor!`")
+        await event.edit("`SQL xarici modda işləyir!`")
         return
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        await event.edit("`Burada kayıtlı karşılama mesajı yok.`")
+        await event.edit("`Burda qeydli qarşılama mesajı yoxdur.`")
         return
     elif cws and cws.f_mesg_id:
         msg_o = await event.client.get_messages(entity=BOTLOG_CHATID,
                                                 ids=int(cws.f_mesg_id))
         await event.edit(
-            "`Şu anda bu karşılama notu ile yeni kullanıcıları ağırlıyorum.`")
+            "`İndi bu qarşılama notu ilə yeni istifadəçiləri qarşılayıram.`")
         await event.reply(msg_o.message, file=msg_o.media)
     elif cws and cws.reply:
         await event.edit(
-            "`Şu anda bu karşılama notu ile yeni kullanıcıları ağırlıyorum.`")
+            "`İndi bu qarşılama notu ilə yeni istifadəçiləri qarşılayıram.`")
         await event.reply(cws.reply)
 
 
@@ -151,34 +140,19 @@ async def del_welcome(event):
     try:
         from userbot.modules.sql_helper.welcome_sql import rm_welcome_setting
     except:
-        await event.edit("`SQL dışı modda çalışıyor!`")
+        await event.edit("`SQL xarici modda işləyir!`")
         return
     if rm_welcome_setting(event.chat_id) is True:
-        await event.edit("`Karşılama mesajı bu sohbet için silindi.`")
+        await event.edit("`Qarşılama mesajı bu söhbət üçün silindi.`")
     else:
-        await event.edit("`Burada karşılama notu var mı ?`")
-
-
-CMD_HELP.update({
-    "welcome":
-    "\
-.setwelcome <karışlama mesajı> veya .setwelcome ile bir mesaja cevap verin\
-\nKullanım: Mesajı sohbete karşılama notu olarak kaydeder.\
-\n\nKarşılama mesajlarını biçimlendirmek için kullanılabilir değişkenler :\
-\n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
-\n\n.checkwelcome\
-\nKullanım: Sohbette karşılama notu olup olmadığını kontrol edin.\
-\n\n.rmwelcome\
-\nKullanım: Geçerli sohbet için karşılama notunu siler.\
-"
-})
+        await event.edit("`Burda qarşılama notu var görəsən ?`")
 
 CmdHelp('welcome').add_command(
-    'setwelcome', '<karışlama mesajı>', 'Mesajı sohbete karşılama notu olarak kaydeder.'
+    'setwelcome', '<qarşılama mesajı>', 'Mesajı söhbətə qarşılama notu olaraq qeyd edər.'
 ).add_command(
-    'checkwelcome', None, 'Sohbette karşılama notu olup olmadığını kontrol edin.'
+    'checkwelcome', None, 'Söhbətdə qarşılama notu olub olmadığını yoxlayar.'
 ).add_command(
-    'rmwelcome', None, 'Geçerli sohbet için karşılama notunu siler.'
+    'rmwelcome', None, 'Keçərli söhbət üçün qarşılama notunu silər.'
 ).add_info(
-    'Değişkenler: `{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`'
+    'Dəyişkənlər: `{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`'
 ).add()
