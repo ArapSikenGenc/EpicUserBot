@@ -70,7 +70,7 @@ async def cevir(event):
             indir = await rep_msg.download_media()
             ses = await asyncio.create_subprocess_shell(f"ffmpeg -i '{indir}' {KOMUT[efekt]} output.mp3")
             await ses.communicate()
-            await event.client.send_file(event.chat_id, "output.mp3", reply_to=rep_msg, caption="@EpicUserBot `ile efekt uygulandı.`")
+            await event.client.send_file(event.chat_id, "output.mp3", reply_to=rep_msg, caption="@EpicUserBot `ilə effekt verildi.`")
             
             await event.delete()
             os.remove(indir)
@@ -111,19 +111,19 @@ async def cevir(event):
         if not event.is_reply or not rep_msg.video:
             await event.edit(LANG['NEED_VIDEO'])
             return
-        await event.edit('`Sese çevriliyor...`')
+        await event.edit('`Səsə çevirilir...`')
         video = io.BytesIO()
         video = await event.client.download_media(rep_msg.video)
         gif = await asyncio.create_subprocess_shell(
             f"ffmpeg -y -i '{video}' -vn -b:a 128k -c:a libmp3lame out.mp3")
         await gif.communicate()
-        await event.edit('`Ses yükleniyor...`')
+        await event.edit('`Səs yüklənir...`')
         
         try:
-            await event.client.send_file(event.chat_id, "out.mp3",reply_to=rep_msg, caption='@EpicUserBot ile sese çevrildi.')
+            await event.client.send_file(event.chat_id, "out.mp3",reply_to=rep_msg, caption='@EpicUserBot ilə səsə çevirildi.')
         except:
             os.remove(video)
-            return await event.edit('`Sese çevirilemedi!`')
+            return await event.edit('`Səsə çevirmək olmadı!`')
 
         await event.delete()
         os.remove("out.mp3")
