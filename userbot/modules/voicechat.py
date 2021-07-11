@@ -3,7 +3,7 @@ from telethon.tl.functions.phone import CreateGroupCallRequest as startvc
 from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
-from userbot.events import register as misaki
+from userbot.events import register
 from userbot import bot, get_call
 from userbot.cmdhelp import CmdHelp
 
@@ -12,7 +12,7 @@ def user_list(l, n):
     for i in range(0, len(l), n):
         yield l[i : i + n]
 
-@misaki(outgoing=True, groups_only=True, pattern="^.vcbaslat$")
+@register(outgoing=True, groups_only=True, pattern="^.vcbaslat$")
 async def start_voice(c):
     chat = await c.get_chat()
     admin = chat.admin_rights
@@ -29,7 +29,7 @@ async def start_voice(c):
         await c.edit(f"Bir hata oluştu\nHata: `{ex}`")
 
 
-@misaki(outgoing=True, groups_only=True, pattern="^.vcbagla$")
+@register(outgoing=True, groups_only=True, pattern="^.vcbagla$")
 async def stop_voice(c):
     chat = await c.get_chat()
     admin = chat.admin_rights
@@ -47,7 +47,7 @@ async def stop_voice(c):
 
 
 
-@misaki(outgoing=True, groups_only=True, pattern="^.tagvc")
+@register(outgoing=True, groups_only=True, pattern="^.tagvc")
 async def _(c):
     await c.edit("`Üyeler davet ediliyor...`")
     users = []
