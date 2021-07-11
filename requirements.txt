@@ -3,7 +3,11 @@ aria2p
 async_generator
 bs4
 beautifulsoup4>=4.9.3
+geopy
 dnspython
+cowpy
+cryptg
+geopy
 glitch_this
 fontTools
 emoji
@@ -29,6 +33,8 @@ pybase64>=0.4.0
 pylast==4.2.0
 pySmartDL
 python-barcode
+randomstuff.py
+numpy
 python-dotenv
 youtube-dl>=2021.1.8
 youtube-search-python>=1.3.2
@@ -51,6 +57,7 @@ chromedriver-autoinstaller
 Pillow
 telegraph
 lottie
+beautifulsoup4>=4.8.1
 git+https://github.com/Joeclinton1/google-images-download.git
 pydub
 emoji-country-flag
