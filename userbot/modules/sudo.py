@@ -7,7 +7,6 @@ from userbot.events import register
 from userbot import (
     HEROKU_APPNAME,
     HEROKU_APIKEY,
-    SUDO_VERSION,
     SUDO_ID,
     bot,
 )
