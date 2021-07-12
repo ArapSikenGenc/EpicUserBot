@@ -642,7 +642,7 @@ async def translateme(trans):
     translator = Translator()
     try:
         reply_text = translator.translate(deEmojify(message),
-                                          dest=TRT_LANG)
+                                          lang_tgt=TRT_LANG)
     except ValueError:
         return await trans.edit(
             "**hatalı dil kodu, düzgün dil kodu seçin **`.lang tts/trt <dil kodu>`**.**"
@@ -660,7 +660,7 @@ async def translateme(trans):
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"`{message} kelimesi çeviri modülü ile {source_lan} 'e çevirildi.`")
+            f"`{message} kelimesi çeviri modülü ile {reply_text} 'e çevirildi.`")
 
 
 
