@@ -21,7 +21,7 @@ epicsudo = os.environ.get("SUDO_ID", None)
 @register(outgoing=True,
           pattern=r"^.sudoekle")
 async def addsudo(event):
-    await event.edit("Kullanıcı sudo olarak ayarlanıyor...")
+    await event.edit("`Kullanıcı sudo olarak ayarlanıyor`...")
     epic = "SUDO_ID"
     if HEROKU_APPNAME is not None:
         app = Heroku.app(HEROKU_APPNAME)
@@ -34,12 +34,12 @@ async def addsudo(event):
     try:
         epictext = await get_user(event)
     except Exception:
-        await event.edit("Lütfen bir kullanıcının mesajına cevap verin.")
+        await event.edit("`Lütfen bir kullanıcının mesajına cevap verin.`")
     if epicsudo:
         yenisudo = f"{epicsudo} {epictext}"
     else:
         yenisudo = f"{epictext}"
-    await event.edit("Kullanıcı sudo olarak ayarlandı.👌 \nBotunuz yeniden başlatılıyor...")
+    await event.edit("`Kullanıcı sudo olarak ayarlandı.👌` \n`Botunuz yeniden başlatılıyor...`")
     heroku_var[epic] = yenisudo
 
 
@@ -64,7 +64,7 @@ async def sudosil(event):
   app = Heroku.app(HEROKU_APPNAME)
   heroku_var = app.config()
   if not event.is_reply:
-    return await event.edit("Lütfen bir kullanıcının mesajına cevap verin.")
+    return await event.edit("`Lütfen bir kullanıcının mesajına cevap verin.`")
   if event.is_reply:
     id = (await event.get_reply_message()).sender_id
     ad = (await bot.get_entity(id)).first_name
@@ -79,9 +79,9 @@ async def sudosil(event):
       xxx = xx.replace(",", "")
       hazir = xxx.replace("'", "")
       heroku_var["SUDO_ID"] = hazir
-      await event.edit(f"`{ad}`Artık Sudo değil 👌.\nBotunuz yeniden başlatılıyor...")
+      await event.edit(f"`{ad}``Artık Sudo değil 👌.`\n`Botunuz yeniden başlatılıyor...`")
     else:
-      await event.edit(f"Kusura bakma, `{ad}` Zaten Bir Sudo Değil!")
+      await event.edit(f"`Kusura bakma,` `{ad}` `Zaten Bir Sudo Değil!`")
     if heroku_var["SUDO_ID"] == None:
        await event.edit(f"`Sudo Bulunmamaktadır!`") 
     
