@@ -105,9 +105,11 @@ async def _(q):
     await q.client.send_message(q.chat_id,"`Sudom ❤️ EpicUserBot Çalışıyor...`")
 
 CmdHelp('sudo').add_command(
-    'sudoekle', None, 'Mesajına cevap verdiğiniz kullanıcını botunuzda admin yapar.'
+    'salive', None, 'Sudonun aktif olup olmadığını kontrol eder.'
     ).add_command(
-    'salive', None, 'SUDOnun aktif olup olmadığını kontrol eder.'
+    'sudoekle', None, 'Mesajına cevap verdiğiniz kullanıcını botunuzda sudo yapar.'
+    ).add_command(
+    'sudosil', None, 'Mesajına cevap verdiğiniz kullanıcının botunuzda sudoluğunu siler.'
     ).add_command(
         'sdemote', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yönetici izinlerini iptal eder.'
     ).add_command(
