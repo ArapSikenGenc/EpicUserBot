@@ -29,7 +29,7 @@ async def start_voice(c):
         await c.edit(f"Bir hata oluştu\nHata: `{ex}`")
 
 
-@register(outgoing=True, groups_only=True, pattern="^.vcbagla$")
+@register(outgoing=True, groups_only=True, pattern="^.vcbitir$")
 async def stop_voice(c):
     chat = await c.get_chat()
     admin = chat.admin_rights
@@ -67,7 +67,7 @@ async def _(c):
 
 Help = CmdHelp('voicechat')
 Help.add_command('vcbaslat', None, 'Bir grupta sesli sohbet başlatır.')
-Help.add_command('vcbagla', None, 'Sesli sohbeti sonlandırır.')
+Help.add_command('vcbitir', None, 'Sesli sohbeti sonlandırır.')
 Help.add_command('tagvc', None, 'Gruptaki üyeleri sesli sohbete davet eder.')
-Help.add_info('@EpicUserBot -  Thx @ByMisakiMey')
+Help.add_info('@EpicUserBot ')
 Help.add()    
