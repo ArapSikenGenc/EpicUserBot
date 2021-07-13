@@ -68,6 +68,6 @@ async def _(c):
 Help = CmdHelp('voicechat')
 Help.add_command('vcbaslat', None, 'Bir grupta sesli sohbet başlatır.')
 Help.add_command('vcbitir', None, 'Sesli sohbeti sonlandırır.')
-Help.add_command('vc'davet, None, 'Gruptaki üyeleri sesli sohbete davet eder.')
+Help.add_command('vcdavet', None, 'Gruptaki üyeleri sesli sohbete davet eder.')
 Help.add_info('@EpicUserBot Sesli Sohbet Resmi Modülüdür.')
 Help.add()    
