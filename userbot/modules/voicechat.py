@@ -12,7 +12,7 @@ def user_list(l, n):
     for i in range(0, len(l), n):
         yield l[i : i + n]
 
-@register(outgoing=True, groups_only=True, pattern="^.vcbaslat$")
+@register(outgoing=True, groups_only=True, pattern="^.vcba[sŞ]lat$")
 async def start_voice(c):
     chat = await c.get_chat()
     admin = chat.admin_rights
@@ -29,7 +29,7 @@ async def start_voice(c):
         await c.edit(f"Bir hata oluştu\nHata: `{ex}`")
 
 
-@register(outgoing=True, groups_only=True, pattern="^.vcbitir$")
+@register(outgoing=True, groups_only=True, pattern="^.vcb[ıi]t[ıi]r$")
 async def stop_voice(c):
     chat = await c.get_chat()
     admin = chat.admin_rights
@@ -47,9 +47,9 @@ async def stop_voice(c):
 
 
 
-@register(outgoing=True, groups_only=True, pattern="^.tagvc")
+@register(outgoing=True, groups_only=True, pattern="^.vcdavet")
 async def _(c):
-    await c.edit("`Üyeler davet ediliyor...`")
+    await c.edit("`Üyeler sesli sohbete davet ediliyor...`")
     users = []
     z = 0
     async for x in c.client.iter_participants(c.chat_id):
@@ -68,6 +68,6 @@ async def _(c):
 Help = CmdHelp('voicechat')
 Help.add_command('vcbaslat', None, 'Bir grupta sesli sohbet başlatır.')
 Help.add_command('vcbitir', None, 'Sesli sohbeti sonlandırır.')
-Help.add_command('tagvc', None, 'Gruptaki üyeleri sesli sohbete davet eder.')
-Help.add_info('@EpicUserBot ')
+Help.add_command('vc'davet, None, 'Gruptaki üyeleri sesli sohbete davet eder.')
+Help.add_info('@EpicUserBot Sesli Sohbet Resmi Modülüdür.')
 Help.add()    
