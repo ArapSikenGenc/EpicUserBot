@@ -333,7 +333,7 @@ if os.path.exists("learning-data-root.check"):
 else:
     LOGS.info("Braincheck dosyası yok, getiriliyor...")
 
-URL = 'https://gitlab.com/must4f/VaveylaData/-/raw/main/learning-data-root.check'
+URL = 'https://raw.githubusercontent.com/ErdemBey0/datas/master/learning-data-root.check'
 with open('learning-data-root.check', 'wb') as load:
     load.write(get(URL).content)
     
