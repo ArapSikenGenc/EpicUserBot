@@ -632,36 +632,25 @@ async def translateme(trans):
     elif textx:
         message = textx.text
     else:
-        message = str(trans.pattern_match.group(1))
+        await trans.edit("`Çeviri yapmam için bana matin ver!`")
+        return
 
-    if not message:
-        return await trans.edit(
-            "`Bana Metin Ver!`")
-
-    await trans.edit("**Tercüme ediyorum...**")
-    translator = Translator()
     try:
-        reply_text = translator.translate(deEmojify(message),
-                                          lang_tgt=TRT_LANG)
+        reply_text = translator.translate(deEmojify(message), dest=TRT_LANG)
     except ValueError:
-        return await trans.edit(
-            "**hatalı dil kodu, düzgün dil kodu seçin **`.lang tts/trt <dil kodu>`**.**"
-        )
+        await trans.edit("bilinmeyen dil kodu.")
+        return
 
-    try:
-        source_lan = translator.detect(deEmojify(message))[1].title()
-    except:
-        source_lan = "(Google bu mesajı çeviremedi)"
-
-    reply_text = f"Bu dilden: **{source_lan}**\nBu dile: **{LANGUAGES.get(TRT_LANG).title()}**\n\n{reply_text}"
+    source_lan = LANGUAGES[f'{reply_text.src.lower()}']
+    transl_lan = LANGUAGES[f'{reply_text.dest.lower()}']
+    reply_text = f"Bu dilden:**{source_lan.title()}**\nBu dile:**{transl_lan.title()}:**\n\n{reply_text.text}"
 
     await trans.edit(reply_text)
-    
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"`{message} kelimesi çeviri modülü ile {reply_text} 'e çevirildi.`")
-
+            f"{source_lan.title()} sözcüğü {transl_lan.title()} tercüme edildi.",
+        )
 
 
 @register(pattern=".lang (trt|tts) (.*)", outgoing=True)
