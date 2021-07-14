@@ -624,13 +624,13 @@ async def imdb(e):
 
 @register(outgoing=True, pattern=r"^.trt(?: |$)([\s\S]*)")
 async def translateme(trans):
-    """ .trt komutu verilen metni Google Çeviri kullanarak çevirir. """
-    if trans.fwd_from:
-        return
-
-    if trans.is_reply and not trans.pattern_match.group(1):
-        message = await trans.get_reply_message()
-        message = str(message.message)
+    translator = Translator()
+    textx = await trans.get_reply_message()
+    message = trans.pattern_match.group(1)
+    if message:
+        pass
+    elif textx:
+        message = textx.text
     else:
         message = str(trans.pattern_match.group(1))
 
