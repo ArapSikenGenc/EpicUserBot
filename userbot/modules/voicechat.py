@@ -12,7 +12,7 @@ def user_list(l, n):
     for i in range(0, len(l), n):
         yield l[i : i + n]
 
-@register(outgoing=True, groups_only=True, pattern="^.vcba[sŞ]lat$")
+@register(outgoing=True, groups_only=True, pattern="^.vcba[sş]lat$")
 async def start_voice(c):
     chat = await c.get_chat()
     admin = chat.admin_rights
@@ -65,7 +65,7 @@ async def _(c):
     await c.edit(f"`{z}` **Üyeler çağrıldı...**")
 
 
-Help = CmdHelp('voicechat')
+Help = CmdHelp('vc')
 Help.add_command('vcbaslat', None, 'Bir grupta sesli sohbet başlatır.')
 Help.add_command('vcbitir', None, 'Sesli sohbeti sonlandırır.')
 Help.add_command('vcdavet', None, 'Gruptaki üyeleri sesli sohbete davet eder.')
