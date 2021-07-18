@@ -90,8 +90,6 @@ try:
     SUDO_ID = set(int(x) for x in os.environ.get("SUDO_ID", "").split())
 except ValueError:
     raise Exception("Bir Kullanıcı İd si Belirtmek zorundasın.")
-#CV Modul- 1.0
-CV_MSG = os.environ.get("CV_MSG", None)
 
 SILINEN_PLUGIN = {}
 # UserBot Session String
