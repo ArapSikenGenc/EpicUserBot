@@ -35,5 +35,6 @@ CmdHelp("cv").add_command(
 	"cv",  "Herhangi biri sizi yanıtlayarak cv nizi görebilir."
 	).add_command(
 	"mycv", "Cv nizi kendiniz görüntülersiniz "
-	
+	).add_command(
+        ".set var CV_MSG", "CV Mesajın"
 ).add()
