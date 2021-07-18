@@ -1,4 +1,4 @@
-#Bu dosyanın tüm hakları HydraDev e aittir izinsiz yayınlanması yasaktir.
+# Credit Vermeyi Unutmayın Zsten Açık Kaynaklı Kodlar
 #Epicuserbot-Erdembey-ixelizm-ByMisakiMey
 
 from telethon import events 
@@ -25,7 +25,7 @@ async def cvhazırlama(ups):
         return
 
 
-@epic(outgoing=True, pattern="^.mycv")
+@epic(outgoing=True, pattern="^.mycv") #Kendi CV-mizi Görmek İçin
 async def komut(e):
  await e.edit(f"{CV_MSG}")
  
@@ -35,4 +35,5 @@ CmdHelp("cv").add_command(
 	"cv",  "Herhangi biri sizi yanıtlayarak cv nizi görebilir."
 	).add_command(
 	"mycv", "Cv nizi kendiniz görüntülersiniz "
+	
 ).add()
