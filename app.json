@@ -32,6 +32,11 @@
   "value": "",
   "required": false
     },
+"CV_MSG": {
+  "description": "CV nizde gözükecek olan yazı.",
+  "value": "Sahibim Fazla Bi Bilgi Ayarlamamış Ama Şunu Biliyorum Kendisi Baya Zevkli Birisi Çünkü Epic Userbot Kullanıyor 😁",
+  "required": false
+    },
     "SPOTIFY_DC": {
       "description": "Spotify bio için gerekli olan anahtar",
       "required": false
