@@ -1,10 +1,10 @@
 # EpicUsebot ErdemBey / Bymisakimey
-
+# Kullanırken info Kısmını Silmeyiniz Ve Credit Vermeyi Unutmayın.
 import random
 import asyncio
 from userbot.events import register 
 from userbot import CMD_HELP, bot
-from userbot import EPİC_VERSION
+from userbot import EPİC_VERSION # UserBotunuzun Version Değikeni
 from telethon.tl.types import ChannelParticipantsAdmins as cp
 from time import sleep
 from userbot.cmdhelp import CmdHelp
@@ -41,7 +41,7 @@ async def b(event):
 
             current_pack.append(participant)
 
-            if len(current_pack) == 5:
+            if len(current_pack) == 5: #Etiket Sayısınu Ayarlamak İçin Tavsiye Edilen max5
                 tags = list(map(lambda m: f"[{random.choice(emoji)}](tg://user?id={m.id})", current_pack))
                 current_pack = []
 
@@ -55,6 +55,6 @@ async def b(event):
 
 CmdHelp("emall").add_command(
 	"emall", "<sebep>", "Gruptaki Üyeleri Emojili Bir Şekilde Etiketler."
-    ).add_command(
+).add_command(
     "kill all", None, "Etiketleme işlemini durdurur."
-).add()
+).add_info('👌 Neden yazmak Zorunda Değilainiz @erdembey').add()
