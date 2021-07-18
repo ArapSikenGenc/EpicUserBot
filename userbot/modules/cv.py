@@ -18,7 +18,7 @@ async def cvhazırlama(ups):
         reply_user = await ups.client.get_entity(reply.from_id)
         ren = reply_user.id
         if ren == MYID:
-            await ups.reply(f"** {epicsahip} CV-si:**\n {CV_MSG}")
+            await ups.reply(f"** {DEFADULT_NAME} CV-si:**\n {CV_MSG}")
         else:
             return
     else:
