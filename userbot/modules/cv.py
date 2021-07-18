@@ -4,7 +4,7 @@
 from telethon import events 
 import asyncio 
 from userbot.events import register as epic
-from userbot import (MYID, CV_MSG, DEFADULT_NAME)
+from userbot import (MYID, CV_MSG, DEFAULT_NAME)
 from userbot.cmdhelp import CmdHelp
 
 
@@ -18,7 +18,7 @@ async def cvhazırlama(ups):
         reply_user = await ups.client.get_entity(reply.from_id)
         ren = reply_user.id
         if ren == MYID:
-            await ups.reply(f"** {epicsahip} CV-si:**\n {CV_MSG}")
+            await ups.reply(f"** {DEFAULT_NAME} CV-si:**\n {CV_MSG}")
         else:
             return
     else:
