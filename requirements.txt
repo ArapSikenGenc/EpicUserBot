@@ -61,6 +61,5 @@ emoji-country-flag
 cairosvg
 imagedown
 pyfiglet
-scipy
-wordcloud
+
 
