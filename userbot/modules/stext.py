@@ -6,7 +6,7 @@ import textwrap
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 from userbot.events import register
-from userbot import CmdHelp
+from userbot.cmdhelp import CmdHelp
 
 
 @register(outgoing=True, pattern="^.stext(?: |$)(.*)")
