@@ -1,4 +1,5 @@
-# f
+# my friend Marina(ru) 
+# EpicUserBot HydraDev 
 from io import BytesIO
 from random import choice, randint
 from textwrap import wrap
