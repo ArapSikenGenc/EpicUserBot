@@ -20,5 +20,5 @@ async def stats(e):
    stat = f"✉️ **Mesajlar:** `{msg}`\n🖼️ **Fotoğraflar:** `{img}`\n📹 **Videolar:** `{vid}`\n🎵 **Muzikler:** `{msc}`\n🎤 **Sesli Mesajlar:** `{ses}`\n🎥 **Videolar:** `{rvid}`\n📂 **Dosyalar:** `{doc}`\n🔗 **Linkler:** `{url}`\n🎞️ **GIFler:** `{gif}`\n🗺 **Konumlar:** `{geo}`"
    await e.edit(stat)
 
-Help = CmdHelp('statistics)
+Help = CmdHelp('statistics')
 Help.add_command('st',  None, 'Grup/Kanal/Pm hakkında daha fazla bilgi edinin').add()
