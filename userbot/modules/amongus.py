@@ -7,7 +7,7 @@ from textwrap import wrap
 from PIL import Image, ImageDraw, ImageFont
 from requests import get
 
-from userbot import CMD_HELP
+from userbot import CmdHelp
 from userbot.events import register
 
 
