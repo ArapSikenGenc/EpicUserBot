@@ -9,7 +9,7 @@ from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
 
-@register(outgoing=True, pattern="^.stext(?: |$)(.*)")
+@register(outgoing=True, pattern="^.texts(?: |$)(.*)")
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -83,6 +83,6 @@ async def get_font_file(client, channel_id):
     # download and return the file path
     return await client.download_media(font_file_message)
 
-CmdHelp("stext").add_command(
-	"stext",  "kelimeleri daha süslü bir şekilde yazar oto renk ve font seçiimi yapar."
+CmdHelp("texts").add_command(
+	"texts",  "kelimeleri daha süslü bir şekilde yazar oto renk ve font seçiimi yapar."
 ).add_info('modul bozuk değildir sadece geç çalışmaktadır ama yakın zamanda giderilecektir. @erdembey').add()
