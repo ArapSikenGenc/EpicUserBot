@@ -11,7 +11,7 @@ from userbot.cmdhelp import CmdHelp
 from userbot.events import register
 
 
-@register(outgoing=True, pattern="^.imp (.*)")
+@register(outgoing=True, pattern="^.amongus (.*)")
 async def f_load(message):
     clrs = {
         "red": 1,
@@ -53,7 +53,7 @@ async def f_load(message):
         )
         return
 
-    url = "https://raw.githubusercontent.com/ErdemBey0/datas/master/stickerlar/"
+    url = "https://raw.githubusercontent.com/ErdemBey0/datas/master/stickerlar/amongus/"
     font = ImageFont.truetype(BytesIO(get(url + "bold.ttf").content), 60)
     imposter = Image.open(BytesIO(get(f"{url}{clr}.png").content))
     text_ = "\n".join(["\n".join(wrap(part, 30)) for part in text.split("\n")])
