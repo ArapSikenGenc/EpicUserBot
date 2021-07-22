@@ -21,4 +21,4 @@ async def stats(e):
    await e.edit(stat)
 
 Help = CmdHelp('statistics')
-Help.add_command('st',  None, 'Grup/Kanal/Pm hakkında daha fazla bilgi edinin').add()
+Help.add_command('statis',  None, 'Grup/Kanal/Pm hakkında daha fazla bilgi edinin').add()
