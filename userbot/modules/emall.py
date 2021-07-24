@@ -49,7 +49,7 @@ async def b(event):
                     tags.append(text)
 
                 await event.client.send_message(event.chat_id, " ".join(tags))
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(1.3) #floodwait 
     finally:
         FlagContainer.is_active = False
 
@@ -57,4 +57,4 @@ CmdHelp("emall").add_command(
 	"emall", "<sebep>", "Gruptaki Üyeleri Emojili Bir Şekilde Etiketler."
 ).add_command(
     "kill all", None, "Etiketleme işlemini durdurur."
-).add_info('👌 Neden yazmak Zorunda Değilainiz @erdembey').add()
+).add_info('👌 Neden yazmak Zorunda Değilsiniz @erdembey').add()
