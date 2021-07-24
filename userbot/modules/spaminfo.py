@@ -55,5 +55,5 @@ async def sinfos(event):
             await event.delete()
 
 
-dnammonc_dda = CmdHelp('sinfo')
+dnammonc_dda = CmdHelp('spaminfo')
 dnammonc_dda.add_command("sinfo", None, "Hesabınızın spam durumunu kontrol edin").add()
