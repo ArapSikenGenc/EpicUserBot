@@ -1,5 +1,6 @@
-# SİRİUSERBOT - ERDEMBEY
-
+"""
+Erdem Bey / EpicUserBot Modul birleştirmesi
+"""
 import re
 import os
 from telethon import events
@@ -7,7 +8,7 @@ from userbot import bot
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
-@register(outgoing=True, pattern="^.pmyaz ?(.*)")
+@register(outgoing=True, pattern="^.send ?(.*)")
 async def pm(event):
  
     p = event.pattern_match.group(1)
@@ -24,17 +25,17 @@ async def pm(event):
     mssg = await event.get_reply_message() 
     if event.reply_to_msg_id:
         await event.client.send_message(chat_id, mssg)
-        await event.edit("`Epic Mesajı gönderdi ✔️`")
+        await event.edit("@EpicUserBot `Mesajı gönderdi ✔️`")
     for i in m[1:]:
         msg += i + " "
     if msg == "":
         return
     try:
         await event.client.send_message(chat_id, msg)
-        await event.edit("`Epic Mesajı gönderdi ✔️`")
+        await event.edit("@EpicUserBot `Mesajı gönderdi ✔️`")
     except BaseException:
         await event.edit("** @EpicUserBot Mesajınızı Gönderemedi :(**")
         
-CmdHelp('pmyaz').add_command(
-    'pmyaz', '.pmyaz <kullanıcı adı> <mesaj>', 'Yazdığınız mesajı seçtiğiniz kullanıcıya gönderir', '.pmyaz @epicuserbot selam'
+CmdHelp('sendmsg').add_command(
+    'send', '.pmyaz <kullanıcı/grup/kanal/bot linki> <mesajınız>', 'Yazdığınız mesajı veya yanıtladığınız mesajı belirttiğiniz linke gönderir', '.send @epicuserbot selam'
 ).add()
