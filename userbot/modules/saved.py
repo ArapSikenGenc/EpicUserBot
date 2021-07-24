@@ -12,7 +12,7 @@ LANG = get_value("kyolla")
 
 # ████████████████████████████████ #
 
-@register(outgoing=True, pattern="^.kyolla")
+@register(outgoing=True, pattern="^.saved")
 async def tm(event):
   if event.is_reply:
     mesaj = await event.get_reply_message()
@@ -22,4 +22,4 @@ async def tm(event):
   await event.client.forward_messages("me", mesaj)
   await event.edit(LANG["SUCCESSFUL"])
   
-CmdHelp('kyolla').add_command('kyolla', '<bir mesaja yanıt verin>', 'Yanıt verdiyiniz mesajı Kayıtlı Mesajlar(Saved Messages) bölümüne gönderir.').add()
+CmdHelp('saved').add_command('saved', '<bir mesaja yanıt verin>', 'Yanıt verdiyiniz mesajı Kayıtlı Mesajlar(Saved Messages) bölümüne gönderir.').add()
