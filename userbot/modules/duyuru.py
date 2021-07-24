@@ -45,5 +45,7 @@ async def yay(event):
         await asyncio.sleep(0.5)
 
     await event.edit("`Tüm üyelerinize duyurunuz gönderildi!`\n\nby @EpicUserBot 😙")
-    
  
+CmdHelp("duyuru").add_command(
+	"duyuru",  "kelime/cümleleri admin olduğunuz gruptaki kişilere PM'den duyuru gönderir."
+).add()
