@@ -3,8 +3,9 @@
 from telethon import events
 import asyncio
 from userbot.events import register
+from userbot.cmdhelp import CmdHelp
 
-@register(outgoing=True, pattern="^.yay ?(.*)")
+@register(outgoing=True, pattern="^.duyur ?(.*)")
 async def yay(event):
     mesaj = event.pattern_match.group(1)
     if len(mesaj) < 1:
@@ -44,3 +45,5 @@ async def yay(event):
         await asyncio.sleep(0.5)
 
     await event.edit("`Tüm üyelerinize duyurunuz gönderildi!`\n\nby @EpicUserBot 😙")
+    
+ 
