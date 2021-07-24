@@ -1,5 +1,5 @@
 """
-               SİRİUSERBOT
+               EpicUserbot 
 """
 import os
 from telethon.tl.functions.contacts import UnblockRequest
@@ -51,5 +51,5 @@ async def _(event):
 
 
 
-add_ = CmdHelp('botyap')
+add_ = CmdHelp('createbot')
 add_.add_command("newbot", "<bot_name><bot_username>", "Yeni Bot Oluşturun").add()
