@@ -44,6 +44,7 @@
         },
 
         "admin": {
+	    "UNPINNED": "`Sbitlenen mesajlar başarıyla kaldırıldı.`",
             "PP_TOO_SMOL": "```Bu resim çok küçük, daha büyük bir resim kullanın.```",
             "PP_ERROR": "```Resim işlenirken bir hata oluştu.```",
             "NO_ADMIN": "`Yönetici değilim! ❌`",
