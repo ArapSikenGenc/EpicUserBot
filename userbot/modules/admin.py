@@ -1083,6 +1083,39 @@ async def pin(msg):
             f"GRUP: {msg.chat.title}(`{msg.chat_id}`)\n"
             f"LOUD: {not is_silent}")
 
+        
+@register(outgoing=True, pattern="^.unpin(?: |$)(.*)")
+async def unpin(msg):
+    """ .unpin komutu  grupta ki tüm sabiti kaldırır. """
+    
+    chat = await msg.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+   
+    if not admin and not creator:
+        await msg.edit(NO_ADMIN)
+        return
+
+    to_pin = msg.reply_to_msg_id
+
+
+
+    options = msg.pattern_match.group(1)
+
+    to_unpin = True
+
+    if options.lower() == "loud":
+        to_unpin = False
+
+    try:
+        await msg.client.unpin_message(msg.chat_id, to_pin)
+    except:
+        await msg.edit(NO_PERM)
+        return
+
+    await msg.edit(LANG['UNPINNED'])
+
 
 @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
 async def kick(usr):
