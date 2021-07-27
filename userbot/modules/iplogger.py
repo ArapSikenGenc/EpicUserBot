@@ -35,6 +35,6 @@ async def _(event):
         parse_mode="HTML", #editlene bilir
     )
 
-    CmdHelp("iplogger").add_command( #isteğe bağlı
+CmdHelp("iplogger").add_command( #isteğe bağlı
         "iplogger", "İP Adresi", " İp Adresi Hakkında Bilgiler Verir Termux ile uzun uğraşmanıza gerek kalmaz. @erdembey"
-    ).add()
+).add()
