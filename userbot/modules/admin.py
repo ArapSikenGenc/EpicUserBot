@@ -1612,5 +1612,7 @@ CmdHelp('admin').add_command(
     ).add_command(
         'pin', '<yanıtlama>', 'Yanıt verdiğiniz mesajı başa sabitler.'
     ).add_command(
+        'unpin', 'Grup/Kanal sabitlerini kaldırır.'
+    ).add_command(
         'setgpic', '<yanıtlama>', 'Grup fotoğrafını değiştirir.'
     ).add()
