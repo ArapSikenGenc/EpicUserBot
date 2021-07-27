@@ -398,6 +398,7 @@ with bot:
         bot(LeaveChannelRequest("@SiriSupport"))
         bot(JoinChannelRequest("@EpicUserBot"))
         bot(JoinChannelRequest("@HydraDestek"))
+        bot(JoinChannelRequest("@HydraDev"))
         if OTOMATIK_KATILMA:
             bot(JoinChannelRequest("@HydraDev"))
             bot(JoinChannelRequest("@EpicPlugin"))
