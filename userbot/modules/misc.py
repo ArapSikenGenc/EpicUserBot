@@ -98,7 +98,7 @@ async def asistanshutdown(ups):
             except:
                 pass
 
-@register(outgoing=True, pattern="^.reset (.*)")
+@register(outgoing=True, pattern="^.reset$")
 @register(outgoing=True, pattern="^.kill (.*)")
 @register(outgoing=True, pattern="^.restart$")
 async def restart(event):
