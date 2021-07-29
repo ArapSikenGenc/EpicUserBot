@@ -494,60 +494,6 @@ async def ban(bon):
             f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
             f"GRUP: {bon.chat.title}(`{bon.chat_id}`)")
 
-@register(outgoing=True, pattern="^.sban(?: |$)(.*)")
-@register(incoming=True, from_users=BRAIN_CHECKER[0], pattern="^.sban(?: |$)(.*)", disable_errors=True)
-async def ban(bon):
-    """ .ban komutu belirlenen kişiyi gruptan sessizce yasaklar """
-    # Yetki kontrolü
-    chat = await bon.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    if not admin and not creator:
-        await bon.edit(NO_ADMIN)
-        return
-
-    user, reason = await get_user_from_event(bon)
-    if user:
-        pass
-    else:
-        return
-
-    # Eğer kullanıcı sudo ise
-    if user.id in BRAIN_CHECKER or user.id in WHITELIST:
-        await bon.edit(
-            LANG['BRAIN']
-        )
-        return
-
-    # Hedefi yasaklamadan önce bi yoklayalım
-    try:
-        await bon.edit(LANG['BANNING'])
-    except:
-        await bon.reply(LANG['BANNING'])
-
-    try:
-        await bon.client(EditBannedRequest(bon.chat_id, user.id,
-                                           BANNED_RIGHTS))
-    except:
-        await bon.edit(NO_PERM)
-        return
-    # Spamcılar için
-    try:
-        reply = await bon.get_reply_message()
-        if reply:
-            await reply.delete()
-    except:
-        await bon.edit(
-            LANG['NO_PERM_BUT_BANNED'])
-        return
-
-    # Mesajı silin ve
-    # hiçbirşey olmamış gibi devam edin.     
-    await bon.delete()
-
-
-
 @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
 async def nothanos(unbon):
     """ .unban komutu belirlenen kişinin yasağını kaldırır """
@@ -673,92 +619,6 @@ async def mutmsg(spdr, user, reason, chat):
             BOTLOG_CHATID, "#MUTE\n"
             f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
             f"GRUP: {spdr.chat.title}(`{spdr.chat_id}`)")
-
-@register(outgoing=True, pattern="^.smute(?: |$)(.*)")
-@register(incoming=True, from_users=BRAIN_CHECKER[0], pattern="^.smute(?: |$)(.*)", disable_errors=True)
-async def sspider(spdr):
-    """
-    Bu fonksiyon temelde susturmaya yarar ama susturduğunxu sohbette söylemez.
-    """
-    # Fonksiyonun SQL modu altında çalışıp çalışmadığını kontrol et
-    try:
-        from userbot.modules.sql_helper.spam_mute_sql import mute
-    except:
-        await spdr.edit(NO_SQL)
-        return
-
-    # Yetki kontrolü
-    chat = await spdr.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    # Yönetici değil ise geri dön
-    if not admin and not creator:
-        await spdr.edit(NO_ADMIN)
-        return
-
-    user, reason = await get_user_from_event(spdr)
-    if user:
-        pass
-    else:
-        return
-
-    # Eğer kullanıcı sudo ise
-    if user.id in BRAIN_CHECKER or user.id in WHITELIST:
-        await spdr.edit(
-            LANG['BRAIN']
-        )
-        return
-
-    self_user = await spdr.client.get_me()
-
-    if user.id == self_user.id:
-        await spdr.edit(
-            LANG['NO_MUTE_ME'])
-        sleep(2)
-        return await spdr.delete()
-
-    if mute(spdr.chat_id, user.id) is False:
-        await spdr.edit(LANG['ALREADY_MUTED'])
-        sleep(2)
-        return await spdr.delete()
-    else:
-        try:
-            await spdr.client(
-                EditBannedRequest(spdr.chat_id, user.id, MUTE_RIGHTS))
-
-            await smutmsg(spdr, user, reason, chat)
-            sleep(1)
-            return await spdr.delete()
-        except UserAdminInvalidError:
-            await smutmsg(spdr, user, reason, chat)
-            sleep(1)
-            return await spdr.delete()
-        except:
-            await spdr.edit(LANG['WTF_MUTE'])
-            sleep(1)
-            return await spdr.delete()
-
-
-async def smutmsg(spdr, user, reason, chat):
-    # Fonksiyonun yapıldığını duyurun
-    SONMESAJ = PLUGIN_MESAJLAR['mute'].format(
-            id = user.id,
-            username = '@' + user.username if user.username else f"[{user.first_name}](tg://user?id={user.id})",
-            first_name = user.first_name,
-            last_name = '' if not user.last_name else user.last_name,
-            mention = f"[{user.first_name}](tg://user?id={user.id})",
-            date = datetime.datetime.strftime(datetime.datetime.now(), '%c'),
-            count = (chat.participants_count) if chat.participants_count else 'Bilinmiyor'
-        )
-    try:
-        if reason:
-            await spdr.edit(f"{SONMESAJ}\n{LANG['REASON']}: {reason}")
-        else:
-            await spdr.edit(f"{SONMESAJ}")
-    except:
-        pass
-
 
 @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
 async def unmoot(unmot):
@@ -1165,46 +1025,6 @@ async def kick(usr):
             f"KULLANICI: [{user.first_name}](tg://user?id={user.id})\n"
             f"GRUP: {usr.chat.title}(`{usr.chat_id}`)\n")
 
-@register(outgoing=True, pattern="^.skick(?: |$)(.*)")
-@register(incoming=True, from_users=BRAIN_CHECKER[0], pattern="^.skick(?: |$)(.*)", disable_errors=True)
-async def kick(usr):
-    """ .skick komutu belirlenen kişiyi sessizce gruptan çıkartır """
-    # Yetki kontrolü
-    chat = await usr.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    # Yönetici değil ise geri dön
-    if not admin and not creator:
-        await usr.edit(NO_ADMIN)
-        sleep(1)
-        await usr.delete()
-        return
-
-    user, reason = await get_user_from_event(usr)
-    if not user:
-        await usr.edit(LANG['NOT_FOUND'])
-        sleep(1)
-        await usr.delete()
-        return
-
-    # Eğer kullanıcı sudo ise
-    if user.id in BRAIN_CHECKER or user.id in WHITELIST:
-        await usr.edit(
-            LANG['BRAIN']
-        )
-        return
-
-    try:
-        await usr.client.kick_participant(usr.chat_id, user.id)
-        await sleep(.5)
-    except Exception as e:
-        await usr.edit(NO_PERM + f"\n{str(e)}")
-        return
-
-    await usr.delete()
-
-
 @register(outgoing=True, pattern="^.users ?(.*)")
 async def get_users(show):
     """ .users komutu girilen gruba ait kişileri listeler """
@@ -1570,49 +1390,45 @@ async def get_bots(show):
         remove("botlist.txt")
 # (LANG['']) "": ""
 CmdHelp('admin').add_command(
-        'promote', '<kullanıcı adı/yanıtlama> <özel isim (isteğe bağlı)>', 'Sohbetteki kişiye yönetici hakları sağlar.'
+        'promote', (LANG['PROMOTE1']), (LANG['PROMOTE2'])
     ).add_command(
-        'tagver', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişiyi yetki diye yalvarıyorsa ve vermeye pek gönlünüz yoksa bunu kullanın.'
+        'tagver', (LANG['TAGVER1']), (LANG['TAGVER2'])
     ).add_command(
-        'demote', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yönetici izinlerini iptal eder.'
+        'demote', (LANG['DEMOTE1']), (LANG['DEMOTE2'])
     ).add_command(
-        'ban', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Sohbetteki kişiyi susturur, yöneticilerde de çalışır.'
+        'ban', (LANG['BAN1']), (LANG['BAN2'])
     ).add_command(
-        'unban', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yasağını kaldırır.'
+        'unban', (LANG['UNBAN']), (LANG['UNBAN'])
     ).add_command(
-        'kick', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Gruptan belirttiğiniz kişiyi tekmeler.'
+        'kick', (LANG['KİCK1']), (LANG['KİCK2'])
     ).add_command(
-        'gmute', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Kişiyi yönetici olduğunuz tüm gruplarda susturur.'
+        'gmute', (LANG['GMUTE1']), (LANG['HMUTE2'])
     ).add_command(
-        'ungmute', '<kullanıcı adı/yanıtlama>', 'Kişiyi küresel olarak sessize alınanlar listesinden kaldırır.'
+        'ungmute', (LANG['UNGMUTE1']), (LANG['UNGMUTE2'])
     ).add_command(
-        'zombies', None, 'Bir gruptaki silinmiş hesapları arar. Gruptan silinen hesapları kaldırmak için .zombies clean komutunu kullanın.'
+        'zombies', None, (LANG['ZOMBİES1'])
     ).add_command(
-        'admins', None, 'Sohbet yöneticilerinin listesini alır.'
+        'admins', None, (LANG['ADMİNS1'])
     ).add_command(
-        'bots', None, 'Bir gruptaki silinmiş hesapları arar. Gruptan silinen hesapları kaldırmak için .zombies clean komutunu kullanın.'
+        'bots', None, (LANG['BOTS1'])
     ).add_command(
-        'users veya .users', '<kullanıcı adı> <kullanıcı adı/yanıtlama>', 'Sohbetteki tüm (veya sorgulanan) kullanıcıları alır.'
+        'users', (LANG['USER1']), (LANG['USER2'])
     ).add_command(
-        'setgppic', '<yanıtlanan resim>', 'Grubun resmini değiştirir.'
+        'warn', (LANG['WARN1']), (LANG['WARN2'])
     ).add_command(
-        'warn', '<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>', 'Belirttiğiniz kullanıcıyı uyarır.'
+        'unwarn', (LANG['UNWARN1']), (LANG['UNWARN2'])
     ).add_command(
-        'unwarn', '<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>', 'Belirttiğiniz kullanıcının uyarısını kaldırır.'
+        'usersdel', None, (LANG['USERSDEL'])
     ).add_command(
-        'warn', '<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>', 'Belirttiğiniz kullanıcıyı uyarır.'
+        'ekle', (LANG['EKLE1']), (LANG['EKLE2'])
     ).add_command(
-        'usersdel', None, 'Grup içerisinde silinen hesapları göstürür.'
+        'gban', (LANG['GBAN1']), (LANG['GBAN2'])
     ).add_command(
-        'ekle', '<kullanıcı ad(lar)ı>', 'Gruba üye ekler.'
+        'ungban', (LANG['UNGBAN1']), (LANG['UNGBAN2'])
     ).add_command(
-        'gban', '<kullanıcı adı/yanıtlama>', 'Kullanıcıyı küresel olarak yasaklar.'
+        'pin', (LANG['PİN1']), (LANG['PİN2'])
     ).add_command(
-        'ungban', '<kullanıcı adı/yanıtlama>', 'Kullanıcının küresel yasaklamasını kaldırır.'
+        'unpin', None, (LANG['UNPİN1'])
     ).add_command(
-        'pin', '<yanıtlama>', 'Yanıt verdiğiniz mesajı başa sabitler.'
-    ).add_command(
-        'unpin', None, 'Grup/Kanal sabitlerini kaldırır.'
-    ).add_command(
-        'setgpic', '<yanıtlama>', 'Grup fotoğrafını değiştirir.'
+        'setgpic', (LANG['SETGPİC1']), (LANG['SETGPİC2'])
     ).add()
