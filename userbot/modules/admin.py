@@ -1568,7 +1568,7 @@ async def get_bots(show):
             reply_to=show.id,
         )
         remove("botlist.txt")
-
+# (LANG['']) "": ""
 CmdHelp('admin').add_command(
         'promote', '<kullanıcı adı/yanıtlama> <özel isim (isteğe bağlı)>', 'Sohbetteki kişiye yönetici hakları sağlar.'
     ).add_command(
@@ -1612,7 +1612,7 @@ CmdHelp('admin').add_command(
     ).add_command(
         'pin', '<yanıtlama>', 'Yanıt verdiğiniz mesajı başa sabitler.'
     ).add_command(
-        'unpin', 'Grup/Kanal sabitlerini kaldırır.'
+        'unpin', None, 'Grup/Kanal sabitlerini kaldırır.'
     ).add_command(
         'setgpic', '<yanıtlama>', 'Grup fotoğrafını değiştirir.'
     ).add()
