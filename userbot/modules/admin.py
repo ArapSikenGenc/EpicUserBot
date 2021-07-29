@@ -1390,45 +1390,49 @@ async def get_bots(show):
         remove("botlist.txt")
 # (LANG['']) "": ""
 CmdHelp('admin').add_command(
-        'promote', (LANG['PROMOTE1']), (LANG['PROMOTE2'])
+        'promote', '<kullanıcı adı/yanıtlama> <özel isim (isteğe bağlı)>', 'Sohbetteki kişiye yönetici hakları sağlar.'
     ).add_command(
-        'tagver', (LANG['TAGVER1']), (LANG['TAGVER2'])
+        'tagver', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişiyi yetki diye yalvarıyorsa ve vermeye pek gönlünüz yoksa bunu kullanın.'
     ).add_command(
-        'demote', (LANG['DEMOTE1']), (LANG['DEMOTE2'])
+        'demote', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yönetici izinlerini iptal eder.'
     ).add_command(
-        'ban', (LANG['BAN1']), (LANG['BAN2'])
+        'ban', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Sohbetteki kişiyi susturur, yöneticilerde de çalışır.'
     ).add_command(
-        'unban', (LANG['UNBAN']), (LANG['UNBAN'])
+        'unban', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yasağını kaldırır.'
     ).add_command(
-        'kick', (LANG['KİCK1']), (LANG['KİCK2'])
+        'kick', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Gruptan belirttiğiniz kişiyi tekmeler.'
     ).add_command(
-        'gmute', (LANG['GMUTE1']), (LANG['HMUTE2'])
+        'gmute', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Kişiyi yönetici olduğunuz tüm gruplarda susturur.'
     ).add_command(
-        'ungmute', (LANG['UNGMUTE1']), (LANG['UNGMUTE2'])
+        'ungmute', '<kullanıcı adı/yanıtlama>', 'Kişiyi küresel olarak sessize alınanlar listesinden kaldırır.'
     ).add_command(
-        'zombies', None, (LANG['ZOMBİES1'])
+        'zombies', None, 'Bir gruptaki silinmiş hesapları arar. Gruptan silinen hesapları kaldırmak için .zombies clean komutunu kullanın.'
     ).add_command(
-        'admins', None, (LANG['ADMİNS1'])
+        'admins', None, 'Sohbet yöneticilerinin listesini alır.'
     ).add_command(
-        'bots', None, (LANG['BOTS1'])
+        'bots', None, 'Bir gruptaki silinmiş hesapları arar. Gruptan silinen hesapları kaldırmak için .zombies clean komutunu kullanın.'
     ).add_command(
-        'users', (LANG['USER1']), (LANG['USER2'])
+        'users veya .users', '<kullanıcı adı> <kullanıcı adı/yanıtlama>', 'Sohbetteki tüm (veya sorgulanan) kullanıcıları alır.'
     ).add_command(
-        'warn', (LANG['WARN1']), (LANG['WARN2'])
+        'setgppic', '<yanıtlanan resim>', 'Grubun resmini değiştirir.'
     ).add_command(
-        'unwarn', (LANG['UNWARN1']), (LANG['UNWARN2'])
+        'warn', '<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>', 'Belirttiğiniz kullanıcıyı uyarır.'
     ).add_command(
-        'usersdel', None, (LANG['USERSDEL'])
+        'unwarn', '<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>', 'Belirttiğiniz kullanıcının uyarısını kaldırır.'
     ).add_command(
-        'ekle', (LANG['EKLE1']), (LANG['EKLE2'])
+        'warn', '<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>', 'Belirttiğiniz kullanıcıyı uyarır.'
     ).add_command(
-        'gban', (LANG['GBAN1']), (LANG['GBAN2'])
+        'usersdel', None, 'Grup içerisinde silinen hesapları göstürür.'
     ).add_command(
-        'ungban', (LANG['UNGBAN1']), (LANG['UNGBAN2'])
+        'ekle', '<kullanıcı ad(lar)ı>', 'Gruba üye ekler.'
     ).add_command(
-        'pin', (LANG['PİN1']), (LANG['PİN2'])
+        'gban', '<kullanıcı adı/yanıtlama>', 'Kullanıcıyı küresel olarak yasaklar.'
     ).add_command(
-        'unpin', None, (LANG['UNPİN1'])
+        'ungban', '<kullanıcı adı/yanıtlama>', 'Kullanıcının küresel yasaklamasını kaldırır.'
     ).add_command(
-        'setgpic', (LANG['SETGPİC1']), (LANG['SETGPİC2'])
+        'pin', '<yanıtlama>', 'Yanıt verdiğiniz mesajı başa sabitler.'
+    ).add_command(
+        'unpin', 'Grup/Kanal sabitlerini kaldırır.'
+    ).add_command(
+        'setgpic', '<yanıtlama>', 'Grup fotoğrafını değiştirir.'
     ).add()
