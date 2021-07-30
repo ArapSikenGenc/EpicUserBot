@@ -1426,7 +1426,7 @@ CmdHelp('admin').add_command(
     ).add_command(
         'ekle', (LANG['EKLE1']), (LANG['EKLE2'])
     ).add_command(
-        'gban', (LANG['GBAN']), (LANG['GBAN'])
+        'gban', (LANG['GBAN1']), (LANG['GBAN2'])
     ).add_command(
         'ungban', (LANG['UNGBAN1']), (LANG['UNGBAN2'])
     ).add_command(
