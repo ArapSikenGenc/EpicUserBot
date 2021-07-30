@@ -9,7 +9,7 @@ from asyncio import sleep
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_val("all")
+LANG = get_value("all")
 
 # ████████████████████████████████ # 
 
