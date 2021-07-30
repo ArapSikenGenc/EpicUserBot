@@ -56,11 +56,10 @@ async def _(q):
 		await sleep(1.74)
 
 
-CmdHelp("all").add_command(
-	"all", "<sebep>", "Gruptaki Üyeleri Etiketler.. En Fazla 3000 Kişi (Flood Wait Nedeniyle)"
+CmdHelp('all').add_command(
+	'all', (LANG['ALL1']), (LANG['ALL2'])
 	).add_command(
-	"alladmin", "<sebep>", "Gruptaki Adminleri Etiketler "
+	"alladmin", (LANG['ALLADMİN1']), (LANG['ALLADMİN2'])
         ).add_command(
-        "kill all", None, "Etiketleme işlemini durdurur."
+        "kill all", None, (LANG['KİLLALL1'])
 ).add()
-
