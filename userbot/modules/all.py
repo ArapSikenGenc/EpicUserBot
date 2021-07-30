@@ -6,6 +6,13 @@ from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 from asyncio import sleep
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_val("all")
+
+# ████████████████████████████████ # 
+
 @register(outgoing=True, pattern="^.all(?: |$)(.*)",groups_only=True)
 async def _(q):
 	if q.fwd_from:
