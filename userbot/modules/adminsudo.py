@@ -885,23 +885,23 @@ async def tagver(promt):
 
 
 CmdHelp('sadmin').add_command(
-        'spromote', '<kullanıcı adı/yanıtlama> <özel isim (isteğe bağlı)>', 'Sohbetteki kişiye yönetici hakları sağlar.'
+        'spromote', (LANG['SPROMOTE1']), (LANG['SPROMOTE2'])
     ).add_command(
-        'stagver', '<kullanıcı adı/yanıtlama> <özel isim (isteğe bağlı)>', 'Sohbetteki kişiye kısıtlı yönetici hakları sağlar.'
+        'stagver', (LANG['STAGVER1']), (LANG['STAGVER2'])
     ).add_command(
-        'sdemote', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yönetici izinlerini iptal eder.'
+        'sdemote', (LANG['SDEMOTE1']), (LANG['SDEMOTE'])
     ).add_command(
-        'sban', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Sohbetteki kişiyi susturur, yöneticilerde de çalışır.'
+        'sban', (LANG['SBAN1']), (LANG['SBAN2'])
     ).add_command(
-        'sunban', '<kullanıcı adı/yanıtlama>', 'Sohbetteki kişinin yasağını kaldırır.'
+        'sunban', (LANG['SUNBAN1']), (LANG['SUNBAN2'])
     ).add_command(
-        'skick', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Gruptan belirttiğiniz kişiyi tekmeler.'
+        'skick', (LANG['SKİCK1']), (LANG['SKİCK2'])
     ).add_command(
-        'sgmute', '<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>', 'Kişiyi yönetici olduğunuz tüm gruplarda susturur.'
+        'sgmute', (LANG['SGMUTE1']), (LANG['SGMUTE2'])
     ).add_command(
-        'sungmute', '<kullanıcı adı/yanıtlama>', 'Kişiyi küresel olarak sessize alınanlar listesinden kaldırır.'
+        'sungmute', (LANG['SUNGMUTE1']), (LANG['SUNGMUTE2'])
     ).add_command(
-        'sgban', '<kullanıcı adı/yanıtlama>', 'Kullanıcıyı küresel olarak yasaklar.'
+        'sgban', (LANG['SGBAN1']), (LANG['SGBAN2'])
     ).add_command(
-        'sungban', '<kullanıcı adı/yanıtlama>', 'Kullanıcının küresel yasaklamasını kaldırır.'
+        'sungban', (LANG['SUNGBAN1']), (LANG['SUNGBAN2'])
     ).add()
