@@ -165,7 +165,7 @@
             "SMUTE1": "'<kullanıcı adı/yanıtlama>'",
             "SUNMUTE1": "'<kullanıcı adı/yanıtlama>'",
             "SMUTE2": "'Gruptan belirttiğiniz kişiye muteler'",
-            "SUMUTE2": "'Gruptan belirttiğiniz kişinin mutesini açar.'"
+            "SUNMUTE2": "'Gruptan belirttiğiniz kişinin mutesini açar.'"
         },
 
         "afk": {
