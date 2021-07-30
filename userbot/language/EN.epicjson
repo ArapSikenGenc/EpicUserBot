@@ -111,7 +111,7 @@
             "MUTE1": "'<kullanıcı adı/yanıtlama>'",
             "UNMUTE1": "'<kullanıcı adı/yanıtlama>'",
             "MUTE2": "'Gruptan belirttiğiniz kişiye muteler'",
-            "UMUTE2": "'Gruptan belirttiğiniz kişinin mutesini açar.'",
+            "UNMUTE2": "'Gruptan belirttiğiniz kişinin mutesini açar.'",
             "UNBAN1": "'<kullanıcı adı/yanıtlama>'",
             "UNBAN2": "'Sohbetteki kişinin yasağını kaldırır.'",
             "KİCK1": "'<kullanıcı adı/yanıtlama> <nedeni (isteğe bağlı)>'",
