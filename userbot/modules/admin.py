@@ -1396,7 +1396,11 @@ CmdHelp('admin').add_command(
     ).add_command(
         'demote', (LANG['DEMOTE1']), (LANG['DEMOTE'])
     ).add_command(
-        'ban', (LANG['BAN1']), (LANG['BAN1'])
+        'mute', (LANG['MUTE1']), (LANG['MUTE2'])
+    ).add_command(
+        'unmute', (LANG['UNMUTE1']), (LANG['UNMUTE2'])
+    ).add_command(
+        'ban', (LANG['BAN1']), (LANG['BAN2'])
     ).add_command(
         'unban', (LANG['UNBAN1']), (LANG['UNBAN2'])
     ).add_command(
