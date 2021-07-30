@@ -889,7 +889,7 @@ CmdHelp('sadmin').add_command(
     ).add_command(
         'stagver', (LANG['STAGVER1']), (LANG['STAGVER2'])
     ).add_command(
-        'sdemote', (LANG['SDEMOTE1']), (LANG['SDEMOTE'])
+        'sdemote', (LANG['SDEMOTE1']), (LANG['SDEMOTE2'])
     ).add_command(
         'sban', (LANG['SBAN1']), (LANG['SBAN2'])
     ).add_command(
