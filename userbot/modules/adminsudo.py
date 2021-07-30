@@ -893,6 +893,10 @@ CmdHelp('sadmin').add_command(
     ).add_command(
         'sban', (LANG['SBAN1']), (LANG['SBAN2'])
     ).add_command(
+        'smute', (LANG['SMUTE1']), (LANG['SMUTE2'])
+    ).add_command(
+        'sunmute', (LANG['SUNMUTE1']), (LANG['SUNMUTE2'])
+    ).add_command(
         'sunban', (LANG['SUNBAN1']), (LANG['SUNBAN2'])
     ).add_command(
         'skick', (LANG['SKİCK1']), (LANG['SKİCK2'])
