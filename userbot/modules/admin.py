@@ -1394,7 +1394,7 @@ CmdHelp('admin').add_command(
     ).add_command(
         'tagver', (LANG['TAGVER1']), (LANG['TAGVER2'])
     ).add_command(
-        'demote', (LANG['DEMOTE1']), (LANG['DEMOTE'])
+        'demote', (LANG['DEMOTE1']), (LANG['DEMOTE2'])
     ).add_command(
         'mute', (LANG['MUTE1']), (LANG['MUTE2'])
     ).add_command(
