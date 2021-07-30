@@ -197,6 +197,14 @@
         "botfather": {
             "ERROR": "`⛔ Please Provide Missing Information for Epic to Create a Bot!`"
         },
+        
+        "all": {
+            "ALL1": "'<sebep>'",
+            "ALL2": "'Gruptaki Üyeleri Etiketler.. En Fazla 3000 Kişi (Flood Wait Nedeniyle)'",
+            "ALLADMİN1": "'<sebep>'",
+            "ALLADMİN2": "'Gruptaki Adminleri Etiketler'",
+            "KİLLALL1": "'Etiketleme işlemini durdurur.'"
+        },
 
         "combot": {
             "ERR": "`👨🏻‍🔧 Actual Error:`",
