@@ -124,7 +124,7 @@
             "UNGMUTE1": "'<kullanıcı adı/yanıtlama>'",
             "UNGMUTE2": "'Kişiyi küresel olarak sessize alınanlar listesinden kaldırır.'",
             "ZOMBİES1": "'Bir gruptaki silinmiş hesapları arar. Gruptan silinen hesapları kaldırmak için .zombies clean komutunu kullanın.'",
-            "AMİNS1": "'Sohbet yöneticilerinin listesini alır.'",
+            "ADMİNS1": "'Sohbet yöneticilerinin listesini alır.'",
             "BOTS1": "'Bir gruptaki silinmiş hesapları arar. Gruptan silinen hesapları kaldırmak için .zombies clean komutunu kullanın.'",
             "USERS1": "'<kullanıcı adı> <kullanıcı adı/yanıtlama>'",
             "USERS2": "'Sohbetteki tüm (veya sorgulanan) kullanıcıları alır.'",
