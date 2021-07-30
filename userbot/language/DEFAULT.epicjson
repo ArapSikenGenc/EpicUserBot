@@ -132,7 +132,7 @@
             "WARN2": "'Belirttiğiniz kullanıcıyı uyarır.'",
             "UNWARN1": "'<kullanıcı adı/yanıtlamma> <sebep (isteğe bağlı>'",
             "UNWARN2": "'Belirttiğiniz kullanıcının uyarısını kaldırır.'",
-            "USERSDEL": "'Grup içerisinde silinen hesapları gösterir.'",
+            "USERSDEL1": "'Grup içerisinde silinen hesapları gösterir.'",
             "EKLE1": "'<kullanıcı ad(lar)ı>'",
             "EKLE2": "'Gruba üye ekler.'",
             "GBAN1": "'<kullanıcı adı/yanıtlama>'",
