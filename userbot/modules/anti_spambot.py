@@ -8,7 +8,7 @@
 #
 
 ''' Gruba katılan spamcıları banlamada yardımcı olan modüldür. '''
-
+from userbot.cmdhelp import CmdHelp
 from asyncio import sleep
 from requests import get
 
