@@ -1017,7 +1017,7 @@ CmdHelp('memes').add_command(
     'mock', LANG['ME37'], LANG['ME38']
 ).add_command(
     'clap', None, LANG['ME39']
-    ).add_command(
+).add_command(
     'f', LANG['ME41'], 'F'
 ).add_command(
     'type', LANG['ME42'], LANG['ME43']
