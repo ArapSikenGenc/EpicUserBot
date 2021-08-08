@@ -6,6 +6,13 @@ from telethon.tl.functions.users import GetFullUserRequest
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
+
 chat = "@MissRose_bot"
 
 @register(outgoing=True, pattern="^.fstat ?(.*)")

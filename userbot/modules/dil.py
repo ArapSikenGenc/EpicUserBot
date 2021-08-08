@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the  GPL-3.0 License;
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,13 @@ from re import search
 from json import loads, JSONDecodeError
 from userbot.language import LANGUAGE_JSON
 from os import remove
+
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("dil")
+
+# ████████████████████████████████ #
 
 @register(outgoing=True, pattern="^.dil ?(.*)")
 @register(outgoing=True, pattern="^.lang ?(.*)")
@@ -76,9 +83,9 @@ async def dil(event):
         )
 
 CmdHelp('dil').add_command(
-    'dil', None, 'Yüklediğiniz dil hakkında bilgi verir.'
+    'dil', None, LANG['DİL1']
 ).add_command(
-    'dil bilgi', None, 'Yanıt verdiğiniz dil dosyası hakkında bilgi verir.'
+    'dil bilgi', None, LANG['DİL2']
 ).add_command(
-    'dil yükle', None, 'Yanıt verdiğiniz dil dosyasını yükler.'
+    'dil yükle', None, LANG['DİL3']
 ).add()

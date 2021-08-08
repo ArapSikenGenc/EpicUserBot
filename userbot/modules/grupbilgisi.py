@@ -11,6 +11,13 @@ from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipant
 from telethon.utils import get_input_location
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("gbilgi")
+
+# ████████████████████████████████ #
+
 # FORKED FROM https://github.com/alcyper/alcyper #
 @register(outgoing=True, pattern="^.grupbilgisi(?: |$)(.*)")
 async def info(event):
@@ -192,4 +199,4 @@ async def fetch_info(chat, event):
         caption += f"Açıklama: \n<code>{description}</code>\n"
     return caption    
 
-CmdHelp('grupbilgisi').add_command('grupbilgisi', None, 'Grup hakkında bilgi verir.').add()
+CmdHelp('gbilgi').add_command('grupbilgisi', None, LANG['GBİ1']).add()

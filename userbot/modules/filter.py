@@ -284,13 +284,13 @@ async def filters_active(event):
     await event.edit(transact)
 
 CmdHelp('filter').add_command(
-    'filters', None, 'Bir sohbetteki tüm userbot filtrelerini listeler.'
+    'filters', None, LANG['FLTR1']
 ).add_command(
-    'filter', '<filtrelenecek kelime> <cevaplanacak metin> ya da bir mesajı .filter <filtrelenecek kelime>', 'Filtre ekler. Ne zaman eklediğiniz kelime/cümle yazılırsa bot cevap verir.', '.filter "merhaba" "meraba"'
+    'filter', LANG['FLTR2'], LANG['FLTR3'], LANG['FLTR4']
 ).add_command(
-    'stop', '<filtre>', 'Seçilen filtreyi durdurur.'
+    'stop', LANG['FLTR5'], LANG['FLTR6']
 ).add_command(
-    'genelfilter', '<filtrelenecek kelime> <cevaplanacak metin> ya da bir mesajı .genelfilter <filtrelenecek kelime>', 'Genel filtre ekler. Tüm gruplarda çalışır.'
+    'genelfilter', LANG['FLTR7'], LANG['FLTR8']
 ).add_command(
-    '.genelstop', '<filtre>', 'Seçilen genel filtreyi durdurur.'
+    '.genelstop', LANG['FLTR9'], LANG['FLTR0']
 ).add()

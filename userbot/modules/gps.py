@@ -4,6 +4,13 @@ from telethon.tl import types
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("gps")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern=r"^.gps (.*)")
 async def gps(event):
     if event.fwd_from:
@@ -32,5 +39,4 @@ async def gps(event):
     else:
         await event.edit("`Özür Dilerim Bu Bölgeyi Bulamadım Şey Hata Yapmış Olabilirsin :(`")
 
-Help = CmdHelp('gps')
-Help.add_command('gps <yer>',  None, 'Belirttiğiniz Bölgenin Konumunu Gösterir.').add()
+CmdHelp('gps').add_command('gps', LANG['GPS1'], LANG['GPS2']).add()

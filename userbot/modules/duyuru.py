@@ -5,6 +5,13 @@ import asyncio
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("duyuru")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern="^.duyur ?(.*)")
 async def yay(event):
     mesaj = event.pattern_match.group(1)
@@ -46,6 +53,6 @@ async def yay(event):
 
     await event.edit("`Tüm üyelerinize duyurunuz gönderildi!`\n\nby @EpicUserBot 😙")
  
-CmdHelp("duyuru").add_command(
-	"duyuru",  "kelime/cümleleri admin olduğunuz gruptaki kişilere PM'den duyuru gönderir."
+CmdHelp('duyuru').add_command(
+	'duyuru', LANG['DUYURU1']
 ).add()

@@ -26,6 +26,13 @@ import httplib2
 from userbot.modules.upload_download import progress, humanbytes
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("gdrive")
+
+# ████████████████████████████████ #
+
 # Json dosyasının yolu, script ile aynı dizinde bulunmalıdır.
 G_DRIVE_TOKEN_FILE = "./auth_token.txt"
 # API konsolundan kişisel bilgilerinizi kopyalar
@@ -440,13 +447,13 @@ async def gdrive_search(http, search_query):
     return msg
 
 CmdHelp('gdrive').add_command(
-    'gdrive', '<dosya yolu / yanıtlayarak / URL|dosya-adı>', 'Belirtilen dosyayı Google Drive\'a uploadlar.'
+    'gdrive', LANG['GD1'], LANG['GD2']
 ).add_command(
-    'gsetf', '<GDrive Klasör URL\'si>', 'Yeni dosyaların upladlanacağı klasörü belirler.'
+    'gsetf', LANG['GD3'], LANG['GD4']
 ).add_command(
-    'gsetclear', None, 'Halihazırda kullanılan upload dizinini gösterir.'
+    'gsetclear', None, LANG['GD5']
 ).add_command(
-    'list', '<sorgu>', 'Google Drive\'da bulunan dosyalar ve dizinlerde arama yapar.'
+    'list', LANG['GD6'], LANG['GD7']
 ).add_command(
-    'ggd', '<sunucudaki-klasör-yolu>', 'Belirtilen dizindeki tüm dosyaları Google Drive\'a uploadlar.'
+    'ggd', LANG['GD8'], LANG['GD9']
 ).add()

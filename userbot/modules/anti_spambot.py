@@ -17,6 +17,12 @@ from telethon.tl.types import ChannelParticipantsAdmins, Message
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, ANTI_SPAMBOT, ANTI_SPAMBOT_SHOUT, BLACKLIST_CHAT, bot
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("antispam")
+
+# ████████████████████████████████ #
 
 @bot.on(ChatAction)
 async def anti_spambot(welcm):
@@ -199,10 +205,6 @@ async def anti_spambot(welcm):
     except ValueError:
         pass
 
-
-CMD_HELP.update({
-    'anti_spambot':
-    "Kullanım: Bu modül config.env dosyasında ya da env değeri ile etkinleştirilmişse,\
-        \neğer bu spamcılar UserBot'un anti-spam algoritmasıyla eşleşiyorsa, \
-        \nbu modül gruptaki spamcıları gruptan yasaklar (ya da adminlere bilgi verir)."
-})
+CmdHelp('anti_spambot').add_command(
+	'---', None, (LANG['ANTİSPAM1'])
+).add()

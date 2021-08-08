@@ -7,6 +7,13 @@ import urllib.request
 from userbot.events import register #editlene bilir
 from userbot.cmdhelp import CmdHelp #isteğe bağlı
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("iplogger")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern=".iplogger (.*)") #editlene bilir
 async def _(event):
     if event.fwd_from:
@@ -35,6 +42,4 @@ async def _(event):
         parse_mode="HTML", #editlene bilir
     )
 
-CmdHelp("iplogger").add_command( #isteğe bağlı
-        "iplogger", "İP Adresi", " İp Adresi Hakkında Bilgiler Verir Termux ile uzun uğraşmanıza gerek kalmaz. @erdembey"
-).add()
+CmdHelp("iplogger").add_command('iplogger', LANG['İP1'], LANG['İP2']).add()

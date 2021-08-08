@@ -177,24 +177,18 @@ async def sedNinjaToggle(event):
         await sleep(1)
         await event.delete()
 
-
-CMD_HELP.update({
-    "chat":
-    ".chatid\
-\nKullanım: Belirlenen grubun ID numarasını verir\
-\n\n.id\
-\nKullanım: Belirlenen kullanıcının ID numarasını verir.\
-\n\n.log\
-\nKullanım: Yanıtlanan mesajı günlük grubuna gönderir.\
-\n\n.kickme\
-\nKullanım: Belirlenen gruptan ayrılmanızı sağlar.\
-\n\n.unmutechat\
-\nKullanım: Susturulmuş bir sohbetin sesini açar.\
-\n\n.mutechat\
-\nKullanım: Belirlenen grubu susturur.\
-\n\n.link <kullanıcı adı/kullanıcı id> : <isteğe bağlı metin> (veya) herhangi birinin mesajına .link ile yanıt vererek <isteğe bağlı metin>\
-\nKullanım: İsteğe bağlı özel metin ile kullanıcının profiline kalıcı bir bağlantı oluşturun.\
-\n\n.regexninja on/off\
-\nKullanım: Küresel olarak regex ninja modülünü etkinleştirir / devre dışı bırakır.\
-\nRegex ninja modülü regex bot tarfından tetiklenen mesajları silmek için yardımcı olur."
-})
+CmdHelp('chat').add_command(
+    'chatid', LANG['CHAT1']
+).add_command(
+    'id', LANG['CHAT2']
+).add_command(
+    'kickme', LANG['CHAT4']
+).add_command(
+    'log', LANG['CHAT3']
+).add_command(
+    'unmutechat', LANG['CHAT5']
+).add_command(
+    'mutechat', LANG['CHAT6']
+).add_command(
+    'link', LANG['CHAT7'], LANG['CHAT8']
+).add()

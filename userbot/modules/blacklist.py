@@ -115,9 +115,9 @@ async def on_delete_blacklist(rmbl):
     await rmbl.edit(LANG['REMOVED'])
     
 CmdHelp('blacklist').add_command(
-    'listblacklist', None, 'Bir sohbetteki etkin kara listeyi listeler.'
+    'listblacklist', None, LANG['BL1']
 ).add_command(
-    'addblacklist', '<kelime(ler)/yanıt>', 'İletiyi \'kara liste anahtar kelimesine\' kaydeder. \'Kara liste anahtar kelimesinden\' bahsedildiğinde bot iletiyi siler.', '.addblacklist amk'
+    'addblacklist', LANG['BL2'], LANG['BL3'], LANG['BL4']
 ).add_command(
-    'rmblacklist', '<kelime>', 'Belirtilen kara listeyi durdurur.', '.rmblacklist amk'
-).add_warning('Bu işlemleri gerçekleştirmek için yönetici olmalı ve **Mesaj Silme** yetkiniz olmalı.').add()
+    'rmblacklist', LANG['BL5'], LANG['BL6'], LANG['BL7']
+).add_warning(LANG['BL8']).add()

@@ -1,10 +1,10 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the  GPL-3.0 License;
 # you may not use this file except in compliance with the License.
 #
 
-# SEpicUserBot - ErdemBey - Midy
+# EpicUserBot - ErdemBey - Midy
 
 # @NaytSeyd tarafından portlanmıştır.
 # @frknkrc44 tarafından düzenlenmiştir.
@@ -141,11 +141,10 @@ async def get_font_file(client, channel_id):
     return await client.download_media(font_file_message)
 
 CmdHelp('autopp').add_command(
-    'autopp', None, 'Bu komut belirlediğiniz fotoğrafı profil resmi yapar ve bir saat ekler. Bu saat her dakika değişir.', '.autopp'
+    'autopp', None, (LANG['AUTOPP1']), (LANG['AUTOPP2'])
 ).add()
 
 CmdHelp('autovideo').add_command(
     'autopp', None, 
-    'Bu komut yanıt verdiğiniz videoyu profil video yapar ve bir saat veya tarih veya istediğiniz bir yazı ekler. Bu saat her dakika değişir. nEğer botun kendi yazısını kullanmak istiyorsanız ekstradan bir şey yazmayın. Kendi yazınızı eklemek istiyorsanız .autovideo yazı şeklinde kullanın. ',
-    '.autovideo ahan saat $saat bu da tarih $tarih'
+    (LANG['AUTOPP3']), (LANG['AUTOPP4'])
 ).add()

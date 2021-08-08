@@ -6,13 +6,6 @@ from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 from asyncio import sleep
 
-# ██████ LANGUAGE CONSTANTS ██████ #
-
-from userbot.language import get_value
-LANG = get_value("all")
-
-# ████████████████████████████████ # 
-
 @register(outgoing=True, pattern="^.all(?: |$)(.*)",groups_only=True)
 async def _(q):
 	if q.fwd_from:
@@ -60,6 +53,7 @@ CmdHelp('all').add_command(
 	'all', (LANG['ALL1']), (LANG['ALL2'])
 	).add_command(
 	"alladmin", (LANG['ALLADMİN1']), (LANG['ALLADMİN2'])
-        ).add_command(
-        "kill all", None, (LANG['KİLLALL1'])
+    ).add_command(
+    "kill all", None, (LANG['KİLLALL1'])
 ).add()
+

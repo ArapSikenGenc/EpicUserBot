@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the  GPL-3.0 License;
 # you may not use this file except in compliance with the License.
@@ -70,12 +70,6 @@ async def degistir(event):
         else:
             await event.edit(LANG['NOT_FOUND'] + ":`afk/alive/pm/kickme/dızcı/ban/mute/approve/disapprove/block`")
 
-CmdHelp('degistir').add_command(
-    'değiştir', '<modul> <mesaj/yanıt>', 'Değiştir, bottaki plugin-mesajlarını değiştirmenize yarar. Eğer mesaj yazmazsanız Plugin mesajını orijinal haline döndürür.', '.değiştir afk \"Şu an burda değilim... Belki hiç gelmem\"'
-).add_info(
-    '**Desteklenen Pluginler:** `afk/alive/pm/kickme/dızcı/cv/ban/mute/approve/disapprove/block`\n**Alive Değişkenleri:** `{plugin}, {telethon}, {epic}, {python}, {epicsahip}`\n\
-**Ban/Mute Değişkenleri:** `{id}, {username}, {first_name}, {last_name}, {mention}, {date}, {count}`\n\
-**AFK Değişkenleri:** `{username}, {mention}, {first_name}, {last_name}, {last_seen_seconds}, {last_seen}, {last_seen_long}`\n\
-**PMpermit Değişkenler(pm, block, approve, disapprove):** `{id}, {username}, {mention}, {first_name}, {last_name}`\
-**Kickme Değişkenleri:** `{title}`'
-).add()
+CmdHelp('de[ğg]i[sş]tir').add_command(
+    'değiştir', LANG['DGT1'], LANG['DGT2'], LANG['DGT3']
+).add_info(LANG['DGT4']).add()

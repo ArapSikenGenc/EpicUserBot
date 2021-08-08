@@ -226,9 +226,9 @@ async def lastlog(lstlog):
         await lstlog.edit(LFM_LOG_ERR)
 
 CmdHelp('lastfm').add_command(
-    'lastfm', None, 'Şu anlık oynatılan parça ya da en son oynatılan parça gösterilir.'
+    'lastfm', None, LANG['LS1']
 ).add_command(
-    'lastbio', '<on/off>', 'last.fm\'deki şu an oynatılan parça gösterimi etkinleştirilir/devre dışı bırakılır.'
+    'lastbio', LANG['LS2'], LANG['LS13']
 ).add_command(
-    'lastlog', '<on/off>', 'last.fm biyografi loglamasını etkinleştirir/devre dışı bırakır.'
+    'lastlog', LANG['LS2'], LANG['LS4']
 ).add()

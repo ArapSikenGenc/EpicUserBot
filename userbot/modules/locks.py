@@ -197,20 +197,4 @@ async def rem_locks(event):
             f"{LANG['INVALID_AUTHORITY']} {str(e)}")
         return
 
-
-CMD_HELP.update({
-    "locks":
-    ".lock <kilitlenecek medya tipi> veya .unlock <kilitlenecek medya tipi>\
-\nKullanım: Sohbetteki birtakım şeyleri engelleyebilmeni sağlar. (sticker atmak, oyun oynamak vs.)\
-[Not: Yönetici hakları gerektirir!]\
-\n\nKilitleyebileceğin ve kilidini açabileceklerin şunlardır: \
-\n`all, msg, media, sticker, gif, game, inline, poll, invite, pin, info`"
-})
-
-CmdHelp('locks').add_command(
-    'lock', '<kilitlenecek medya tipi> veya .unlock <kilitlenecek medya tipi>', 'Sohbetteki birtakım şeyleri engelleyebilmeni sağlar. (sticker atmak, oyun oynamak vs.)'
-).add_info(
-    'Kilitleyebileceğin ve kilidini açabileceklerin şunlardır: all, msg, media, sticker, gif, game, inline, poll, invite, pin, info'
-).add_warning(
-    'Yönetici hakları gerektirir!'
-).add()
+CmdHelp('locks').add_command('lock', LANG['LO4'], LANG['LO4']).add_info(LANG['LO4']).add_warning(LANG['LO4']).add()

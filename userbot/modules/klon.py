@@ -154,7 +154,7 @@ async def get_full_user(event):
             except Exception as e:
                 return None, e
 
-CmdHelp('klon').add_command('klon','<mesajı yanıtlayarak>','Mesajına yanıt verdiğiniz kişinin klonu olursunuz.','klon'
-).add_command('revert',None,'Klondan sonra hesabınızın eski haline dönmesi için :p','revert'
-).add_warning('Herokuda DEFAULT_NAME değişkenin tanımlı olması lazım. Bu ne demek bilmiyorsanız herhangi bir sohbete `.revert` yazın.'
+CmdHelp('klon').add_command('klon', LANG['K1'], LANG['K2']
+).add_command('revert', None, LANG['K3']
+).add_warning(LANG['K4']
 ).add_info('🎆 Thx to @erdembey1').add()

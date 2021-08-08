@@ -198,9 +198,9 @@ async def terminal_runner(term):
         )
 
 CmdHelp('evaluators').add_command(
-    'eval', '<işlem>', 'Mini ifadeleri değerlendirin.', 'eval 2+3'
+    'eval', LANG['EVA1'], LANG['EVA2'], LANG['EVA3']
 ).add_command(
-    'exec', '<python kodu>', 'Küçük python komutları yürütün.', 'exec print(\"EpicUserbottan Selamlar!\")'
+    'exec', LANG['EVA4'], LANG['EVA5'], LANG['EVA6']
 ).add_command(
-    'term', '<işlem>', 'Sunucunuzda bash komutlarını ve komut dosyalarını çalıştırın.', 'term ls'
+    'term', LANG['EVA1'], LANG['EVA7'], LANG['EVA8']
 ).add()

@@ -3,6 +3,13 @@
 from userbot.cmdhelp import CmdHelp
 from userbot.events import register
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("fontlar")
+
+# ████████████████████████████████ #
+
 normiefont = [
     "a",
     "b",
@@ -633,29 +640,29 @@ async def fontz(event):
 
 
 CmdHelp('fontlar').add_command(
-    '千ㄖ几ㄒ 1', None, ' .font1 yazı'
+    '千ㄖ几ㄒ 1', None, '.font1'
 ).add_command(
-    '🅕🅞🅝🅣 2', None, ' .font2 yazı'
+    '🅕🅞🅝🅣 2', None, '.font2'
 ).add_command(
-    '𝔉𝔒𝔑𝔗 3', None, ' .font3 yazı'
+    '𝔉𝔒𝔑𝔗 3', None, '.font3'
 ).add_command(
-    'ϝⲟⲛⲧ 4', None, ' .font4 yazı'
+    'ϝⲟⲛⲧ 4', None, '.font4'
 ).add_command(
-    '🄵🄾🄽🅃 5', None, ' .font5 yazı'
+    '🄵🄾🄽🅃 5', None, '.font5'
 ).add_command(
-    'font6', None, ' .font6 yazı'
+    'font6', None, '.font6'
 ).add_command(
-    'ғᴏɴᴛ 7', None, ' .font7 yazı'
+    'ғᴏɴᴛ 7', None, '.font7'
 ).add_command(
-    '𝐅𝐎𝐍𝐓 8', None, ' .font8 yazı'
+    '𝐅𝐎𝐍𝐓 8', None, '.font8'
 ).add_command(
-    '𝓕𝓞𝓝𝓣 9', None, ' .font9 yazı'
+    '𝓕𝓞𝓝𝓣 9', None, '.font9'
 ).add_command(
-    '𝙁𝙊𝙉𝙏 10', None, ' .font10 yazı'
+    '𝙁𝙊𝙉𝙏 10', None, '.font10'
 ).add_command(
-    '𝙵𝙾𝙽𝚃 11', None, ' .font11 yazı'
+    '𝙵𝙾𝙽𝚃 11', None, '.font11'
 ).add_command(
-    'ꊰꄲꋊ꓄ 12', None, ' .font12 yazı'
+    'ꊰꄲꋊ꓄ 12', None, '.font12'
 ).add_command(
-    '𝔽𝕆ℕ𝕋 13', None, ' .font13 yazı'
-).add()
+    '𝔽𝕆ℕ𝕋 13', None, '.font13 '
+).add_info(LANG['FONT1']).add()

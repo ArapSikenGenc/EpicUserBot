@@ -4,6 +4,13 @@ from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 from userbot import bot
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("indir")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern="^.indir ?(.*)")
 async def epicnsta(event):
     if event.fwd_from:
@@ -49,6 +56,4 @@ async def epicnsta(event):
             await event.client.send_read_acknowledge(conv.chat_id)
             
 
-CmdHelp('indir').add_command(
-    'indir', None, 'Linki Yanıtlayın .indir Komutu İle\nİnstagramdan IGTV-Hikaye-Video-Fotoğraf\nTikToktan Video\nPinterestten Video-Fotoğraf'
-).add()
+CmdHelp('indir').add_command('indir', None, LANG['İN2']).add_info(LANG['İN2']).add()

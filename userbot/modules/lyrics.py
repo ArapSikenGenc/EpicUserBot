@@ -125,20 +125,8 @@ async def singer(lyric):
 
     return
 
-            
-
-CMD_HELP.update({
-    "lyrics":
-    "Kullanım: .`lyrics <sanatçı adı> - <şarkı ismi>`\n"
-    "NOT: ""-"" ayracı önemli!",
-    "singer":
-    "Şarkı söyler, Kullanım: .`singer <sanatçı adı> - <şarkı ismi>`\n"
-    "NOT: ""-"" ayracı önemli!"
-
-})
-
 CmdHelp('lyrics').add_command(
-    'lyrics', ' <sanatçı adı> - <şarkı ismi>', 'Şarkı sözlerini getirir.', 'lyrics System Of a Down - Scince'
+    'lyrics', LANG['LC1'], LANG['LC2'], LANG['LC3']
 ).add_command(
-    'singer', ' <sanatçı adı> - <şarkı ismi>', 'Şarkı söyler.', 'singer System Of a Down - Scince'
+    'singer', LANG['LC4'], LANG['LC5'], LANG['LC6']
 ).add()

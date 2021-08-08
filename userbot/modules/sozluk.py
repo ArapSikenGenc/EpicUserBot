@@ -18,6 +18,13 @@ import os
 from json import loads
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
+
 def searchTureng_tr(word):
     url="https://tureng.com/tr/turkce-ingilizce/"+word
     try:

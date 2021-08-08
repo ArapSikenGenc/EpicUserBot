@@ -17,6 +17,12 @@ Heroku = heroku3.from_key(HEROKU_APIKEY)
 heroku_api = "https://api.heroku.com"
 epicsudo = os.environ.get("SUDO_ID", None)
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
 
 @register(outgoing=True,
           pattern=r"^.sudoekle")

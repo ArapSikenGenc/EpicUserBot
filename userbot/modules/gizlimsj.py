@@ -7,7 +7,14 @@ from userbot import bot
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
-@register(outgoing=True, pattern="^.gizli ?(.*)")
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("gizli")
+
+# ████████████████████████████████ #
+
+@register(outgoing=True, pattern="^.gmsg ?(.*)")
 async def wspr(event):
     if event.fwd_from:
         return
@@ -19,5 +26,4 @@ async def wspr(event):
     await tap[0].click(event.chat_id)
     await event.delete()
     
-Help = CmdHelp('gizli')
-Help.add_command('.gizli (yazacağınız mesaj) (@göndereceğiniz kişi)',  None, 'Bu Mesajı Sadece Seçtiğiniz Kişi Görür Onun Grup İçinde Ondan Başka Kimse Göremez').add()
+CmdHelp('gizlimsg').add_command('.gmsg', LANG['G1'], LANG['G2']).add()

@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Thanks to Yusuf Usta.
+# Copyright (C) 2021 Thanks to Erdem Bey.
 #
 # Licensed under the  GPL-3.0 License;
 # you may not use this file except in compliance with the License.

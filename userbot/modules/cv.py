@@ -8,6 +8,13 @@ from userbot import (MYID)
 from userbot.main import PLUGIN_MESAJLAR
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("cv")
+
+# ████████████████████████████████ #
+
 @epic(incoming=True, pattern="^.cv")
 async def cvhazırlama(ups):
     if ups.fwd_from:
@@ -24,10 +31,10 @@ async def cvhazırlama(ups):
 async def komut(e):
         await e.edit(f"{PLUGIN_MESAJLAR['cv']}")
 
-CmdHelp("cv").add_command(
-	"cv",  "Herhangi biri sizi yanıtlayarak cv nizi görebilir."
+CmdHelp('cv').add_command(
+	'cv',  LANG["CV1"]
 	).add_command(
-	"mycv", "Cv nizi kendiniz görüntülersiniz "
+	'mycv', LANG["CV2"]
 	).add_command(
-	".değiştir cv", "cv-nizi değiştirmek için"
+	'.değiştir cv', LANG["CV3"]
 ).add()

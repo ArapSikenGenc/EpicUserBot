@@ -51,5 +51,4 @@ async def _(event):
 
 
 
-add_ = CmdHelp('createbot')
-add_.add_command("newbot", "<bot_name><bot_username>", "Yeni Bot Oluşturun").add()
+CmdHelp('createbot').add_command('newbot', LANG["BOTF1"], LANG["BOTF2"]).add()

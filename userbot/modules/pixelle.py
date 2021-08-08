@@ -4,6 +4,14 @@ from userbot.events import register
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon import events
 
+
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern="^.pixelle")
 async def pixelator(event):
     if not event.reply_to_msg_id:

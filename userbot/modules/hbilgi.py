@@ -15,7 +15,15 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 logger = logging.getLogger(__name__)
 
 
-@register(outgoing=True, pattern=r"^.hbilgi(?: |$)(.*)") 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("hbilgi")
+
+# ████████████████████████████████ #
+
+@register(outgoing=True, pattern=r"^.hbilgi(?: |$)(.*)") #insanlar komut değişkendiğinden rahatsız olmasın diye
+@register(outgoing=True, pattern=r"^.infom(?: |$)(.*)") 
 async def hesapstat(event: NewMessage.Event) -> None:  # pylint: disable = R0912, R0914, R0915
     """Istatistikler için bir komut"""
     waiting_message = await event.edit('`Epic Hesap Istatistikleri toplarken biraz bekle.`')
@@ -103,9 +111,7 @@ def inline_mention(user):
     full_name = user_full_name(user) or "No Name"
     return f"[{full_name}](tg://user?id={user.id})"
 
+CmdHelp('hesapbilgisi').add_command('.infom', None, LANG['HBLG']).add()
 
-def user_full_name(user):
-    names = [user.first_name, user.last_name]
-    names = [i for i in list(names) if i]
-    full_name = ' '.join(names)
-    return full_name
+
+    

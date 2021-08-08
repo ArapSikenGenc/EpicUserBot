@@ -14,6 +14,13 @@ from userbot import CMD_HELP, bot
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern="^.tagall$")
 async def _(event):
     if event.fwd_from:

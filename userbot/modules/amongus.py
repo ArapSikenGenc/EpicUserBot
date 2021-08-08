@@ -10,6 +10,12 @@ from requests import get
 from userbot.cmdhelp import CmdHelp
 from userbot.events import register
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("amongus")
+
+# ████████████████████████████████ #
 
 @register(outgoing=True, pattern="^.amongus (.*)")
 async def f_load(message):
@@ -77,6 +83,6 @@ async def f_load(message):
     await message.delete()
     await message.client.send_file(message.to_id, output, reply_to=reply)
 
-CmdHelp("amongus").add_command(
-	"amongus",  "kelime/cümle amongus sticker ile yazı yazar."
+CmdHelp('amongus').add_command(
+	'amongus', None, (LANG['AMONGUS1'])
 ).add()

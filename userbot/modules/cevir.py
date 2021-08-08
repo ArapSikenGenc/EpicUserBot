@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the  GPL-3.0 License;
 # you may not use this file except in compliance with the License.
@@ -133,11 +133,11 @@ async def cevir(event):
         return
 
 CmdHelp('cevir').add_command(
-    'çevir foto', '<yanıt>', 'Stickeri fotoğrafa çevirir.'
+    'çevir foto', LANG['CVR1'], LANG['CVR2']
 ).add_command(
-    'çevir gif', '<yanıt>', 'Videoyu gife çevirir.'
+    'çevir gif', LANG['CVR1'], LANG['CVR3']
 ).add_command(
-    'çevir ses', '<çocuk/robot/earrape/hızlı/parazit/yankı>', 'Sese efekt uygular.'
+    'çevir ses', LANG['CVR4'], LANG['CVR5']
 ).add_command(
-    'çevir mp3', '<yanıt>', 'yanıtladığınız videoyu mp3\'e çevirir.'
+    'çevir mp3', LANG['CVR1'], LANG['CVR6']
 ).add()

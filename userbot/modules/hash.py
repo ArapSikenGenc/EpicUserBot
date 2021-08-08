@@ -16,6 +16,13 @@ from userbot import CMD_HELP
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("hash")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern="^.hash (.*)")
 async def gethash(hash_q):
     """ .hash komutu md5, sha1, sha256, sha512 dizelerini bulur. """
@@ -63,7 +70,7 @@ async def endecrypt(query):
         await query.reply("Decoded: `" + lething[:-1] + "`")
 
 CmdHelp('hash').add_command(
-    'base64', None, 'Verilen dizenin base64 kodlamasını bulun'
+    'base64', None, LANG['HASH1']
 ).add_command(
-    'hash', None, 'Bir txt dosyası yazıldığında md5, sha1, sha256, sha512 dizelerini bulun.'
+    'hash', None, LANG['HASH2']
 ).add()

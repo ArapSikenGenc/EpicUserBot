@@ -8,6 +8,12 @@ from userbot import bot
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
 @register(outgoing=True, pattern="^.send ?(.*)")
 async def pm(event):
  

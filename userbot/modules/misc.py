@@ -175,25 +175,23 @@ async def raw(event):
             caption="`Çözülen mesaj`")
 
 CmdHelp('misc').add_command(
-    'random', '<eşya1> <eşya2> ... <eşyaN>', 'Eşya listesinden rastgele bir eşya seçer', 'random epic uniborg userge'
+    'random', LANG['MS1'], LANG['MS2'], LANG['MS3']
 ).add_command(
-    'sleep', '<süre>', 'Epic de bir insan, o da yoruluyor. Ara sıra biraz uyumasına izin ver.', 'sleep 30'
+    'sleep', LANG['MS4'], LANG['MS5'], LANG['MS6']
 ).add_command(
-    'shutdown', None, 'Nostaljik bir şekilde botunuzu kapatın.'
+    'shutdown', None, LANG['MS7']
 ).add_command(
-    'repo', None, 'Epic botunun GitHub\'daki reposuna giden bir bağlantı.'
+    'repo', None, LANG['MS8']
 ).add_command(
-    'readme', None, 'Epic botunun GitHub\'daki README.md dosyasına giden bir bağlantı.'
+    'readme', None, LANG['MS9']
 ).add_command(
-    'creator', None, 'Bu güzel botu kimlerin oluşturduğunu öğren :-)'
+    'creator', None, LANG['MS10']
 ).add_command(
-    'repeat', '<sayı> <metin>', 'Bir metni belli bir sayıda tekrar eder. Spam komutu ile karıştırma!'
+    'repeat', LANG['MS11'], LANG['MS12']
 ).add_command(
-    'restart', None, 'Botu yeniden başlatır.'
+    'restart', None, LANG['MS13']
 ).add_command(
-    'resend', None, 'Bir medyayı yeniden gönderir.'
+    'resend', None, LANG['MS14']
 ).add_command(
-    'resend', None, 'Bir medyayı yeniden gönderir.'
-).add_command(
-    'raw', '<yanıt>', 'Yanıt verilen mesaj hakkında bilgi verir.'
+    'raw', LANG['MS15'], LANG['MS16']
 ).add()

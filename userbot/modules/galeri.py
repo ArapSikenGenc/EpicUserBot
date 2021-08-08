@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the GPL-3.0 License;
 # you may not use this file except in compliance with the License.
@@ -98,9 +98,9 @@ async def galeri(event):
         await event.edit(LANG['INVALID'])
 
 CmdHelp('galeri').add_command(
-    'galeri ekle', '<url>', 'Galeri sırasına fotoğraf ekler', 'galeri ekle https://i.hizliresim.com/wFSVKd.jpg'
+    'galeri ekle', LANG['GLR1'], LANG['GLR2'], LANG['GLR3']
 ).add_command(
-    'galeri liste', None, 'Galeri sırasını gösterir.'
+    'galeri liste', None, LANG['GLR4']
 ).add_command(
-    'galeri sil', '<sayı>', 'Galeri sırasından bir resmi siler.', 'galeri sil 4'
+    'galeri sil', LANG['GLR5'], LANG['GLR6'], LANG['GLR7']
 ).add()

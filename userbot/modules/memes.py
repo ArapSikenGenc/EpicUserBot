@@ -26,6 +26,13 @@ from userbot.events import register
 from userbot.modules.admin import get_user_from_event
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("memes")
+
+# ████████████████████████████████ #
+
 # ================= CONSTANT =================
 EMOJIS = [
     "😂",
@@ -955,73 +962,73 @@ async def typewriter(typew):
         await sleep(sleep_time)
 
 CmdHelp('memes').add_command(
-    'hayvan', 'kedi/köpek/panda/kuş/kurt', 'Rastgele bir hayvan fotoğrafı atar.'
+    'hayvan', LANG['ME1'], LANG['ME2']
 ).add_command(
-    'cowsay', None, 'Bir şeyler söyleyen inek'
+    'cowsay', None, LANG['ME3']
 ).add_command(
-    ':/', None, 'erdem\'min 3 aydır kızın adını öğrenemediği aklına geliyor.'
+    ':/', None, LANG['ME4']
 ).add_command(
-    'karar', None, 'Karar verin.'
+    'karar', None, LANG['ME5']
 ).add_command(
-    '-_-', None, 'Tamamdır.\n-Birtanem Usta'
+    '-_-', None, LANG['ME6']
 ).add_command(
-    ';_;', None, 'İxel\'in 5 dakikadır kaynanasını görmediğini düşünün.'
+    ';_;', None, LANG['ME7']
 ).add_command(
-    'cp', '<yanıt>', 'Emoji falan ekliyor.'
+    'cp', LANG['ME8'], LANG['ME9']
 ).add_command(
-    'vapor', '<mesaj/yanıt>', 'Vaporlaştırın!'
+    'vapor', LANG['ME11'], LANG['ME12']
 ).add_command(
-    'str', '<yazı>', 'Yazıyı uzatın.'
+    'str', LANG['ME13'], LANG['ME14']
 ).add_command(
-    '10iq', None, 'Erdem mesaj yazıyor.'
+    '10iq', None, LANG['ME15']
 ).add_command(
-    'mizah', None, 'Tekerlek Erdem Bey espri yaparsa hemen kullanın.'
+    'mizah', None, LANG['ME16']
 ).add_command(
-    'zal', '<yanıtlama/mesaj>', 'Çok karmaşık! Her şey çok karmaşık.'
+    'zal', LANG['ME17'], LANG['ME18']
 ).add_command(
-    'oof', None, 'of ya'
+    'oof', None, LANG['ME19']
 ).add_command(
-    'skrrt', None, 'sıkırt'
+    'skrrt', None, LANG['ME21']
 ).add_command(
-    'fuk', None, '+18'
+    'fuk', None, LANG['ME22']
 ).add_command(
-    'kalp', '<isim>', 'Sevginizi gösterin.'
+    'kalp', LANG['ME23'], LANG['ME24']
 ).add_command(
-    'fp', None, 'Utanmak.'
+    'fp', None, LANG['ME25']
 ).add_command(
-    'moon', None, 'Ay animasyonu.'
+    'moon', None, LANG['ME26']
 ).add_command(
-    'clock', None, 'İxel kaynanasını bekliyor. (Saat animasyonu)'
+    'clock', None, LANG['ME27']
 ).add_command(
-    'hi', None, 'Selam verin.'
+    'hi', None, LANG['ME28']
 ).add_command(
-    'owo', None, 'LOLcü Selin olur gibi'
+    'owo', None, LANG['ME29']
 ).add_command(
-    'react', None, 'Ayzırbotun her şeye tepki vermesini sağlayın.'
+    'react', None, LANG['ME31']
 ).add_command(
-    'slap', '<yanıt>', 'Rastgele nesnelerle tokatlamak için mesaja cevap verin.'
+    'slap', LANG['ME32'], LANG['ME33']
 ).add_command(
-    'cry', None, 'Ağlamak mı istiyorsun?'
+    'cry', None, LANG['ME34']
 ).add_command(
-    'shg', None, '¯\_(ツ)_/¯'
+    'shg', None, LANG['ME35']
 ).add_command(
-    'run', None, 'Koş!'
+    'run', None, LANG['ME36']
 ).add_command(
-    'mock', '<yanıt/mesaj>', 'Yap ve gerçek eğlenceyi bul.'
+    'mock', LANG['ME37'], LANG['ME38']
 ).add_command(
-    'clap', None, 'Beni, yapraklar değil Ayzırbotlar alkışlıyor!'
+    'clap', None, LANG['ME39']
+    ).add_command(
+    'f', LANG['ME41'], 'F'
 ).add_command(
-    'f', '<mesaj>', 'F'
+    'type', LANG['ME42'], LANG['ME43']
 ).add_command(
-    'type', '<yazı>', 'Daktilo gibi yazı yazın.'
+    'lfy', LANG['ME44'], LANG['ME45']
 ).add_command(
-    'lfy', '<sorgu>', 'Bırakın Google bunu sizin için araştırsın.'
+    'scam', LANG['ME46'], LANG['ME47']
 ).add_command(
-    'scam', '<eylem> <süre>', 'Sahte eylemler oluşturun.\nMevcut eylemler: (typing, contact, game, location, voice, round, video, photo, document, cancel)'
+    'lfy', LANG['ME48'], LANG['ME49']
 ).add_command(
-    'lfy', '<sorgu>', 'Bırakın Google bunu sizin için araştırsın.'
+    'boşluk', None, LANG['ME51']
 ).add_command(
-    'boşluk', None, 'Boş mesaj. (Elon Musk\'tan öğrendim.)'
-).add_command(
-    'ğ', '<metin>', 'Ğ'
+    'ğ', LANG['ME52'], 'Ğ'
 ).add()

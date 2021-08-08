@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the  GPL-3.0 License;
 # you may not use this file except in compliance with the License.
@@ -78,5 +78,5 @@ async def auto(event):
             return
 
 CmdHelp('auto').add_command(
-    'auto', 'isim ya da bio', 'Otomatik saate göre Değişir', '.auto isim(isminiz değil "isim" Kelimesi)'
+    'auto', (LANG['AUTO1']), (LANG['AUTO2']), (LANG['AUTO3'])
 ).add()

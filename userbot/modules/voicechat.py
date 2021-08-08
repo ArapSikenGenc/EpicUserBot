@@ -7,6 +7,13 @@ from userbot.events import register
 from userbot import bot, get_call
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
+
 
 def user_list(l, n):
     for i in range(0, len(l), n):

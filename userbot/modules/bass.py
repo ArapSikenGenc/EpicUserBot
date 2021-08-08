@@ -9,6 +9,13 @@ from telethon import types
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("bass")
+
+# ████████████████████████████████ #
+
 @register(outgoing=True, pattern="^.bass ?(.*)")
 async def bassbooster(e):
     v = False
@@ -96,6 +103,6 @@ async def bassbooster(e):
     await e.delete()
     os.remove(fname)
     
-CmdHelp('bass').add_command('bass', '<1-100>', 'Cavap verdiğiniz səs dosyasına bass effekti uygular'
-).add_warning('Sadece 2-100 arasında bir değer giriniz aksi takdirde bass çalışmaz!'
-).add_info('🎆 Thx to @ByMisakiMey').add()
+CmdHelp('bass').add_command('bass', (LANG['BASS1']), (LANG['BASS2'])
+).add_warning((LANG['BASS3'])
+).add_info('🎆 By @ErdemBey').add()

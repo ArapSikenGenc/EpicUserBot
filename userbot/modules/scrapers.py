@@ -73,6 +73,13 @@ from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotMo
 import io
 import glob
 
+# ██████ LANGUAGE CONSTANTS ██████ #
+
+from userbot.language import get_value
+LANG = get_value("afk")
+
+# ████████████████████████████████ #
+
 @register(pattern="^.tts2 (.*)", outgoing=True)
 async def tts2(query):
     textx = await query.get_reply_message()

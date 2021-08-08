@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Yusuf Usta.
+# Copyright (C) 2021 Erdem Bey.
 #
 # Licensed under the GPL-3.0 License;
 # you may not use this file except in compliance with the License.
@@ -70,5 +70,5 @@ async def liste(event):
             await event.edit(LANG['GMUTE_LIST'] % mesaj)
 
 CmdHelp('liste').add_command(
-    'liste', '<gmute/gban>', 'Gbanladığınız ya da Gmutelediğiniz kişileri getirir.'
+    'liste', LANG['L1'], LANG['L2']
 ).add()

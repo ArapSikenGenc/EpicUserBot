@@ -30,10 +30,14 @@ if HEROKU_APPNAME is not None and HEROKU_APIKEY is not None:
 else:
     app = None
 
+# ██████ LANGUAGE CONSTANTS ██████ #
 
+from userbot.language import get_value
+LANG = get_value("heroku")
+
+# ████████████████████████████████ #
 """Config Vars değeri ilave edin veya silin..."""
 
-"""
 @register(outgoing=True,
           pattern=r"^.(get|del) var(?: |$)(\w*)")
 async def variable(var):
@@ -95,7 +99,6 @@ async def variable(var):
         else:
             await var.edit("`Bilgiler Yok!`")
             return True
-"""
 
 @register(outgoing=True, pattern=r'^.set var (\w*) ([\s\S]*)')
 async def set_var(var):
@@ -243,20 +246,18 @@ async def _(dyno):
     key = (requests.post("https://nekobin.com/api/documents",
                          json={"content": data}) .json() .get("result") .get("key"))
     url = f"https://nekobin.com/raw/{key}"
-    await dyno.edit(f"`Heroku log'u :`\n\n: [S  İ  R  İ]({url})")
+    await dyno.edit(f"`Heroku log'u :`\n\n: [HEROKU LOGUM]({url})")
     return os.remove("logs.txt")
 
 
 CmdHelp('heroku').add_command(
-'dyno', None, 'Dyno saati hakkında bilgi verir..'
+'dyno', None, LANG['H1']
     ).add_command(
-        'set var', None, 'set var <Yeni Var adı> <değer> Botunuza yeni ConfigVar eklenir.'
+        'set var', None, LANG['H2']
     ).add_command(
-        'get var', None, 'Mevcut VARlarınızı elde edin, yalnızca botlog gurubunuzda ulaşabilirsiniz .'
+        'get var', None, LANG['H3']
     ).add_command(
-        'del var', None, 'del var <Var adı> Seçdiğiniz ConfigVarı siler sildikten sonra botunuza .restart atın.'
+        'del var', None, LANG['H4']
     ).add_command(
-        'log', None, 'Heroku logunuza bakın'
-    ).add_info(
-        '**Botlog grubundan çıktıysanız sizin yerinize düzeltmesi için** `.set var BOTLOG False` **yazın.. ✨ Thx to @erdembey**'
-    ).add()
+        'log', None, LANG['H5']
+    ).add_info(LANG['H6']).add()
