@@ -20,6 +20,7 @@ from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, bot
 from userbot.events import register
 from userbot.modules.admin import get_user_from_event
 from userbot.main import PLUGIN_MESAJLAR
+from userbot.cmdhelp import CmdHelp
 
 @register(outgoing=True, pattern="^.id$")
 async def useridgetter(target):
