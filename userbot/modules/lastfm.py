@@ -228,7 +228,7 @@ async def lastlog(lstlog):
 CmdHelp('lastfm').add_command(
     'lastfm', None, LANG['LS1']
 ).add_command(
-    'lastbio', LANG['LS2'], LANG['LS13']
+    'lastbio', LANG['LS2'], LANG['LS3']
 ).add_command(
     'lastlog', LANG['LS2'], LANG['LS4']
 ).add()
