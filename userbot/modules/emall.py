@@ -4,7 +4,6 @@ import random
 import asyncio
 from userbot.events import register 
 from userbot import CMD_HELP, bot
-from userbot import EPİC_VERSION # UserBotunuzun Version Değikeni
 from telethon.tl.types import ChannelParticipantsAdmins as cp
 from time import sleep
 from userbot.cmdhelp import CmdHelp
