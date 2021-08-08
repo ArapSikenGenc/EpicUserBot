@@ -1041,8 +1041,9 @@
             "ME46": "'<eylem> <süre>'",
             "ME47": "'Sahte eylemler oluşturun.\nMevcut eylemler: (typing, contact, game, location, voice, round, video, photo, document, cancel)'",
             "ME48": "'<sorgu>'",
-            "ME59": "'Bırakın Google bunu sizin için araştırsın.'",
-            "ME51": "'<metin>'"
+            "ME49": "'Bırakın Google bunu sizin için araştırsın.'",
+            "ME51": "'Boş mesaj. (Elon Musk\'tan öğrendim.)'",
+	    "ME52": "'<metin>'"
         }
     }
 }
