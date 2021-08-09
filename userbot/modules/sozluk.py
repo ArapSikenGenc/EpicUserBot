@@ -21,7 +21,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("sozlık")
+LANG = get_value("sozluk")
 
 # ████████████████████████████████ #
 
