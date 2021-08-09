@@ -134,5 +134,5 @@ CmdHelp('notes').add_command(
 ).add_command(
     'notes', None, LANG['NO4']
 ).add_command(
-    'clear', LANG['NO4'], LANG['NO4']
+    'clear', LANG['NO5'], LANG['NO6']
 ).add()
