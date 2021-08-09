@@ -579,6 +579,7 @@ async def uploadas(uas_event):
     else:
         await uas_event.edit("404: Dosya bulunamadı.")
 
+"""
 CmdHelp('updown').add_command(
     'download', LANG['UDP1'], LANG['UDP2']
 ).add_command(
@@ -590,3 +591,4 @@ CmdHelp('updown').add_command(
 ).add_command(
     'uploadir', LANG['UPD9'], LANG['UPD10']
 ).add()
+"""
