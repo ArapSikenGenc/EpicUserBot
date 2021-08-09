@@ -70,6 +70,6 @@ async def degistir(event):
         else:
             await event.edit(LANG['NOT_FOUND'] + ":`afk/alive/pm/kickme/dızcı/ban/mute/approve/disapprove/block`")
 
-CmdHelp('de[ğg]i[sş]tir').add_command(
+CmdHelp('degistir').add_command(
     'değiştir', LANG['DGT1'], LANG['DGT2'], LANG['DGT3']
 ).add_info(LANG['DGT4']).add()
