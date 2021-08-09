@@ -451,10 +451,6 @@
             "GH2": "'Hedeflenen kişinin GitHub bilgilerini gösterir.'",
             "GH3": "'git ErdemBey0'"
         },
-        "kyolla": {
-            "REPLY_MESSAGE": "`Lütfen bir mesaja yanıt verin.`",
-            "SUCCESSFUL": "`Epic Mesajı Kayıtlı Mesajlar Bölümüne Yolladı!`"
-        },
         "lastfm": {
            "BIO_ENABLED": "```last.fm'de oynatılan müziği biyografiye ekleme aktif.```",
            "BIO_DISABLED": "```last.fm'de oynatılan müziği biyografiye ekleme devre dışı. Biyografi varsayılana çevrildi.```",
@@ -1113,7 +1109,9 @@
         },
         "saved": {
             "S1": "'<bir mesaja yanıt verin>'",
-            "S2": "'Yanıt verdiyiniz mesajı Kayıtlı Mesajlar(Saved Messages) bölümüne gönderir.'"
+            "S2": "'Yanıt verdiyiniz mesajı Kayıtlı Mesajlar(Saved Messages) bölümüne gönderir.'",
+	    "REPLY_MESSAGE": "`Lütfen bir mesaja yanıt verin.`",
+            "SUCCESSFUL": "`Epic Mesajı Kayıtlı Mesajlar Bölümüne Yolladı!`"
         },
         "scra": {
             "": ""
