@@ -893,7 +893,7 @@
             "NOT_FOUND_HOST": "Belirtilen host bulunamadı! Bulunan hostlar: anonfiles|transfer|filebin|tmpninja|anonymousfiles|megaupload|bayfiles|letsupload|vshare`",
             "WUPLOADING": "`Dosya indirme işlemi başarılı. Yükleniyor...`",
             "GETTING_LINK": "`Başarılı bir şekilde yüklendi. Link alınıyor...`",
-            "UD0": "'<bağlantı-dosya adı> (ya da bir şeye cevap vererek)'",
+            "UD11": "'<bağlantı-dosya adı> (ya da bir şeye cevap vererek)'",
             "UD1": "'Sunucuya dosyayı indirir.'",
             "UD2": "'<sunucudaki dosya yolu>'",
             "UD3": "'Sunucunuzdaki bir dosyayı sohbete upload eder.'",
