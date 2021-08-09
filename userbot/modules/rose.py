@@ -60,7 +60,7 @@ async def fstat(event):
                 await event.edit("@MissRose_bot'u Engellenmiş Başlatın Tekrar Deneyin.")
 
 
-@register(outgoing=True, pattern="^.info ?(.*)")
+@register(outgoing=True, pattern="^.rinfo ?(.*)")
 async def info(event):
     if event.fwd_from:
         return
