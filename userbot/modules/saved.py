@@ -8,7 +8,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("kyolla")
+LANG = get_value("saved")
 
 # ████████████████████████████████ #
 
@@ -22,4 +22,4 @@ async def tm(event):
   await event.client.forward_messages("me", mesaj)
   await event.edit(LANG["SUCCESSFUL"])
   
-CmdHelp('saved').add_command('saved', LANG['S1'], LANG['S2']).add()
+CmdHelp('saved').add_command('saved', LANG['S1'], LANG['S2']).add(),
