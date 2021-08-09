@@ -191,7 +191,7 @@ CmdHelp('profile').add_command(
 ).add_command(
     'setbio', LANG['PR6'], LANG['PR7']
 ).add_command(
-    'delpfp', LANG['PR8'], LANG['PR98']
+    'delpfp', LANG['PR8'], LANG['PR9']
 ).add_command(
     'reserved', None, LANG['PR0']
 ).add_command(
