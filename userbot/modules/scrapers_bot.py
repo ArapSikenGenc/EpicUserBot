@@ -390,7 +390,7 @@ CmdHelp('scrapers_bot').add_command(
 ).add_command(
     'meme', LANG['SB5'], LANG['SB6'], LANG['SB7']
 ).add_command(
-    'voicy', LANG['SB78'], LANG['SB9']
+    'voicy', LANG['SB8'], LANG['SB9']
 ).add_command(
     'q', LANG['SB10'], LANG['SB11']
 ).add_command(
