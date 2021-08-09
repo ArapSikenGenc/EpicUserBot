@@ -384,17 +384,17 @@ async def quotly(event):
         await conv.cancel_all()
 
 CmdHelp('scrapers_bot').add_command(
-    'sangmata', '<yanıt>', 'Belirtilen kullanıcının isim geçmişini görüntüleyin.'
+    'sangmata', LANG['SB1'], LANG['SB2']
 ).add_command(
-    'scan', '<yanıt>', 'Belirtilen dosyada virüs var mı yok mu bakın.'
+    'scan', LANG['SB3'], LANG['SB4']
 ).add_command(
-    'meme', '<font> <üst;alt>', 'Fotoğrafa yazı ekleyin. İsterseniz font büyüklüğünü de yazabilirsiniz.', 'meme 30 epic;usta'
+    'meme', LANG['SB5'], LANG['SB6'], LANG['SB7']
 ).add_command(
-    'voicy', '<yanıt>', 'Sesi yazıya çevirin.'
+    'voicy', LANG['SB78'], LANG['SB9']
 ).add_command(
-    'q', '<sayı>', 'Metninizi çıkartmaya dönüştürün.'
+    'q', LANG['SB10'], LANG['SB11']
 ).add_command(
-    'ocr2', '<yanıt>', 'Fotoğraftaki metini okuyun.'
+    'ocr2', LANG['SB12'], LANG['SB13']
 ).add_command(
-    'creation', '<yanıt>', 'Yanıt verdiğiniz kişinin hesabı oluşturma tarihinin öğrenin.'
+    'creation', LANG['SB14'], LANG['SB15']
 ).add()

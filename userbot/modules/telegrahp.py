@@ -9,7 +9,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("tghp")
 
 # ████████████████████████████████ #
 
@@ -89,6 +89,4 @@ def resize_image(image):
     im = Image.open(image)
     im.save(image, "PNG")
     
-CmdHelp('telegraph').add_command(
-    'tg', '<m/t>', 'Mesaja yanıt vererek .tg t (yazı) veya .tg m (medya) yazarak Telegrapha yükleyin Bölelikle Tek Bir link İle Medya/Yazınıza Ulaşabilirsiniz.'
-).add()
+CmdHelp('telegraph').add_command('tg', LANG['TG1'], LANG['TG2']).add()

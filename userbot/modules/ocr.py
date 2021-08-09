@@ -70,8 +70,4 @@ async def ocr(event):
                          )
     os.remove(downloaded_file_name)
 
-CmdHelp('ocr').add_command(
-    'ocr', '<dil>', 'Metin ayıklamak için bir resme veya çıkartmaya cevap verin.'
-).add_info(
-    'Dil kodlarını [buradan](https://ocr.space/ocrapi) alın.'
-).add()
+CmdHelp('ocr').add_command('ocr', LANG['OCR1'], LANG['OCR2']).add_info( LANG['OCR3']).add()

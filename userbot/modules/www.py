@@ -99,9 +99,9 @@ async def asistanping(ups):
          return
 
 CmdHelp('www').add_command(
-    'speed', None, 'Bir speedtest uygular ve sonucu gösterir.'
+    'speed', None, LANG['W1']
 ).add_command(
-    'dc', None, 'Sunucunuza en yakın datacenter\'ı gösterir.'
+    'dc', None, LANG['W2']
 ).add_command(
-    'ping', None, 'Botun ping değerini gösterir.'
+    'ping', None, LANG['W3']
 ).add()

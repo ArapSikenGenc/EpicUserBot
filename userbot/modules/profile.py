@@ -183,17 +183,17 @@ async def remove_profilepic(delpfp):
         LANG['DELPFP'] % len(input_photos))
 
 CmdHelp('profile').add_command(
-    'username', '<yeni kullanıcı adı>', 'Telegram\'daki kullanıcı adınızı değişir.'
+    'username', LANG['PR1'], LANG['PR2']
 ).add_command(
-    'name', '<isim> or .name <isim> <soyisim>', 'Telegram\'daki isminizi değişir. (Ad ve soyad ilk boşluğa dayanarak birleştirilir.)'
+    'name', LANG['PR3'], LANG['PR4']
 ).add_command(
-    'setpfp', None, 'Bir resmi Telegram\'da profil resmi yapmak için .setpfp komutuyla cevap verin.'
+    'setpfp', None, LANG['PR5']
 ).add_command(
-    'setbio', '<yeni biyografi>', 'Telegram\'daki biyografinizi bu komutu kullanarak değiştirin.'
+    'setbio', LANG['PR6'], LANG['PR7']
 ).add_command(
-    'delpfp', '<numara/all>', 'Telegram profil fotoğrafınızı kaldırır.'
+    'delpfp', LANG['PR8'], LANG['PR98']
 ).add_command(
-    'reserved', None, 'Rezerve ettiğiniz kullanıcı adlarını gösterir.'
+    'reserved', None, LANG['PR0']
 ).add_command(
-    'count', None, 'Gruplarınızı, sohbetlerinizi, aktif botları vs. sayar.'
+    'count', None, LANG['PR10']
 ).add()

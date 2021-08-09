@@ -21,7 +21,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("sozlık")
 
 # ████████████████████████████████ #
 
@@ -105,7 +105,7 @@ async def tdk(event):
             return await event.edit(f'**Kelime:** `{inp}`\n\n**Çoğul Mu:** `{cogul}`\n**Özel Mi:** {ozel}\n\n**Anlamlar:**{anlamlarStr}' + f'\n\n**Benzer Kelimeler:** {words}')
 
 CmdHelp('sozluk').add_command(
-    'tdk', '<kelime>', 'Verdiğiniz kelimeyi TDK Sözlükte arar.'
+    'tdk', LANG['SO1'], LANG['SO2']
 ).add_command(
-    'tureng', '<kelime>', 'Verdiğiniz kelimeyi Tureng Sözlükte arar.'
+    'tureng', LANG['SO3'], LANG['SO4']
 ).add()

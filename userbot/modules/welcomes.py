@@ -16,7 +16,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("welcome")
 
 # ████████████████████████████████ #
 
@@ -166,27 +166,10 @@ async def del_welcome(event):
     else:
         await event.edit("`Burada karşılama notu var mı ?`")
 
-
-CMD_HELP.update({
-    "welcome":
-    "\
-.setwelcome <karışlama mesajı> veya .setwelcome ile bir mesaja cevap verin\
-\nKullanım: Mesajı sohbete karşılama notu olarak kaydeder.\
-\n\nKarşılama mesajlarını biçimlendirmek için kullanılabilir değişkenler :\
-\n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
-\n\n.checkwelcome\
-\nKullanım: Sohbette karşılama notu olup olmadığını kontrol edin.\
-\n\n.rmwelcome\
-\nKullanım: Geçerli sohbet için karşılama notunu siler.\
-"
-})
-
 CmdHelp('welcome').add_command(
-    'setwelcome', '<karışlama mesajı>', 'Mesajı sohbete karşılama notu olarak kaydeder.'
+    'setwelcome', LANG['WEL1'], LANG['WEL2']
 ).add_command(
-    'checkwelcome', None, 'Sohbette karşılama notu olup olmadığını kontrol edin.'
+    'checkwelcome', None, LANG['WEL3']
 ).add_command(
-    'rmwelcome', None, 'Geçerli sohbet için karşılama notunu siler.'
-).add_info(
-    'Değişkenler: `{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`'
-).add()
+    'rmwelcome', None, LANG['WEL4']
+).add_info(LANG['WEL5']).add()

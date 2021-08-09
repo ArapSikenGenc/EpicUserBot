@@ -11,7 +11,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("smsg")
 
 # ████████████████████████████████ #
 @register(outgoing=True, pattern="^.send ?(.*)")
@@ -42,6 +42,4 @@ async def pm(event):
     except BaseException:
         await event.edit("** @EpicUserBot Mesajınızı Gönderemedi :(**")
         
-CmdHelp('sendmsg').add_command(
-    'send', '.pmyaz <kullanıcı/grup/kanal/bot linki> <mesajınız>', 'Yazdığınız mesajı veya yanıtladığınız mesajı belirttiğiniz linke gönderir', '.send @epicuserbot selam'
-).add()
+CmdHelp('sendmsg').add_command('send', LANG['SM1'], LANG['SM2'], LANG['SM3']).add()

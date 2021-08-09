@@ -76,7 +76,7 @@ import glob
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("scra")
 
 # ████████████████████████████████ #
 

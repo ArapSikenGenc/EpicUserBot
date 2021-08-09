@@ -148,6 +148,4 @@ async def get_weather(weather):
         f"**{LANG['SUNSET']}:** `{sun(sunset)}`\n\n" + f"**{desc}**\n" +
         f"`{cityname}, {fullc_n}`\n" + f"`{time}`")
 
-CmdHelp('weather').add_command(
-    'weather', '<şehir>', 'Bir bölgenin hava durumunu verir.'
-).add()
+CmdHelp('weather').add_command('weather', LANG['WA1'], LANG['WA2']).add()

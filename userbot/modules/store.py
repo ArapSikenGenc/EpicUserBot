@@ -117,9 +117,9 @@ async def sinstall(event):
                 return await event.edit(f'**Epic Plugin Mağazası**\n__Versiyon 1.0__\n\n**✅ Modül Başarıyla Yüklendi!**\n__ℹ️ Modülün Kullanımını Öğrenmek İçin__ `.epic {dosyaAdi}` __Yazınız.__')
 
 userbot.cmdhelp.CmdHelp('store').add_command(
-    'store', '<kelime>', 'Plugin kanalına son atılan Pluginleri getirir. Eğer kelime yazarsanız onu kanalda arar.'
+    'store', LANG['P1'], LANG['P2']
 ).add_command(
-    'store random', '<say>', 'Plugin kanalından random plugin getirir.', 'store random 10'
+    'store random', LANG['P3'], LANG['P4'], LANG['P5']
 ).add_command(
-    'sinstall', '<say>', 'Plugin kanalından direkt olarak Plugini yükler.'
+    'sinstall', LANG['P3'], LANG['P6']
 ).add()

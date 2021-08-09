@@ -9,7 +9,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("rose")
 
 # ████████████████████████████████ #
 
@@ -60,7 +60,7 @@ async def fstat(event):
                 await event.edit("@MissRose_bot'u Engellenmiş Başlatın Tekrar Deneyin.")
 
 
-@register(outgoing=True, pattern="^.rinfo ?(.*)")
+@register(outgoing=True, pattern="^.info ?(.*)")
 async def info(event):
     if event.fwd_from:
         return
@@ -283,20 +283,19 @@ async def fpromode(event):
                 await event.edit("@MissRose_bot'u Yeniden Başlatın Tekrar Deneyin.")
             
 CmdHelp('rose').add_command(
-    'fstat', '<tag/id>', 'Sadece .fstat Yazarsanız Kendiniz İçin Fban Listesini Verir. \n ID veya @KULLANICI ADI Verirseniz O Kişinin Fban Listesini Verir '
+    'fstat', LANG['R1'], LANG['R2']
 ).add_command(
-    'info', '<tag/id>', 'Sadece .info Yazarsanız kendiniz için Bilgi verir. \n ID veya @KULLANICI ADI Verirseniz O Kişi İçin Bilgi Veri.'
+    'rinfo', LANG['R1'], LANG['R3']
 ).add_command(
-    'fedinfo', '<fed id>', 'Sadece .fedinfo yazarsanız Sizin Federasyonunuz İçin Bilgi Verir. \n FED İD Girerseniz O Federasyonun Bilgisini Verir'
+    'fedinfo', LANG['R4'], LANG['R5']
 ).add_command(
-    'myfeds', 'Hangi Federasyonlardan Yetkinizin Olduğunu Gösterir.'
+    'myfeds', LANG['R6']
 ).add_command(
-    'fban', '<tag/id>', 'Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fban atabilirsiniz. '
+    'fban', LANG['R7']
 ).add_command(
-    'unfban', '<tag/id>', ' Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fbanını Açabilirsiniz. '
+    'unfban', LANG['R1'], LANG['R8']
 ).add_command(
-    'fpromote', '<tag/id>', ' Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fban Yetkisi Verebilirsiniz. '
+    'fpromote', LANG['R1'], LANG['R9']
 ).add_command(
-    'feddemote', '<tag/id>', ' Bunu Federasyon Sahipleri Kullana Bilir.\n Bulunduğunuz Gruptaki Kişiye Kendi Federasyonunuzdan Fban yetkisini Alabilirsiniz. \n NOT: BU KOMUTLAR HER YERDE ÇALIŞMAKTADIR ÖZEL MESAJLARDA VER HANGİ BİR GRUPTA KULLANA BİLİRSİNİZ @EpicUserBot '
-    
+    'feddemote', LANG['R1'], LANG['R0']
 ).add()

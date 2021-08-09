@@ -7,7 +7,7 @@ from userbot.events import register
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("st")
 
 # ████████████████████████████████ #
 
@@ -27,4 +27,4 @@ async def stats(e):
    stat = f"✉️ **Mesajlar:** `{msg}`\n🖼️ **Fotoğraflar:** `{img}`\n📹 **Videolar:** `{vid}`\n🎵 **Muzikler:** `{msc}`\n🎤 **Sesli Mesajlar:** `{ses}`\n🎥 **Videolar:** `{rvid}`\n📂 **Dosyalar:** `{doc}`\n🔗 **Linkler:** `{url}`\n🎞️ **GIFler:** `{gif}`\n🗺 **Konumlar:** `{geo}`"
    await e.edit(stat)
 
-CmdHelp('statistics').add_command('statis',  None, 'Grup/Kanal/Pm hakkında daha fazla bilgi edinin').add()
+CmdHelp('statistics').add_command('statis', None, LANG['ST1']).add()

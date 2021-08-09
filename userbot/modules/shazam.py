@@ -113,5 +113,5 @@ async def shazam(event):
         remove(dosya)
 
 CmdHelp('shazam').add_command(
-    'shazam', '<yanıt>', 'Cevap verdiğiniz ses dosyasını Shazamda aratır.'
+    'shazam', LANG['SH1'], LANG['SH2']
 ).add()

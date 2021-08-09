@@ -139,9 +139,9 @@ async def make_qr(makeqr):
     await makeqr.delete()
 
 CmdHelp('qrcode').add_command(
-    'barcode', '<içerik>', 'Verilen içerikten bir barkod yapın.', 'barcode www.google.com'
+    'barcode', LANG['QR1'], LANG['QR2'], LANG['QR3']
 ).add_command(
-    'decode', '<yanıt>', 'Barkod veya QRCode çözmek için.'
+    'decode', LANG['QR4'], LANG['QR5']
 ).add_command(
-    'makeqr', '<içerik>', 'Verilen içerikten bir QR kodu yapın.', 'makeqr www.google.com'
+    'makeqr', LANG['QR1'], LANG['QR6'], LANG['QR7']
 ).add()

@@ -331,11 +331,11 @@ async def getmp3(event):
                 await sleep(1)
 
 CmdHelp('spotify').add_command(
-    'spotify aç', None, 'Spotify bio aktifleştirir.'
+    'spotify aç', None, LANG['SP1']
 ).add_command(
-    'spotify kapa', None, 'Spotify bio devredışı bırakır.'
+    'spotify kapa', None, LANG['SP2']
 ).add_command(
-    'spotify np', '<animasyon süre = 5>', "Süre kadar player animasyonlu şekilde Spotify'da çalan şarkınızı gösterir. (Kısaltma komut: .snp)"
+    'spotify np', LANG['SP3'], LANG['SP4']
 ).add_command(
-    'spotify mp3', None, "Spotify'da çalan şarkınızı deezer botunda bulup ascii art haliyle gönderir. (Kısaltma komut: .smp3)"
+    'spotify mp3', None, LANG['SP5']
 ).add()

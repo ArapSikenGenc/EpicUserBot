@@ -3,13 +3,11 @@
 from userbot.events import register
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon import events
-
+from userbot.cmdhelp import CmdHelp
 
 # ██████ LANGUAGE CONSTANTS ██████ #
-
 from userbot.language import get_value
-LANG = get_value("afk")
-
+LANG = get_value("pixelle")
 # ████████████████████████████████ #
 
 @register(outgoing=True, pattern="^.pixelle")
@@ -44,3 +42,4 @@ async def pixelator(event):
         else:
             await event.client.send_message(event.chat_id, "`Fotoğraf başarıyla pikselleştirildi!`", file=response.message)
             await event.delete()
+CmdHelp('pixelle').add_command('pixelle', LANG['PİX']).add()

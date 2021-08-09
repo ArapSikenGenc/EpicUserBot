@@ -196,11 +196,11 @@ async def asistanalive(ups):
 
 
 CmdHelp('system_stats').add_command(
-    'sysd', None, 'Neofetch modülünü kullanarak sistem bilgisi gösterir.'
+    'sysd', None, LANG['SS1']
 ).add_command(
-    'botver', None, 'Userbot sürümünü gösterir.'
+    'botver', None, LANG['SS2']
 ).add_command(
-    'pip', '<modül(ler)>', 'Pip modüllerinde arama yapar.'
+    'pip', LANG['SS3'], LANG['SS4']
 ).add_command(
-    'alive', None, 'Epic botunun çalışıp çalışmadığını kontrol etmek için kullanılır.'
+    'alive', None, LANG['SS5']
 ).add()

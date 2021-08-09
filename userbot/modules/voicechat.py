@@ -10,7 +10,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("vchat")
 
 # ████████████████████████████████ #
 
@@ -71,10 +71,10 @@ async def _(c):
             pass
     await c.edit(f"`{z}` **Üyeler çağrıldı...**")
 
-
-Help = CmdHelp('vc')
-Help.add_command('vcbaslat', None, 'Bir grupta sesli sohbet başlatır.')
-Help.add_command('vcbitir', None, 'Sesli sohbeti sonlandırır.')
-Help.add_command('vcdavet', None, 'Gruptaki üyeleri sesli sohbete davet eder.')
-Help.add_info('@EpicUserBot Sesli Sohbet Resmi Modülüdür.')
-Help.add()    
+CmdHelp('vc').add_command(
+    'vcbaslat', None, LANG['VC1']
+).add_command(
+    'vcbitir', None, LANG['VC2']
+).add_command(
+    'vcdavet', None, LANG['VC3']
+).add_info(LANG['VC4']).add()    

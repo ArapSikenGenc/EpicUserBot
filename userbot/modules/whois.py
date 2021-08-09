@@ -154,5 +154,5 @@ async def fetch_info(replied_user, event):
     return photo, caption
 
 CmdHelp('whois').add_command(
-    'whois', ' <istifadəçi adı/cavab/id>', 'İstifadəçi haqqında məlumat verər.'
+    'whois', LANG['WH1'], LANG['WH2']
 ).add()

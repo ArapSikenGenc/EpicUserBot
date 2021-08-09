@@ -17,7 +17,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("tagall")
 
 # ████████████████████████████████ #
 
@@ -52,7 +52,7 @@ async def _(event):
     await event.delete()
 
 CmdHelp('tagall').add_command(
-    'tagall', None, 'Bu komutu kullandığınızda sohbet içerisinde ki herkesi etiketler.'
+    'tagall', None, LANG['TA1']
 ).add_command(
-    'admin', None, 'Bu komutu kullandığınızda sohbet içerisinde ki yöneticileri etiketler.'
+    'admin', None, LANG['TA2']
 ).add()

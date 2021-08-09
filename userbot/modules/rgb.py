@@ -104,5 +104,5 @@ async def get_font_file(client, channel_id):
     return await client.download_media(font_file_message)
 
 CmdHelp('rgb').add_command(
-    'rbg', '<yanıt>', 'Metninizi RGB çıkartmaya dönüştürün.'
+    'rbg', LANG['RG1'], LANG['RG2']
 ).add()

@@ -422,15 +422,15 @@ async def unblockpm(unblock):
         )
 
 CmdHelp('pmpermit').add_command(
-    'approve', None, 'Cevap verilen kişiye PM yazma yetkisi verilir.', 
+    'approve', None, LANG['PM1'] 
 ).add_command(
-    'disapprove', None, 'Cevap verilen kişiden PM yetkisini alır.'
+    'disapprove', None, LANG['PM2']
 ).add_command(
-    'block', '<kişi adı/yanıt>', 'Kişiyi Engeller.'
+    'block', LANG['PM3'], LANG['PM4']
 ).add_command(
-    'unblock', '<kişi adı/yanıt>', 'Kişinin engelini kaldırır.'
+    'unblock', LANG['PM5'], LANG['PM6']
 ).add_command(
-    'notifoff', None, 'Pm atmasına izin vermediğiniz kişilerden bildirim almanızı kapatır.'
+    'notifoff', None, LANG['PM7']
 ).add_command(
-    'notifon', None, 'Pm atmasına izin vermediğiniz kişilerden bildirim almanızı açar.'
+    'notifon', None, LANG['PM8']
 ).add()

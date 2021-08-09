@@ -17,7 +17,7 @@ from userbot.cmdhelp import CmdHelp
 # ██████ LANGUAGE CONSTANTS ██████ #
 
 from userbot.language import get_value
-LANG = get_value("afk")
+LANG = get_value("spam")
 
 # ████████████████████████████████ #
 
@@ -141,24 +141,18 @@ async def media_spam(event):
             "MedyaSpam başarıyla gerçekleştirildi"
             )
 
-
-
-
-
 CmdHelp('spammer').add_command(
-    'tspam', '<metin>', 'Verilen mesajı tek tek göndererek spam yapar.'
+    'tspam', LANG['S1'], LANG['S2']
 ).add_command(
-    'spam', '<miktar> <metin>', 'Verilen miktarda spam gönderir.'
+    'spam', LANG['S3'], LANG['S4']
 ).add_command(
-    'bigspam', '<miktar> <metin>', 'Verilen miktarda spam gönderir.'
+    'bigspam', LANG['S5'], LANG['S6']
 ).add_command(
-    'picspam', '<miktar> <link>', 'Verilen miktarda resimli spam gönderir.'
+    'picspam', LANG['S7'], LANG['S8']
 ).add_command(
-    'mspam', '<miktar> <yanıtladığınız medya>', 'Verilen miktar kadar yanıt verdiğiniz fotoğraf/müzik/ses/video spamı yapar.'
+    'mspam', LANG['S9'], LANG['S10']
 ).add_command(
-    'delayspam', '<gecikme> <miktar> <metin>', 'Verilen miktar ve verilen gecikme ile gecikmeli spam yapar.'
+    'delayspam', LANG['S11'], LANG['S12']
 ).add_command(
-    'kill spam', None, "Spam durdurma", None
-).add_warning(
-    'Sorumluluk size aittir!!'
-).add()
+    'kill spam', None, LANG['S13'], None
+).add_warning( LANG['S14']).add()

@@ -12,7 +12,7 @@ LANG = get_value("playstore")
 
 # ████████████████████████████████ #
 
-@register(outgoing=True, pattern=".playstore ?(.*)")
+@register(outgoing=True, pattern=".pstore ?(.*)")
 async def play_store(message):
     try:
         await message.edit(LANG["SEARCH"])
@@ -46,3 +46,5 @@ async def play_store(message):
         await message.edit(app_details, parse_mode='html')
     except IndexError:
         await message.edit(LANG["NOT_FOUND"])
+
+CmdHelp('playstore').add_command('pstore', LANG['PS1'],LANG['PS2']).add()

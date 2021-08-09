@@ -404,7 +404,7 @@ async def asistan_update(ups):
     
 
 CmdHelp('update').add_command(
-    'update', None, 'Botunuza siz kurduktan sonra herhangi bir güncelleme gelip gelmediğini kontrol eder.'
+    'update', None, LANG['UP1']
 ).add_command(
-    'update now', None, 'Botunuzu günceller.'
+    'update now', None, LANG['UP2']
 ).add()

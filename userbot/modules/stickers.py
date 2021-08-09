@@ -257,11 +257,11 @@ async def resize_photo(photo):
     return image
 
 CmdHelp('stickers').add_command(
-    'dızla', None, 'Dızla ile bir çıkartmaya ya da resme yanıtlayarak kendi çıkartma paketinize çıkartma olarak ekleyebilirsiniz.'
+    'dızla', None, LANG['D1']
 ).add_command(
-    'dızla', '<emoji(ler)>', 'Dızla gibi çalışır fakat istediğiniz emojiyi çıkartmanın emojisi olarak belirtir.'
+    'dızla', LANG['D2'],LANG['D3']
 ).add_command(
-    'dızla', '<numara>', 'Çıkartmayı ya da resmi belirtilen pakete ekler fakat emoji olarak şu kullanılır: 🤔 '
+    'dızla', LANG['D4'], LANG['D5']
 ).add_command(
-    'dızla', '<emoji(ler)> <numara>', 'Çıkartmayı ya da resmi belirtilen pakete ekler ve belirttiğiniz emoji çıkartmanın emojisi olarak kullanılır.'
+    'dızla', LANG['D6'], LANG['D7']
 ).add()
