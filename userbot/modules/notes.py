@@ -128,11 +128,11 @@ async def incom_note(getnt):
         pass
 
 CmdHelp('notes').add_command(
-    '#<notismi>', None, LANG['NO']
+    '#<notismi>', None, LANG['NO1']
 ).add_command(
-    'save', None, LANG['NO'], None, LANG['NO']
+    'save', None, LANG['NO2'], None, LANG['NO3']
 ).add_command(
-    'notes', None, LANG['NO']
+    'notes', None, LANG['NO4']
 ).add_command(
-    'clear',     'notes', None, LANG['NO'], None, LANG['NO']
+    'clear', LANG['NO4'], LANG['NO4']
 ).add()
