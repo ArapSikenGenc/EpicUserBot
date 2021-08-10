@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 ##
 # - tg: @epicuserbot - @HydraDestek
-# EpicUserBot - Erdem Bey 
+# EpicUserBot - Erdem Bey - ByMisakiMey
 
 
 """ AFK ile ilgili komutları içeren UserBot modülü """
@@ -15,11 +15,13 @@ from asyncio import sleep
 from telethon.events import StopPropagation
 
 from userbot import (AFKREASON, COUNT_MSG, CMD_HELP, ISAFK, BOTLOG,
-                     BOTLOG_CHATID, USERS, PM_AUTO_BAN, SON_GORULME, ASISTAN, MYID, AFKILETME)
+                     BOTLOG_CHATID, USERS, PM_AUTO_BAN, SON_GORULME, ASISTAN, MYID, AFKILETME, DEFAULT_BIO)
 from userbot.events import register
 from userbot.main import PLUGIN_MESAJLAR
 from time import time
 from userbot.cmdhelp import CmdHelp
+from telethon.tl.functions.account import UpdateProfileRequest
+
 
 # ██████ LANGUAGE CONSTANTS ██████ #
 
@@ -329,14 +331,14 @@ async def set_afk(afk_e):
     global ISAFK
     global AFKREASON
     global SON_GORULME
-
+     await afk_e.client(UpdateProfileRequest(about="Sahibim Şuan #AFK @Epicuserbot♥️Misaki") #Erdem elleme uçarım
     if string:
         AFKREASON = string
         await afk_e.edit(f"{LANG['IM_AFK']}\
         \n{LANG['REASON']}: `{string}`")
     else:
         await afk_e.edit(LANG['IM_AFK'])
-
+        
     SON_GORULME = time()
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFK oldunuz.")
@@ -380,6 +382,7 @@ async def type_afk_is_not_true(notafk):
     if ISAFK:
         ISAFK = False
         await notafk.respond(LANG['IM_NOT_AFK'])
+        await afk_e.client(UpdateProfileRequest(about=f"{DEFAULT_BIO}"))
         await sleep(2)
         if BOTLOG:
             await notafk.client.send_message(
