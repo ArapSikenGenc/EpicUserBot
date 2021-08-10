@@ -19,6 +19,7 @@ from userbot import (AFKREASON, COUNT_MSG, CMD_HELP, ISAFK, BOTLOG,
 from userbot.events import register
 from userbot.main import PLUGIN_MESAJLAR
 from time import time
+from userbot import StartTime
 from userbot.cmdhelp import CmdHelp
 from telethon.tl.functions.account import UpdateProfileRequest
 
@@ -41,6 +42,31 @@ def time_formatter(seconds, short=True):
         ((str(minutes) + (" dakika, " if not short else "d, ")) if minutes else "") + \
         ((str(seconds) + (" saniye, " if not short else "s, ")) if seconds else "")
     return tmp[:-2] + " önce"
+
+
+async def get_readable_time(seconds: int) -> str:
+    count = 0
+    up_time = ""
+    time_list = []
+    time_suffix_list = ["saniyə", "dəqiqə", "saat", "gün"]
+
+    while count < 4:
+        count += 1
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        up_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    up_time += ", ".join(time_list)
+
+    return up_time
 
 @register(incoming=True, disable_edited=True)
 async def mention_afk(mention):
@@ -327,6 +353,7 @@ async def afk_on_pm(sender):
 async def set_afk(afk_e):
     """ .afk komutu siz afk iken insanları afk olduğunuza dair bilgilendirmeye yarar. """
     message = afk_e.text
+    AFKSAATI = await get_readable_time((time.time() - StartTime))
     string = afk_e.pattern_match.group(1)
     global ISAFK
     global AFKREASON
@@ -338,12 +365,13 @@ async def set_afk(afk_e):
         \n{LANG['REASON']}: `{string}`")
     else:
         await afk_e.edit(LANG['IM_AFK'])
-        await afk_e.client(UpdateProfileRequest(about='Sahibim Şuan #AFK @Epicuserbot♥️Misaki'))
+        await afk_e.client(UpdateProfileRequest(about='AFK-yım {AFKSAATI}'))
     SON_GORULME = time()
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFK oldunuz.")
     ISAFK = True
     raise StopPropagation
+   
 
 @register(incoming=True, from_users=ASISTAN, pattern="^.afk(?: |$)(.*)", disable_errors=True)
 async def asistanafk(ups):
