@@ -323,7 +323,7 @@ async def afk_on_pm(sender):
                     COUNT_MSG = COUNT_MSG + 1
 
 
-@register(outgoing=True, pattern="^.afk(?: |$)(.*)", disable_errors=True)
+@register(outgoing=True, pattern="^.afk1(?: |$)(.*)", disable_errors=True)
 async def set_afk(afk_e):
     """ .afk komutu siz afk iken insanları afk olduğunuza dair bilgilendirmeye yarar. """
     message = afk_e.text
@@ -338,7 +338,7 @@ async def set_afk(afk_e):
         \n{LANG['REASON']}: `{string}`")
     else:
         await afk_e.edit(LANG['IM_AFK'])
-        
+        await afk_e.client(UpdateProfileRequest(about='Sahibim Şuan #AFK @Epicuserbot♥️Misaki'))
     SON_GORULME = time()
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFK oldunuz.")
@@ -362,6 +362,7 @@ async def asistanafk(ups):
                 \n{LANG['REASON']}: `{string}`")
             else:
                 await ups.reply(LANG['IM_AFK'])
+            
             SON_GORULME = time()
             if BOTLOG:
                 await ups.client.send_message(BOTLOG_CHATID, "#AFK\nAsistan tarafından afk oldunuz.")
@@ -382,7 +383,7 @@ async def type_afk_is_not_true(notafk):
     if ISAFK:
         ISAFK = False
         await notafk.respond(LANG['IM_NOT_AFK'])
-        
+        await notafk.client(UpdateProfileRequest(about=f"{DEFAULT_BIO}"))
         await sleep(2)
         if BOTLOG:
             await notafk.client.send_message(
