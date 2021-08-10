@@ -283,6 +283,7 @@ async def promote(promt):
                                  invite_users=True,
                                  change_info=True,
                                  ban_users=True,
+                                 manage_call=True,
                                  delete_messages=True,
                                  pin_messages=True)
     try:
@@ -402,6 +403,7 @@ async def demote(dmod):
                                 invite_users=None,
                                 change_info=None,
                                 ban_users=None,
+                                manage_call=None,
                                 delete_messages=None,
                                 pin_messages=None)
     # Yönetici iznini düzenle
