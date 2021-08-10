@@ -327,7 +327,6 @@ async def afk_on_pm(sender):
 @register(outgoing=True, pattern="^.afk(?: |$)(.*)", disable_errors=True)
 async def set_afk(afk_e):
     """ .afk komutu siz afk iken insanları afk olduğunuza dair bilgilendirmeye yarar. """
-    last_seen_long = time_formatter(last_seen_seconds, False)
     message = afk_e.text
     string = afk_e.pattern_match.group(1)
     global ISAFK
@@ -340,7 +339,7 @@ async def set_afk(afk_e):
         \n{LANG['REASON']}: `{string}`")
     else:
         await afk_e.edit(LANG['IM_AFK'])
-        await afk_e.client(UpdateProfileRequest(about='AFK-yım {last_seen_long}'))
+        await afk_e.client(UpdateProfileRequest(about='AFK-yım'))
     SON_GORULME = time()
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFK oldunuz.")
