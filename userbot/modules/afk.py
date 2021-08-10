@@ -327,6 +327,7 @@ async def afk_on_pm(sender):
 @register(outgoing=True, pattern="^.afk(?: |$)(.*)", disable_errors=True)
 async def set_afk(afk_e):
     """ .afk komutu siz afk iken insanları afk olduğunuza dair bilgilendirmeye yarar. """
+    last_seen_long = time_formatter(last_seen_seconds, False)
     message = afk_e.text
     string = afk_e.pattern_match.group(1)
     global ISAFK
