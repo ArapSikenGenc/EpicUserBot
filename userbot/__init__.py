@@ -32,6 +32,8 @@ from math import ceil
 
 load_dotenv("config.env")
 
+StartTime = time.time()
+
 # Bot günlükleri kurulumu:
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
