@@ -331,7 +331,7 @@ async def set_afk(afk_e):
     global ISAFK
     global AFKREASON
     global SON_GORULME
-     await afk_e.client(UpdateProfileRequest(about="Sahibim Şuan #AFK @Epicuserbot♥️Misaki") #Erdem elleme uçarım
+      
     if string:
         AFKREASON = string
         await afk_e.edit(f"{LANG['IM_AFK']}\
@@ -382,7 +382,7 @@ async def type_afk_is_not_true(notafk):
     if ISAFK:
         ISAFK = False
         await notafk.respond(LANG['IM_NOT_AFK'])
-        await afk_e.client(UpdateProfileRequest(about=f"{DEFAULT_BIO}"))
+        
         await sleep(2)
         if BOTLOG:
             await notafk.client.send_message(
