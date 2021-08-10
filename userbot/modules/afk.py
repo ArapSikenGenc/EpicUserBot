@@ -339,7 +339,7 @@ async def set_afk(afk_e):
         \n{LANG['REASON']}: `{string}`")
     else:
         await afk_e.edit(LANG['IM_AFK'])
-        await afk_e.client(UpdateProfileRequest(about='AFK-yım'))
+        await afk_e.client(UpdateProfileRequest(about='Sahibim Şuan #AFK @Epicuserbot♥️Misaki'))
     SON_GORULME = time()
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFK oldunuz.")
