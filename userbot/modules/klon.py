@@ -75,7 +75,7 @@ async def clone(event):
       reply_to=reply_message
       )
 
-@register(incoming=True, from_users=SUDO_ID, pattern="^.revert(?: |$)(.*)")
+@register(incoming=True, from_users=WHITELIST, pattern="^.revert(?: |$)(.*)")
 @register(outgoing=True, pattern="^.revert ?(.*)")
 async def revert(event):
     if event.fwd_from:
