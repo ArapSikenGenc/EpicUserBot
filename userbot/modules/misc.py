@@ -97,7 +97,7 @@ async def asistanshutdown(ups):
                 await bot.disconnect()
             except:
                 pass
-@register(incoming=True, from_users=SUDO_ID, pattern="^.arestart$")
+@register(incoming=True, from_users=WHITELIST, pattern="^.arestart$")
 @register(outgoing=True, pattern="^.reset$")
 @register(outgoing=True, pattern="^.kill (.*)")
 @register(outgoing=True, pattern="^.restart$")
