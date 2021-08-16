@@ -15,7 +15,7 @@ from os import execl
 import sys
 import io
 import sys
-from userbot import BOTLOG, BOTLOG_CHATID, ASISTAN, MYID, CMD_HELP, bot
+from userbot import BOTLOG, BOTLOG_CHATID, ASISTAN, MYID, CMD_HELP, bot, WHITELIST
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
@@ -97,7 +97,7 @@ async def asistanshutdown(ups):
                 await bot.disconnect()
             except:
                 pass
-
+@register(incoming=True, from_users=SUDO_ID, pattern="^.arestart$")
 @register(outgoing=True, pattern="^.reset$")
 @register(outgoing=True, pattern="^.kill (.*)")
 @register(outgoing=True, pattern="^.restart$")
