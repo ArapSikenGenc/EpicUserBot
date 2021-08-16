@@ -54,7 +54,7 @@ async def echo(Epic):
         await Epic.edit("Mesajlarını echo ya çevirmek için bir Kullanıcının mesajını yanıtlayın")
 
 
-@register(outgoing=True, pattern="^.listecho ?(.*)")
+@register(outgoing=True, pattern="^.elist ?(.*)")
 async def echo(Epic):
     if Epic.fwd_from:
         return
@@ -104,7 +104,7 @@ CmdHelp("echo").add_command(
 ).add_command(
   "rmecho", "bir kullanıcıya yanıt ver", "Hedeflenen kullanıcı mesajını tekrar oynatmayı durdurur."
 ).add_command(
-  "listecho", None, "Yankıyı etkinleştirdiğiniz kullanıcıların listesini gösterir"
+  "elist", None, "Yankıyı etkinleştirdiğiniz kullanıcıların listesini gösterir"
 ).add_info(
   "@ByMisakiMey"
 ).add()
