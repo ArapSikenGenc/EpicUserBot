@@ -28,7 +28,7 @@ async def echo(epic):
         addecho(user_id, chat_id)
         await epic.edit("**Selam 👋**")
     else:
-        await delete_epic(epic, "Bir kullanıcı yanıtlamak zorundasın")
+        await event.edit("Bir kullanıcı yanıtlamak zorundasın")
 
 
 @register(outgoing=True, pattern="^.rmecho ?(.*)")
@@ -51,7 +51,7 @@ async def echo(Epic):
         else:
             await Epic.edit("Kullanıcı echoya eklenmemiş")
     else:
-        await Epic.edit("Mesajlarını echo ya çevirmek için bir Kullanıcının mesajını yanıtlayın")
+        await Epic.edit("Mesajlarını echodan çıkarmak için bir mesajı yanıtlamalısın.")
 
 
 @register(outgoing=True, pattern="^.elist ?(.*)")
