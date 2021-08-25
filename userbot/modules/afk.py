@@ -337,7 +337,7 @@ async def set_afk(afk_e):
         AFKREASON = string
         await afk_e.edit(f"{LANG['IM_AFK']}\
         \n{LANG['REASON']}: `{string}`")
-        await afk_e.client(UpdateProfileRequest(about='Sahibim Şuan #AFK @Epicuserbot ✨'))
+        await afk_e.client(UpdateProfileRequest(about='Sahibim Şuan #AFK @Epicuserbot ✨')) #BUNU KULLANIPTA CR VERMEYENİN ANASINI SİKİM TEŞEKKÜRLER / ByMisakiMey
     else:
         await afk_e.edit(LANG['IM_AFK'])
         await afk_e.client(UpdateProfileRequest(about='Sahibim Şuan #AFK @Epicuserbot ✨'))
