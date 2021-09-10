@@ -1,11 +1,3 @@
-# Copyright (C) 2021 Thanks to Erdem Bey.
-#
-# Licensed under the  GPL-3.0 License;
-# you may not use this file except in compliance with the License.
-#
-
-# EpicUserBot - ErdemBey 
-
 import re
 import os
 import sys
@@ -27,7 +19,7 @@ LANG = get_value("__plugin")
 LANGG = get_value("misc")
 
 # ████████████████████████████████ #
-
+SECURİTY = ['STRING_SESSION','API_KEY','API_HASH','HEROKU_APPNAME','HEROKU_APIKEY']
 # Plugin Porter - UniBorg
 @register(outgoing=True, pattern="^.pport")
 async def pport(event):
@@ -193,8 +185,12 @@ async def pins(event):
     except Exception as e:
         await event.edit(f"{LANG['PLUGIN_BUGGED']} {e}`")
         return os.remove("./userbot/modules/" + dosya)
-
+    plugin = await event.get_reply_message()
     dosy = open(dosya, "r").read()
+    for S in SECURİTY:
+      if re.search(S, dosy):
+         os.remove(dosya)
+         return await event.edit(f"**DİKKAT DİKKAT** {plugin.file.name} dosyasında ({S}) değeri bulundu. \n\n Bu dosya virüslüdür sana zarar gelmesini istemiyorum sahip <3")
     if re.search(r"@tgbot\.on\(.*pattern=(r|)\".*\".*\)", dosy):
         komu = re.findall(r"\(.*pattern=(r|)\"(.*)\".*\)", dosy)
         komutlar = ""
@@ -249,7 +245,12 @@ async def ptest(event):
     except Exception as e:
         await event.edit(f"{LANG['PLUGIN_BUGGED']} {e}`")
         return os.remove("./userbot/temp_plugins/" + dosya)
-
+    plugin = await event.get_reply_message()
+    dosy = open(dosya, "r").read()
+    for S in SECURİTY:
+     if re.search(S, dosy):
+         os.remove(dosya)
+         return await event.edit(f"**DİKKAT DİKKAT** {plugin.file.name} dosyasında ({S}) değeri bulundu. \n\n Bu dosya virüslüdür sana zarar gelmesini istemiyorum sahip <3")
     return await event.edit(f'**Modül Başarıyla Yüklendi!**\
     \n__Modülü Test Edebilirsiniz. Botu yeniden başlattığınızda plugin silinecektir.__')
 
@@ -413,6 +414,3 @@ async def pinsasistan(ups):
                 extractCommands(dosya)
                 await reply_message.forward_to(PLUGIN_CHANNEL_ID)
                 return await usp.edit(f'**Modül Başarıyla Yüklendi**\n__Modülün  Kullanımını Öğrenmek İçin__ `.epic {dosyaAdi}` __yazın.__')
-
-
-
