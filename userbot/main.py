@@ -15,7 +15,7 @@ import requests
 from telethon.tl.types import InputMessagesFilterDocument
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 from telethon.tl.functions.channels import GetMessagesRequest
-from . import BRAIN_CHECKER, LOGS, bot, PLUGIN_CHANNEL_ID, CMD_HELP, LANGUAGE, EPİC_VERSION, PATTERNS
+from . import BRAIN_CHECKER, LOGS, bot, PLUGIN_CHANNEL_ID, CMD_HELP, LANGUAGE, EPİC_VERSION, PATTERNS, DEFAULT_NAME
 from .modules import ALL_MODULES
 import userbot.modules.sql_helper.mesaj_sql as MSJ_SQL
 import userbot.modules.sql_helper.galeri_sql as GALERI_SQL
@@ -87,7 +87,7 @@ KICKME_MSG = [
 ]
 
 CV_MSG = [
-    "**{epicsahip}** `Fazla Bi Bilgi Ayarlamamış Ama Şunu Biliyorum Kendisi Baya Zevkli Birisi Çünkü Epic Userbot Kullanıyor.` 😁",
+    "**{DEFAULT_NAME}** `Fazla Bi Bilgi Ayarlamamış Ama Şunu Biliyorum Kendisi Baya Zevkli Birisi Çünkü Epic Userbot Kullanıyor.` 😁",
     "`Üzgünüm sana vercek bir bilgim yok.`"
 ]
 
@@ -275,7 +275,7 @@ LOGS.info("+==============+==============+==============+==============+")
 LOGS.info("|                                                            |")
 LOGS.info("Botunuz çalışıyor! Herhangi bir sohbete .alive yazarak Test edin."
           " Yardıma İhtiyacınız varsa, Destek grubumuza gelin t.me/HydraDestek")
-LOGS.info(f"Bot versiyonunuz: Epic {EPİC_VERSION}")
+LOGS.info(f"Bot versiyonunuz: Epic ==> {EPİC_VERSION}")
 
 """
 if len(argv) not in (1, 3, 4):
