@@ -76,10 +76,10 @@ async def misakimusic(misaki):
     while netice is False:
             rast = random.choice(results)
             if rast.description == IFACI:
-                await misaki.edit("`Müzik Yükleniyor!\nBiraz bekleyin.")
+                await misaki.edit("`Müzik Yükleniyor!")
                 yukle = await rast.download_media()
-                await misaki.edit("`Yükleme tamamlandı!\nDosya Yükleniyot`")
-                await misaki.client.send_file(misaki.chat_id, yukle, caption="@EpicUserBot sizin için `"+rast.description+" - "+rast.title+"` müziğini seçti\n\niyi dinlemeler. :)")
+                await misaki.edit("`Yükleme tamamlandı!`")
+                await misaki.client.send_file(misaki.chat_id, yukle, caption="@EpicUserBot sizin için `"+rast.description+" - "+rast.title+"` müziğini seçti iyi dinlemeler. :)")
                 await event.delete()
                 os.remove(yukle)
                 netice = True
