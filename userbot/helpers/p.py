@@ -66,7 +66,7 @@ IFACI = [{siyahi}]
 async def misakimusic(misaki):
     
     
-    await misaki.edit("`Sizin üçün təsadüfi bir "+IFACI+" musiqisi axtarıram...`")
+    await misaki.edit("`Sizin için  "+IFACI+"müziğini aktarıyorum`")
     try:
         results = await misaki.client.inline_query('deezermusicbot', '+IFACI+')
     except:
@@ -76,7 +76,7 @@ async def misakimusic(misaki):
     while netice is False:
             rast = random.choice(results)
             if rast.description == IFACI:
-                await misaki.edit("`Müzik Yükleniyor!\nBiraz bekleyin.`")
+                await misaki.edit("`Müzik Yükleniyor!\nBiraz bekleyin.")
                 yukle = await rast.download_media()
                 await misaki.edit("`Yükleme tamamlandı!\nDosya Yükleniyot`")
                 await misaki.client.send_file(misaki.chat_id, yukle, caption="@EpicUserBot sizin için `"+rast.description+" - "+rast.title+"` müziğini seçti\n\niyi dinlemeler. :)")
