@@ -15,7 +15,7 @@ from telethon import events
 import os
 
 dosya_name=0
-@r(outgoing=True, pattern="^.plugyap (.*) (.*) (edit|alt|foto|m[uü]zik)$")
+@r(outgoing=True, pattern="^.pmake (.*) (.*) (edit|alt|foto|m[uü]zik)$")
 async def _(q):
 	global dosya_name
 	if q.is_reply:
@@ -111,7 +111,7 @@ async def _(q):
 		await q.edit("**Hey, Dostum Bir Mesajı Yanıtlamalısın!!**")
 		return
 
-c_ = c("plugyap")
-c_.add_command("plugyap", "<pluginin_komutu> <plugin_hızı> <edit/alt/foto/muzik> ", "@EpicUserBot Sizin İçin Bir plugin Oluşturur...")
+c_ = c("pluginmaker")
+c_.add_command("pmake", "<pluginin_komutu> <plugin_hızı> <edit/alt/foto/muzik> ", "@EpicUserBot Sizin İçin Bir plugin Oluşturur...")
 c_.add_info(' Thx to @ByMisakiMey').add()
 c_.add()
