@@ -75,7 +75,7 @@ if not LANGUAGE in ["EN", "TR", "AZ", "UZ", "DEFAULT"]:
     LANGUAGE = "DEFAULT"
     
 # Epic versiyon
-EPİC_VERSION = "v31"
+EPİC_VERSION = "v3.5"
 
 MAX_MESSAGE_SIZE_LIMIT = 4095
 # Telegram API KEY ve HASH
