@@ -49,30 +49,7 @@ def register(**args):
     if "trigger_on_inline" in args:
         del args['trigger_on_inline']
 
-    def decorator(func):
-        async def wrapper(check):
-            EpicVer = int(EPİC_VERSION.split(".")[1])
-            if ForceVer > EpicVer:
-                await check.edit(f"`🌈 Botu acilen güncellemen lazım! Bu sürüm artık kullanılamıyor..`\n\n__🥺 Sorunu çözmek için__ `.update now` __yazmalısın!__")
-                return
-
-            if not LOGSPAMMER:
-                send_to = check.chat_id
-            else:
-                send_to = BOTLOG_CHATID
-
-            if not trigger_on_fwd and check.fwd_from:
-                return
-
-            if check.via_bot_id and not trigger_on_inline:
-                return
-             
-            if groups_only and not check.is_group:
-                await check.respond("`⛔ Bunun bir grup olduğunu sanmıyorum. Bu plugini bir grupta dene! `")
-                return
-
-            try:
-                await func(check)
+    
                 
 
             except events.StopPropagation:
