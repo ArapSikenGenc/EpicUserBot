@@ -52,7 +52,7 @@ def register(**args):
 
     def decorator(func):
         async def wrapper(check):
-            EpicVer = get('https://raw.githubusercontent.com/ErdemBey0/datas/master/version.json').json()
+            EpicVer = int(EPİC_VERSION.split(".")[1])
             if ForceVer > EpicVer:
                 await check.edit(f"`🌈 Botu acilen güncellemen lazım! Bu sürüm artık kullanılamıyor..`\n\n__🥺 Sorunu çözmek için__ `.update now` __yazmalısın!__")
                 return
