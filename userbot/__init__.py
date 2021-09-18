@@ -76,7 +76,7 @@ if not LANGUAGE in ["EN", "TR", "AZ", "UZ", "DEFAULT"]:
     
 # Epic versiyon
 EPİC_VERSION = "v3.5"
-
+UPDATE_VERSION = get('https://raw.githubusercontent.com/ErdemBey0/datas/master/version.json').json()
 MAX_MESSAGE_SIZE_LIMIT = 4095
 # Telegram API KEY ve HASH
 API_KEY = os.environ.get("API_KEY", None)
