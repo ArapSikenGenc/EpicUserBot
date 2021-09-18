@@ -297,6 +297,26 @@ ALL_ROWS = CURSOR.fetchall()
 for i in ALL_ROWS:
     forceVer.append(i[0])
 connect("force-surum.check").close() 
+#Updater versiyon kontrolü
+
+upVer = []
+if os.path.exists("force-update.check"):
+    os.remove("force-update.check")
+else:
+    LOGS.info("Force Update Kontrol dosyası yok, getiriliyor...")
+
+URL = 'https://raw.githubusercontent.com/robotlog/datas/master/force-surum.check' 
+with open('force-update.check', 'wb') as load:
+    load.write(get(URL).content)
+
+DB = connect("force-update.check")
+CURSOR = DB.cursor()
+CURSOR.execute("""SELECT * FROM SURUM1""")
+ALL_ROWS = CURSOR.fetchall()
+
+for i in ALL_ROWS:
+    upVer.append(i[0])
+connect("force-update.check").close() 
 
 # CloudMail.ru ve MEGA.nz ayarlama
 if not os.path.exists('bin'):
@@ -558,6 +578,7 @@ COUNT_MSG = 0
 USERS = {}
 MYID = uid
 ForceVer = int(forceVer[0])
+upVer = int(upVer[0])
 BRAIN_CHECKER = []
 COUNT_PM = {}
 LASTMSG = {}
