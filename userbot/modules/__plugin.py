@@ -19,7 +19,7 @@ LANG = get_value("__plugin")
 LANGG = get_value("misc")
 
 # ████████████████████████████████ #
-SECURİTY = ['STRING_SESSION','API_KEY','API_HASH','HEROKU_APPNAME','HEROKU_APIKEY']
+SECURİTY = ['annen']
 # Plugin Porter - UniBorg
 @register(outgoing=True, pattern="^.pport")
 async def pport(event):
