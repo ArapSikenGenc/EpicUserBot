@@ -56,10 +56,10 @@ def register(**args):
                 await check.edit(f"`🌈 Botu acilen güncellemen lazım! Bu sürüm artık kullanılamıyor..`\n\n__🥺 Sorunu çözmek için__ `.update now` __yazmalısın!__")
                 return"""
 
-            if not LOGSPAMMER:
+            """if not LOGSPAMMER:
                 send_to = check.chat_id
             else:
-                send_to = BOTLOG_CHATID
+                send_to = BOTLOG_CHATID"""
 
             if not trigger_on_fwd and check.fwd_from:
                 return
