@@ -1,14 +1,7 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-
-# EpicUserBot - ErdemBey 
-
 """ Olayları yönetmek için UserBot modülü.
  UserBot'un ana bileşenlerinden biri. """
 
+from requests import get
 import sys
 from asyncio import create_subprocess_shell as asyncsubshell
 from asyncio import subprocess as asyncsub
@@ -49,10 +42,32 @@ def register(**args):
     if "trigger_on_inline" in args:
         del args['trigger_on_inline']
 
-    
+    def decorator(func):
+        async def wrapper(check):
+            if not LOGSPAMMER:
+                send_to = check.chat_id
+            else:
+                send_to = BOTLOG_CHATID
+
+            if not trigger_on_fwd and check.fwd_from:
+                return
+
+            if check.via_bot_id and not trigger_on_inline:
+                return
+             
+            if groups_only and not check.is_group:
+                await check.respond("`⛔ Bunun bir grup olduğunu sanmıyorum. Bu plugini bir grupta dene! `")
+                return
+
+            try:
+                await func(check)
                 
 
-            
+            except events.StopPropagation:
+                raise events.StopPropagation
+            except KeyboardInterrupt:
+                pass
+            except BaseException:
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
