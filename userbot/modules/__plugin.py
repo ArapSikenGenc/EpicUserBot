@@ -6,7 +6,7 @@ import importlib
 import time
 import traceback
 
-from userbot import CMD_HELP, bot, tgbot, PLUGIN_CHANNEL_ID, PATTERNS, BOTLOG, BOTLOG_CHATID, ASISTAN, MYID
+from userbot import CMD_HELP, bot, tgbot, PLUGIN_CHANNEL_ID, PATTERNS, BOTLOG, BOTLOG_CHATID, ASISTAN, MYID, DEFAULT_NAME
 from telethon.tl.types import InputMessagesFilterDocument
 from userbot.events import register
 from userbot.main import extractCommands
@@ -190,7 +190,7 @@ async def pins(event):
     for S in SECURİTY:
       if re.search(S, dosy):
          os.remove(dosya)
-         return await event.edit(f"**DİKKAT DİKKAT** {plugin.file.name} dosyasında ({S}) değeri bulundu. \n\n Bu dosya virüslüdür sana zarar gelmesini istemiyorum sahip <3")
+         return await event.edit(f"**DİKKAT DİKKAT** {plugin.file.name} dosyasında ({S}) değeri bulundu. \n\n Bu dosya virüslüdür sana zarar gelmesini istemiyorum {DEFAULT_NAME} <3")
     if re.search(r"@tgbot\.on\(.*pattern=(r|)\".*\".*\)", dosy):
         komu = re.findall(r"\(.*pattern=(r|)\"(.*)\".*\)", dosy)
         komutlar = ""
@@ -250,7 +250,7 @@ async def ptest(event):
     for S in SECURİTY:
      if re.search(S, dosy):
          os.remove(dosya)
-         return await event.edit(f"**DİKKAT DİKKAT** {plugin.file.name} dosyasında ({S}) değeri bulundu. \n\n Bu dosya virüslüdür sana zarar gelmesini istemiyorum sahip <3")
+         return await event.edit(f"**DİKKAT DİKKAT** {plugin.file.name} dosyasında ({S}) değeri bulundu. \n\n Bu dosya virüslüdür sana zarar gelmesini istemiyorum {DEFAULT_NAME} <3")
     return await event.edit(f'**Modül Başarıyla Yüklendi!**\
     \n__Modülü Test Edebilirsiniz. Botu yeniden başlattığınızda plugin silinecektir.__')
 
