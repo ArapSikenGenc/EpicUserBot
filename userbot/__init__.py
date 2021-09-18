@@ -112,7 +112,8 @@ PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
 HEROKU_APPNAME = os.environ.get("HEROKU_APPNAME", None)
 HEROKU_APIKEY = os.environ.get("HEROKU_APIKEY", None)
-
+#Security
+Badplugin = ['STRING_SESSION','API_KEY','API_HASH','HEROKU_APPNAME','HEROKU_APIKEY']
 
 
 EZZEC = False
@@ -127,7 +128,7 @@ if HEROKU_APPNAME is not None and HEROKU_APIKEY is not None:
         Heroku = heroku3.from_key(HEROKU_APIKEY)
         app = Heroku.app(HEROKU_APPNAME)
         heroku_var = app.config()
-        heroku_var["UPSTREAM_REPO_URL"] = "https://github.com/ByMisakiMey/EpicUserBot.git"
+        heroku_var["UPSTREAM_REPO_URL"] = "https://github.com/ErdemBey0/EpicUserBot.git"
 else:
     app = None
 
@@ -152,7 +153,7 @@ AI_LANG = os.environ.get("AI_LANG", 'en')
 
 
 # Güncelleyici için özel (fork) repo linki.
-UPSTREAM_REPO_URL = "https://github.com/ByMisakiMey/EpicUserBot.git"
+UPSTREAM_REPO_URL = "https://github.com/erdembey0/EpicUserBot.git"
 
 # Afk mesajların iletilmesi
 AFKILETME = sb(os.environ.get("AFKILETME", "True"))
