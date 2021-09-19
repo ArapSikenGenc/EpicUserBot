@@ -1,13 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-
-# Thanks github.com/spechide for creating inline bot support.
-# EpicUserBot - Erdem By - ByMisakiMey
-""" UserBot hazırlanışı. """
-
 import os
 import time
 import heroku3
@@ -388,13 +378,36 @@ async def check_botlog_chatid():
             "Hesabınızın BOTLOG_CHATID grubuna mesaj gönderme yetkisi yoktur. "
             "Grup ID'sini doğru yazıp yazmadığınızı kontrol edin.")
         quit(1)
-        
+import sys
+import logging
+import importlib
+from pathlib import Path
+
+def load_plugins(plugin_name):
+    path = Path(f"userbot/asisstant/plugins/{plugin_name}.py")
+    name = "userbot.asisstant.plugins.{}".format(plugin_name)
+    spec = importlib.util.spec_from_file_location(name, path)
+    load = importlib.util.module_from_spec(spec)
+    load.logger = logging.getLogger(plugin_name)
+    spec.loader.exec_module(load)
+    sys.modules["userbot.asisstant.plugins" + plugin_name] = load
+    print("ASİSSTANT " + plugin_name)
+
+import glob 
+from pathlib import Path    
 if not BOT_TOKEN == None:
     tgbot = TelegramClient(
         "TG_BOT_TOKEN",
         api_id=API_KEY,
         api_hash=API_HASH
     ).start(bot_token=BOT_TOKEN)
+path = "userbot/asisstant/plugins/*.py"
+files = glob.glob(path)
+for name in files:
+    with open(name) as a:
+        patt = Path(a.name)
+        plugin_name = patt.stem
+        load_plugins(plugin_name.replace(".py", ""))
 else:
     tgbot = None
 
