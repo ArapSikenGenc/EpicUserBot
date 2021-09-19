@@ -383,15 +383,6 @@ import logging
 import importlib
 from pathlib import Path
 
-def load_plugins(plugin_name):
-    path = Path(f"userbot/asisstant/plugins/{plugin_name}.py")
-    name = "userbot.asisstant.plugins.{}".format(plugin_name)
-    spec = importlib.util.spec_from_file_location(name, path)
-    load = importlib.util.module_from_spec(spec)
-    load.logger = logging.getLogger(plugin_name)
-    spec.loader.exec_module(load)
-    sys.modules["userbot.asisstant.plugins" + plugin_name] = load
-    print("ASİSSTANT " + plugin_name)
 
 import glob 
 from pathlib import Path    
@@ -401,13 +392,6 @@ if not BOT_TOKEN == None:
         api_id=API_KEY,
         api_hash=API_HASH
     ).start(bot_token=BOT_TOKEN)
-path = "userbot/asisstant/plugins/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as a:
-        patt = Path(a.name)
-        plugin_name = patt.stem
-        load_plugins(plugin_name.replace(".py", ""))
 else:
     tgbot = None
 
