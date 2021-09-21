@@ -10,7 +10,7 @@
 import asyncio
 import threading
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, BLACKLIST_CHAT
 from userbot.events import register
 from userbot.cmdhelp import CmdHelp
 
@@ -39,6 +39,8 @@ async def tmeme(e):
 
 @register(outgoing=True, pattern="^.spam")
 async def spammer(e):
+    if e.chat_id in BLACKLIST_CHAT:
+        return await e.edit("RESMİ EPİC GRUBUNA SPAM ATAMAM DOSTUM YALLAH")
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         message = e.text
         messageSplit = message.split(" ", 2)
@@ -55,6 +57,8 @@ async def spammer(e):
                                
 @register(outgoing=True, pattern="^.bigspam")
 async def bigspam(e):
+    if e.chat_id in BLACKLIST_CHAT:
+        return await e.edit("RESMİ EPİC GRUBUNA SPAM ATAMAM DOSTUM YALLAH")
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         message = e.text
         messageSplit = message.split(" ", 2)
@@ -73,6 +77,8 @@ async def bigspam(e):
         
 @register(outgoing=True, pattern="^.picspam")
 async def tiny_pic_spam(e):
+    if e.chat_id in BLACKLIST_CHAT:
+        return await e.edit("RESMİ EPİC GRUBUNA SPAM ATAMAM DOSTUM YALLAH")
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         message = e.text
         text = message.split()
@@ -91,6 +97,8 @@ async def tiny_pic_spam(e):
 
 @register(outgoing=True, pattern="^.delayspam")
 async def delayspammer(e):
+    if e.chat_id in BLACKLIST_CHAT:
+        return await e.edit("RESMİ EPİC GRUBUNA SPAM ATAMAM DOSTUM YALLAH")
     # Teşekkürler @ReversedPosix
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         message = e.text
@@ -113,6 +121,8 @@ async def delayspammer(e):
 
 @register(outgoing=True, pattern="^.mspam(?: |$)(.*)")
 async def media_spam(event):
+    if e.chat_id in BLACKLIST_CHAT:
+        return await e.edit("RESMİ EPİC GRUBUNA SPAM ATAMAM DOSTUM YALLAH")
     if event.fwd_from:
         return
     
