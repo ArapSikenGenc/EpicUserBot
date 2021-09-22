@@ -342,6 +342,24 @@ else:
     # pylint: devre dışı=geçersiz ad
     bot = TelegramClient("userbot", API_KEY, API_HASH)
 
+def vc_connection(udB):
+    VC_SESSION = udB.get("VC_SESSION")
+    if VC_SESSION:
+        try:
+            vcasst = Client(
+                ":memory:",
+                api_id=Var.API_ID,
+                api_hash=Var.API_HASH,
+                bot_token=udB.get("BOT_TOKEN"),
+            )
+            vcClient = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH)
+            CallsClient = PyTgCalls(vcClient, log_mode=PyLogs.verbose)
+            return vcasst, vcClient, CallsClient
+        except Exception as er:
+            LOGS.info(str(er))
+    return None, None, None
+
+
 ASISTAN = 1985727625 # Bot yardımcısı
 
 if os.path.exists("learning-data-root.check"):
