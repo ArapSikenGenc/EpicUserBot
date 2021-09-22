@@ -15,7 +15,7 @@ import requests
 from telethon.tl.types import InputMessagesFilterDocument
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 from telethon.tl.functions.channels import GetMessagesRequest
-from . import BRAIN_CHECKER, LOGS, bot, PLUGIN_CHANNEL_ID, CMD_HELP, LANGUAGE, EPİC_VERSION, PATTERNS, DEFAULT_NAME
+from . import BRAIN_CHECKER, LOGS, bot, PLUGIN_CHANNEL_ID, CMD_HELP, LANGUAGE, EPİC_VERSION, PATTERNS, DEFAULT_NAME, NO_LOAD
 from .modules import ALL_MODULES
 import userbot.modules.sql_helper.mesaj_sql as MSJ_SQL
 import userbot.modules.sql_helper.galeri_sql as GALERI_SQL
@@ -27,6 +27,7 @@ import chromedriver_autoinstaller
 from json import loads, JSONDecodeError
 import re
 import userbot.cmdhelp
+import glob
 
 ALIVE_MSG = [
     "`Userbotunuz çalışıyor ve sana bişey demek istiyor.. Seni seviyorum` **{epicsahip}** ❤️",
@@ -101,6 +102,7 @@ DB = connect("learning-data-root.check")
 CURSOR = DB.cursor()
 CURSOR.execute("""SELECT * FROM BRAIN1""")
 ALL_ROWS = CURSOR.fetchall()
+
 
 
 INVALID_PH = '\nHATA: Girilen telefon numarası geçersiz' \
@@ -243,6 +245,40 @@ try:
                         os.remove("./userbot/modules/" + plugin.file.name)
                     continue
                 extractCommands('./userbot/modules/' + plugin.file.name)
+    else:
+        bot.send_message("me", f"`Lütfen pluginlerin kalıcı olması için PLUGIN_CHANNEL_ID'i ayarlayın.`")
+
+
+    for plugin in bot.iter_messages(KanalId, filter=InputMessagesFilterDocument):
+            if plugin.file.name and (len(plugin.file.name.split('.')) > 1) \
+                and plugin.file.name.split('.')[-1] == 'py':
+                Split = plugin.file.name.split('.')
+
+                if not os.path.exists("./userbot/asisstant/" + plugin.file.name):
+                    dosya = bot.download_media(plugin, "./userbot/asisstant/")
+                else:
+                    LOGS.info("Bu Plugin Onsuzda Yüklüdür " + plugin.file.name)
+                    extractCommands('./userbot/asisstant/' + plugin.file.name)
+                    dosya = plugin.file.name
+                    continue 
+                
+                try:
+                    spec = importlib.util.spec_from_file_location("userbot.asisstant." + Split[0], dosya)
+                    mod = importlib.util.module_from_spec(spec)
+
+                    spec.loader.exec_module(mod)
+                except Exception as e:
+                    LOGS.info(f"`[×] Yükleme Başarısız! Plugin Hatalı!!\n\nHata: {e}`")
+
+                    try:
+                        plugin.delete()
+                    except:
+                        pass
+
+                    if os.path.exists("./userbot/asisstant/" + plugin.file.name):
+                        os.remove("./userbot/asisstant/" + plugin.file.name)
+                    continue
+                extractCommands('./userbot/asisstant/' + plugin.file.name)
     else:
         bot.send_message("me", f"`Lütfen pluginlerin kalıcı olması için PLUGIN_CHANNEL_ID'i ayarlayın.`")
 except PhoneNumberInvalidError:
