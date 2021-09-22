@@ -29,7 +29,7 @@ ydl = YoutubeDL(ydl_opts)
 group_call = GroupCallFactory(client, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM).get_group_call()
 
 
-@Client.on_message(filters.command(["stream", f"stream@{BOT_USERNAME}"]) & filters.me)
+@client.on_message(filters.command(["stream", f"stream@{BOT_USERNAME}"]) & filters.me)
 async def stream(client, m: Message):
     msg = await m.reply_text("🔄 `Processing ...`")
     chat_id = m.chat.id
@@ -137,7 +137,7 @@ async def stream(client, m: Message):
     )
 
 
-@Client.on_message(filters.command(["pause", f"pause@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@client.on_message(filters.command(["pause", f"pause@{BOT_USERNAME}"]) & filters.group & ~filters.me)
 async def pause(_, m: Message):
     chat_id = m.chat.id
 
@@ -153,7 +153,7 @@ async def pause(_, m: Message):
         await m.reply_text("❌ **Noting Is Streaming !**")
 
 
-@Client.on_message(filters.command(["resume", f"resume@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@client.on_message(filters.command(["resume", f"resume@{BOT_USERNAME}"]) & filters.group & ~filters.me)
 async def resume(_, m: Message):
     chat_id = m.chat.id
 
@@ -169,7 +169,7 @@ async def resume(_, m: Message):
         await m.reply_text("❌ **Noting Is Streaming !**")
 
 
-@Client.on_message(filters.command(["endstream", f"endstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@client.on_message(filters.command(["endstream", f"endstream@{BOT_USERNAME}"]) & filters.group & ~filters.me)
 async def endstream(client, m: Message):
     msg = await m.reply_text("🔄 `Processing ...`")
     chat_id = m.chat.id
