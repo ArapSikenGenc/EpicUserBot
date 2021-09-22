@@ -1,7 +1,7 @@
 from userbot import tgbot
 import asyncio
-
-@tgbot.on(events.NewMessage(incoming=True, pattern="[Aa]sistan"))
+from telethon import events
+@tgbot.on(events.NewMessage(incoming=True, pattern="deneme"))
 async def evnt (e):
     await e.reply("DENEME")
 
