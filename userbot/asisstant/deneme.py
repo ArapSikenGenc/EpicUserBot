@@ -1,64 +1,203 @@
-from pyrogram import Client, filters
-from pytgcalls import PyTgCalls
-from pytgcalls_wrapper import Wrapper
-from userbot import client
-import logging
-from userbot.asisstant.yardım import mahniniseslendir, Text
-from os import remove
 import os
-import youtube_dl
-from youtube_search import YoutubeSearch
-import requests
+import re
+import sys
+import time
+import ffmpeg
+import asyncio
+import subprocess
+from asyncio import sleep
+
+from youtube_dl import YoutubeDL
+from pyrogram import Client, filters
+from pyrogram.types import Message
+from pytgcalls import GroupCallFactory
+from userbot import BOT_USERNAME
+
+from youtubesearchpython import VideosSearch
+from userbot import client
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+AUDIO_CALL = {}
+VIDEO_CALL = {}
+
+ydl_opts = {
+        "quiet": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+}
+ydl = YoutubeDL(ydl_opts)
+group_call = GroupCallFactory(client, GroupCallFactory.MTPROTO_CLIENT_TYPE.PYROGRAM).get_group_call()
 
 
+@Client.on_message(filters.command(["stream", f"stream@{BOT_USERNAME}"]) & filters.me)
+async def stream(client, m: Message):
+    msg = await m.reply_text("🔄 `Processing ...`")
+    chat_id = m.chat.id
+    media = m.reply_to_message
+    if not media and not ' ' in m.text:
+        await msg.edit("❗ __Send Me An Live Stream Link / YouTube Video Link / Reply To An Video To Start Video Streaming!__")
 
-pytgcalls = PyTgCalls(client)
-pycalls = Wrapper(pytgcalls, "raw")
+    elif ' ' in m.text:
+        text = m.text.split(' ', 1)
+        query = text[1]
+        regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
+        match = re.match(regex, query)
+        if match:
+            await msg.edit("🔄 `Starting YouTube Video Stream ...`")
+            try:
+                meta = ydl.extract_info(query, download=False)
+                formats = meta.get('formats', [meta])
+                for f in formats:
+                    ytstreamlink = f['url']
+                link = ytstreamlink
+                search = VideosSearch(query, limit=1)
+                opp = search.result()["result"]
+                oppp = opp[0]
+                thumbid = oppp["thumbnails"][0]["url"]
+                split = thumbid.split("?")
+                thumb = split[0].strip()
+            except Exception as e:
+                await msg.edit(f"❌ **YouTube Download Error !** \n\n`{e}`")
+                print(e)
+                return
+        else:
+            await msg.edit("🔄 `Starting Live Video Stream ...`")
+            link = query
+            thumb = "https://telegra.ph/file/3e14128ad5c9ec47801bd.jpg"
 
-@client.on_message(filters.command(['seslendir'], ['!','.','/']) & filters.me)
-async def seslendir(_, message):
-    txt = message.text.split(" ", 1)
-    type_ = None
-    try:
-        song_name = txt[1]
-        type_ = "url"
-    except IndexError:
-        reply = message.reply_to_message
-        if reply:
-            if reply.audio:
-                med = reply.audio
-            elif reply.video:
-                med = reply.video
-            elif reply.voice:
-                med = reply.voice
-            else:
-                return await message.reply_text(Text.how_to)
-            song_name = med.file_name
-            type_ = "tg"
-    if type_ == "url":
-        if "youtube" not in song_name and "youtu.be" not in song_name:
-            return await message.reply_text(Text.not_yet)
-        await message.reply_text("Oxunur `{}`".format(song_name))
-        await mahniniseslendir(pycalls, message, song_name)
-    elif type_ == "tg":
-        x = await message.reply_text(Text.dl)
-        file_ = await reply.download()
-        await x.edit("`Səsləndirilir...`")
-        await mahniniseslendir(pycalls, message, file_)
-        remove(file_)
+        vid_call = VIDEO_CALL.get(chat_id)
+        if vid_call:
+            await VIDEO_CALL[chat_id].stop()
+            VIDEO_CALL.pop(chat_id)
+            await sleep(3)
+
+        aud_call = AUDIO_CALL.get(chat_id)
+        if aud_call:
+            await AUDIO_CALL[chat_id].stop()
+            AUDIO_CALL.pop(chat_id)
+            await sleep(3)
+
+        try:
+            await sleep(2)
+            await group_call.join(chat_id)
+            await group_call.start_video(link, with_audio=True, repeat=False)
+            VIDEO_CALL[chat_id] = group_call
+            await m.reply_photo(photo=thumb, caption=f"▶️ **Started [Video Streaming]({query}) In {m.chat.title} !**")
+            await msg.delete()
+        except Exception as e:
+            await msg.edit(f"❌ **An Error Occoured !** \n\nError: `{e}`")
+
+    elif media.video or media.document:
+        await msg.edit("🔄 `Downloading ...`")
+        if media.video.thumbs:
+            lol = media.video.thumbs[0]
+            lel = await client.download_media(lol['file_id'])
+            thumb = lel
+        else:
+            thumb = "https://telegra.ph/file/62e86d8aadde9a8cbf9c2.jpg"
+        video = await client.download_media(media)
+
+        vid_call = VIDEO_CALL.get(chat_id)
+        if vid_call:
+            await VIDEO_CALL[chat_id].stop()
+            VIDEO_CALL.pop(chat_id)
+            await sleep(3)
+
+        aud_call = AUDIO_CALL.get(chat_id)
+        if aud_call:
+            await AUDIO_CALL[chat_id].stop()
+            AUDIO_CALL.pop(chat_id)
+            await sleep(3)
+
+        try:
+            await sleep(2)
+            await group_call.join(chat_id)
+            await group_call.start_video(video, with_audio=True, repeat=False)
+            VIDEO_CALL[chat_id] = group_call
+            await m.reply_photo(photo=thumb, caption=f"▶️ **Started [Video Streaming](https://t.me/AsmSafone) In {m.chat.title} !**")
+            await msg.delete()
+        except Exception as e:
+            await msg.edit(f"❌ **An Error Occoured !** \n\nError: `{e}`")
+
     else:
-        return await message.reply_text(Text.how_to)
+        await msg.edit(
+            "💁🏻‍♂️ Do you want to search for a YouTube video?",
+            reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "✅ Yes", switch_inline_query_current_chat=""
+                    ),
+                    InlineKeyboardButton(
+                        "No ❌", callback_data="close"
+                    )
+                ]
+            ]
+        )
+    )
 
 
-@client.on_message(filters.command(['pause'], ['!','.','/']) & filters.me)
-async def pause(_, message):
-    pycalls.pause(message.chat.id)
-    await message.reply_text("Musiqiyə ara verildi.")
+@Client.on_message(filters.command(["pause", f"pause@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+async def pause(_, m: Message):
+    chat_id = m.chat.id
+
+    if chat_id in AUDIO_CALL:
+        await AUDIO_CALL[chat_id].set_audio_pause(True)
+        await m.reply_text("⏸ **Paused Audio Streaming !**")
+
+    elif chat_id in VIDEO_CALL:
+        await VIDEO_CALL[chat_id].set_video_pause(True)
+        await m.reply_text("⏸ **Paused Video Streaming !**")
+
+    else:
+        await m.reply_text("❌ **Noting Is Streaming !**")
 
 
-@client.on_message(filters.command(['resume'], ['!','.','/']) & filters.me)
-async def resume(_, message):
-    pycalls.resume(message.chat.id)
-    await message.reply_text("Musiqi davam etdirilir.")
+@Client.on_message(filters.command(["resume", f"resume@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+async def resume(_, m: Message):
+    chat_id = m.chat.id
 
-pytgcalls.run()
+    if chat_id in AUDIO_CALL:
+        await AUDIO_CALL[chat_id].set_audio_pause(False)
+        await m.reply_text("▶️ **Resumed Audio Streaming !**")
+
+    elif chat_id in VIDEO_CALL:
+        await VIDEO_CALL[chat_id].set_video_pause(False)
+        await m.reply_text("▶️ **Resumed Video Streaming !**")
+
+    else:
+        await m.reply_text("❌ **Noting Is Streaming !**")
+
+
+@Client.on_message(filters.command(["endstream", f"endstream@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+async def endstream(client, m: Message):
+    msg = await m.reply_text("🔄 `Processing ...`")
+    chat_id = m.chat.id
+
+    if chat_id in AUDIO_CALL:
+        await AUDIO_CALL[chat_id].stop()
+        AUDIO_CALL.pop(chat_id)
+        await msg.edit("⏹️ **Stopped Audio Streaming !**")
+
+    elif chat_id in VIDEO_CALL:
+        await VIDEO_CALL[chat_id].stop()
+        VIDEO_CALL.pop(chat_id)
+        await msg.edit("⏹️ **Stopped Video Streaming !**")
+
+    else:
+        await msg.edit("🤖 **Please Start An Stream First !**")
+
+
+# pytgcalls handlers
+
+@group_call.on_audio_playout_ended
+async def audio_ended_handler(_, __):
+    await sleep(3)
+    await group_call.stop()
+    print(f"[INFO] - AUDIO_CALL ENDED !")
+
+@group_call.on_video_playout_ended
+async def video_ended_handler(_, __):
+    await sleep(3)
+    await group_call.stop()
+    print(f"[INFO] - VIDEO_CALL ENDED !")
