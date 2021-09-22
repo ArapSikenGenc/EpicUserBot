@@ -17,6 +17,7 @@ from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 from telethon.tl.functions.channels import GetMessagesRequest
 from . import BRAIN_CHECKER, LOGS, bot, PLUGIN_CHANNEL_ID, CMD_HELP, LANGUAGE, EPİC_VERSION, PATTERNS, DEFAULT_NAME
 from .modules import ALL_MODULES
+from .asisstant import ALL_MODULE
 import userbot.modules.sql_helper.mesaj_sql as MSJ_SQL
 import userbot.modules.sql_helper.galeri_sql as GALERI_SQL
 from pySmartDL import SmartDL
@@ -268,10 +269,12 @@ async def FotoDegistir (foto):
         return True
     except:
         return False
-
+for module_name in ALL_MODULE:
+    imported_module = import_module("userbot.asisstant." + module_name)
+    
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
-    imported_module = import_module("userbot.asisstant.")
+    
 
 os.system("clear")
 
