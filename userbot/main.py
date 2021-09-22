@@ -249,38 +249,7 @@ try:
         bot.send_message("me", f"`Lütfen pluginlerin kalıcı olması için PLUGIN_CHANNEL_ID'i ayarlayın.`")
 
 
-    for plugin in bot.iter_messages(KanalId, filter=InputMessagesFilterDocument):
-            if plugin.file.name and (len(plugin.file.name.split('.')) > 1) \
-                and plugin.file.name.split('.')[-1] == 'py':
-                Split = plugin.file.name.split('.')
-
-                if not os.path.exists("./userbot/asisstant/" + plugin.file.name):
-                    dosya = bot.download_media(plugin, "./userbot/asisstant/")
-                else:
-                    LOGS.info("Bu Plugin Onsuzda Yüklüdür " + plugin.file.name)
-                    extractCommands('./userbot/asisstant/' + plugin.file.name)
-                    dosya = plugin.file.name
-                    continue 
-                
-                try:
-                    spec = importlib.util.spec_from_file_location("userbot.asisstant." + Split[0], dosya)
-                    mod = importlib.util.module_from_spec(spec)
-
-                    spec.loader.exec_module(mod)
-                except Exception as e:
-                    LOGS.info(f"`[×] Yükleme Başarısız! Plugin Hatalı!!\n\nHata: {e}`")
-
-                    try:
-                        plugin.delete()
-                    except:
-                        pass
-
-                    if os.path.exists("./userbot/asisstant/" + plugin.file.name):
-                        os.remove("./userbot/asisstant/" + plugin.file.name)
-                    continue
-                extractCommands('./userbot/asisstant/' + plugin.file.name)
-    else:
-        bot.send_message("me", f"`Lütfen pluginlerin kalıcı olması için PLUGIN_CHANNEL_ID'i ayarlayın.`")
+   
 except PhoneNumberInvalidError:
     print(INVALID_PH)
     exit(1)
@@ -302,6 +271,7 @@ async def FotoDegistir (foto):
 
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
+    imported_module = import_module("userbot.asisstant." + module_name)
 
 os.system("clear")
 
