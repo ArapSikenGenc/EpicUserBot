@@ -3,7 +3,7 @@ from pytgcalls import PyTgCalls
 from pytgcalls_wrapper import Wrapper
 from userbot import client
 import logging
-from userbot.cybervc.yardim import mahniniseslendir, Text
+from userbot.asisstant.yardim import mahniniseslendir, Text
 from os import remove
 import os
 import youtube_dl
