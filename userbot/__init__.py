@@ -88,6 +88,8 @@ SILINEN_PLUGIN = {}
 # UserBot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
+#Pyrogram String session vcbot - ByMisakiMey 
+PY_SESSION = os.environ.get("PY_SESSION", None)
 # Kanal / Grup ID yapılandırmasını günlüğe kaydetme.
 BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", None))
 
