@@ -342,22 +342,23 @@ else:
     # pylint: devre dışı=geçersiz ad
     bot = TelegramClient("userbot", API_KEY, API_HASH)
 
-def vc_connection(udB):
-    VC_SESSION = udB.get("VC_SESSION")
-    if VC_SESSION:
-        try:
-            vcasst = Client(
-                ":memory:",
-                api_id=Var.API_ID,
-                api_hash=Var.API_HASH,
-                bot_token=udB.get("BOT_TOKEN"),
-            )
-            vcClient = Client(VC_SESSION, api_id=Var.API_ID, api_hash=Var.API_HASH)
-            CallsClient = PyTgCalls(vcClient, log_mode=PyLogs.verbose)
-            return vcasst, vcClient, CallsClient
-        except Exception as er:
-            LOGS.info(str(er))
-    return None, None, None
+from pyrogram import Client, filters
+
+if PY_SESSION:
+ try:
+     PY_SESSION = PY_SESSION
+     API_ID = API_KEY
+     API_HASH = API_HASH
+ except Exception as e:
+    logging.warning("Değerlerden biri belirtilmemiş!")
+    logging.warning(f"\n{e}")
+    exit(0)
+
+ try:
+     client = Client(PY_SESSION, api_id=API_ID, api_hash=API_HASH)
+ except Exception as e:
+    logging.warning(e)
+    exit(0)
 
 
 ASISTAN = 1985727625 # Bot yardımcısı
