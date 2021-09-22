@@ -271,7 +271,7 @@ async def FotoDegistir (foto):
 
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
-    imported_module = import_module("userbot.asisstant." + module_name)
+    imported_module = import_module("userbot.asisstant.")
 
 os.system("clear")
 
