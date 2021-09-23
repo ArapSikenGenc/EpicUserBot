@@ -13,10 +13,10 @@ from userbot import tgbot, OWNER_ID
 from userbot.utils.events import register
 import asyncio
 
-@register(incoming=True, from_users=OWNER_ID, pattern="^deneme$")
+@register(events.NewMessage(incoming=True, pattern="Mia"))
 async def evnt (e):
     start = datetime.now()
-    msg = await evnt.tgbot.send_message("Pong!")
+    msg = await evnt.reply("Pong!")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await msg.edit(f"**Pong!!**\n `{ms} ms`")
