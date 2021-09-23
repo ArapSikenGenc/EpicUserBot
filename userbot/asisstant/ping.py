@@ -10,9 +10,10 @@ from datetime import datetime
 from userbot import tgbot, bot
 from telethon import events
 from userbot import tgbot, OWNER_ID
+from userbot.utils.events import register
 import asyncio
 
-@tgbot.on(events.NewMessage(incoming=True, pattern="deneme"))
+@register(incoming=True, pattern="deneme")
 async def evnt (e):
  if evnt.sender_id in OWNER_ID:
     start = datetime.now()
