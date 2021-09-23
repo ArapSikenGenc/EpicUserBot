@@ -16,7 +16,7 @@ import asyncio
 @register(incoming=True, from_users=OWNER_ID, pattern="^deneme$")
 async def evnt (e):
     start = datetime.now()
-    msg = await evnt.respond("Pong!")
+    msg = await evnt.client.send_message("Pong!")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await msg.edit(f"**Pong!!**\n `{ms} ms`")
