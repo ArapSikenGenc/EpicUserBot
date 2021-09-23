@@ -13,7 +13,7 @@ from telethon import events
 from userbot import tgbot
 import asyncio
 
-@tgbot.on(events.NewMessage(incoming=True, pattern="[Aa]sistan"))
+@tgbot.on(events.NewMessage(incoming=True, pattern="/ping"))
 async def _(event):
  me = bot.get_me()
  OWNER_ID = me.id
