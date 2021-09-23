@@ -453,7 +453,8 @@ with bot:
 
     me = bot.get_me()
     uid = me.id
-
+    me = bot.get_me()
+    OWNER_ID = me.id
     try:
         @tgbot.on(NewMessage(pattern='/start'))
         async def start_bot_handler(event):
