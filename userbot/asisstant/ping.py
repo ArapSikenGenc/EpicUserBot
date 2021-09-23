@@ -9,7 +9,7 @@
 from datetime import datetime
 from userbot import tgbot, bot
 from telethon import events
-from userbot import tgbot, OWNER_İD
+from userbot import tgbot, OWNER_ID
 import asyncio
 
 @tgbot.on(events.NewMessage(incoming=True, pattern="deneme"))
