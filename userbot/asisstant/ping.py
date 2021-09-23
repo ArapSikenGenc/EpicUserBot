@@ -14,7 +14,7 @@ import asyncio
 
 @tgbot.on(events.NewMessage(incoming=True, pattern="deneme"))
 async def evnt (e):
- if evnt.sender_id in OWNER_İD:
+ if evnt.sender_id in OWNER_ID:
     start = datetime.now()
     msg = await evnt.reply("Pong!")
     end = datetime.now()
