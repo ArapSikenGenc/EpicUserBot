@@ -16,7 +16,7 @@ import asyncio
 @register(incoming=True, pattern="deneme")
 async def evnt (e):
     start = datetime.now()
-    msg = await evnt.reply("Pong!")
+    msg = await e.reply("Pong!")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await msg.edit(f"**Pong!!**\n `{ms} ms`")
