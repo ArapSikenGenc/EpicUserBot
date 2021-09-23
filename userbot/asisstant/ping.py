@@ -8,8 +8,9 @@
 
 
 from datetime import datetime
-from userbot import OWNER_ID, tgbot
-
+from userbot import tgbot, bot
+ me = bot.get_me()
+ OWNER_ID = me.id
 @tgbot.on(NewMessage(pattern='/ping'))
 async def _(event):
  if event.sender_id in OWNER_ID:
