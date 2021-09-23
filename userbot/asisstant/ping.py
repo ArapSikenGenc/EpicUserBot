@@ -10,16 +10,14 @@
 from datetime import datetime
 from userbot import tgbot, bot
 from telethon import events
-from userbot import tgbot
+from userbot import tgbot, OWNER_ID
 import asyncio
 
 @tgbot.on(events.NewMessage(incoming=True, pattern="deneme"))
 async def evnt (e):
- me = bot.get_me()
- OWNER_ID = me.id
- İf evnt.sender_id in OWNER_ID:
+ if evnt.sender_id in OWNER_ID:
     start = datetime.now()
-    msg = await event.reply("Pong!")
+    msg = await evnt.reply("Pong!")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await msg.edit(f"**Pong!!**\n `{ms} ms`")
