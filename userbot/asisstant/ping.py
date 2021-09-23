@@ -13,13 +13,6 @@ from telethon import events
 from userbot import tgbot
 import asyncio
 
-@tgbot.on(events.NewMessage(incoming=True, pattern="/ping"))
-async def _(event):
- me = bot.get_me()
- OWNER_ID = me.id
- if event.sender_id in OWNER_ID:
-    start = datetime.now()
-    msg = await event.reply("Pong!")
-    end = datetime.now()
-    ms = (end - start).microseconds / 1000
-    await msg.edit(f"**Pong!!**\n `{ms} ms`")
+@tgbot.on(events.NewMessage(incoming=True, pattern="deneme"))
+async def evnt (e):
+    await e.reply("**Efendim?**")
