@@ -1,13 +1,13 @@
-from requests import get
 import sys
 from asyncio import create_subprocess_shell as asyncsubshell
 from asyncio import subprocess as asyncsub
 from os import remove
 from time import gmtime, strftime
 from traceback import format_exc
+
 from telethon import events
 
-from userbot import tgbot, PATTERNS, EPİC_VERSION
+from userbot import tgbot, LOGSPAMMER, PATTERNS
 
 
 def register(**args):
@@ -41,6 +41,20 @@ def register(**args):
 
     def decorator(func):
         async def wrapper(check):
+            if not LOGSPAMMER:
+                send_to = check.chat_id
+            
+
+            if not trigger_on_fwd and check.fwd_from:
+                return
+
+            if check.via_bot_id and not trigger_on_inline:
+                return
+             
+            if groups_only and not check.is_group:
+                await check.respond("`Bunun bir grup olduğunu sanmıyorum.`")
+                return
+
             try:
                 await func(check)
                 
@@ -53,39 +67,34 @@ def register(**args):
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    eventtext = str(check.text)
-                    text = "**==ASİSTAN HATA RAPORU==**\n"
-                    link = "[Epic Destek Grubuna](https://t.me/HydraDestek)"
-                    if len(eventtext)<10:
-                        text += f"\n**🗒️ Şu yüzden:** {eventtext}\n"
-                    text += "\nℹ️ İsterseniz, bunu bildirebilirsiniz."
-                    text += f"- sadece bu mesajı {link} gönderin.\n"
-                    text += "Hata ve tarih haricinde hiçbir şey kayıt edilmez.\n"
+                    text = "**ASİSTAN HATA RAPORU**\n"
+                    link = "[Epic Destek Grubu](https://t.me/HydraDestek)"
+                    text += "İsterseniz, bunu rapor edebilirsiniz"
+                    text += f"- sadece bu mesajı buraya iletin {link}.\n"
+                    text += "Hata ve Tarih dışında hiçbir şey kaydedilmez\n"
 
                     ftext = "========== UYARI =========="
                     ftext += "\nBu dosya sadece burada yüklendi,"
-                    ftext += "\nSadece hata ve tarih kısmını kaydettik,"
-                    ftext += "\nGizliliğinize saygı duyuyoruz,"
-                    ftext += "\nBurada herhangi bir gizli veri varsa"
-                    ftext += "\nBu hata raporu olmayabilir, kimse verilerinize ulaşamaz.\n"
+                    ftext += "\nsadece hata ve tarih kısmını kaydettik,"
+                    ftext += "\ngizliliğinize saygı duyuyoruz,"
+                    ftext += "\nburada herhangi bir gizli veri varsa"
+                    ftext += "\nbu hata raporu olmayabilir, kimse verilerinize ulaşamaz.\n"
+                    ftext += "================================\n\n"
                     ftext += "--------ASİSTAN HATA GUNLUGU--------\n"
                     ftext += "\nTarih: " + date
                     ftext += "\nGrup ID: " + str(check.chat_id)
                     ftext += "\nGönderen kişinin ID: " + str(check.sender_id)
                     ftext += "\n\nOlay Tetikleyici:\n"
                     ftext += str(check.text)
+                    ftext += "\n\nGeri izleme bilgisi:\n"
+                    ftext += str(format_exc())
                     ftext += "\n\nHata metni:\n"
                     ftext += str(sys.exc_info()[1])
-                    ftext += "\n\n\nGeri izleme bilgisi:\n"
-                    ftext += str(format_exc())
                     ftext += "\n\n--------ASİSTAN HATA GUNLUGU BITIS--------"
-                    ftext += "\n\n================================\n"
-                    ftext += f"====== BOTVER : {EPİC_VERSION} ======\n"
-                    ftext += "================================"
 
-                    command = "git log --pretty=format:\"%an: %s\" -7"
+                    command = "git log --pretty=format:\"%an: %s\" -10"
 
-                    ftext += "\n\n\nSon 7 commit:\n"
+                    ftext += "\n\n\nSon 10 commit:\n"
 
                     process = await asyncsubshell(command,
                                                   stdout=asyncsub.PIPE,
@@ -100,6 +109,11 @@ def register(**args):
                     file.write(ftext)
                     file.close()
 
+                    
+
+                    await check.client.send_file(send_to,
+                                                 "error.log",
+                                                 caption=text)
                     remove("error.log")
             else:
                 pass
