@@ -237,7 +237,7 @@ DEFAULT_NAME = os.environ.get("DEFAULT_NAME", None)
 
 
 
-OWNER_ID = os.environ.get("OWNER_ID", None)
+OWNER_İD = os.environ.get("OWNER_İD", None)
 ASİSTAN_SUDO = os.environ.get("ASISTAN_SUDO", None)
 # Bazı pluginler için doğrulama
 USERBOT_ = True
