@@ -13,7 +13,7 @@ from userbot import tgbot, OWNER_ID
 from userbot.utils.events import register
 import asyncio
 
-@register(events.NewMessage(incoming=True, pattern="Mia"))
+@register(events.NewMessage(incoming=True, pattern="deneme"))
 async def evnt (e):
     start = datetime.now()
     msg = await evnt.reply("Pong!")
