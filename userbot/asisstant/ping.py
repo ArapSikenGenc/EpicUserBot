@@ -10,7 +10,10 @@
 from datetime import datetime
 from userbot import tgbot, bot
 from telethon import events
-@tgbot.on(events.NewMessage(pattern='/ping'))
+from userbot import tgbot
+import asyncio
+
+@tgbot.on(events.NewMessage(incoming=True, pattern="[Aa]sistan"))
 async def _(event):
  me = bot.get_me()
  OWNER_ID = me.id
