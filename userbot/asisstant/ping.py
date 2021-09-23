@@ -9,10 +9,11 @@
 
 from datetime import datetime
 from userbot import tgbot, bot
+from telethon import events
+@tgbot.on(events.NewMessage(pattern='/ping'))
+async def _(event):
  me = bot.get_me()
  OWNER_ID = me.id
-@tgbot.on(NewMessage(pattern='/ping'))
-async def _(event):
  if event.sender_id in OWNER_ID:
     start = datetime.now()
     msg = await event.reply("Pong!")
