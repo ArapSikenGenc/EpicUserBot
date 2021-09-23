@@ -235,6 +235,10 @@ TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY",
 #Revert yani Klondan Sonra hesabın eski haline dönmesi
 DEFAULT_NAME = os.environ.get("DEFAULT_NAME", None)
 
+
+
+OWNER_ID = os.environ.get("OWNER_ID", None)
+ASİSTAN_SUDO = os.environ.get("ASISTAN_SUDO", None)
 # Bazı pluginler için doğrulama
 USERBOT_ = True
 
@@ -453,8 +457,7 @@ with bot:
 
     me = bot.get_me()
     uid = me.id
-    me = bot.get_me()
-    OWNER_ID = me.id
+    
     try:
         @tgbot.on(NewMessage(pattern='/start'))
         async def start_bot_handler(event):
