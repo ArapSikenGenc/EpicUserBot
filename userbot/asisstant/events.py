@@ -19,7 +19,7 @@ from telethon import events
 from userbot import tgbot, LOGSPAMMER, PATTERNS
 
 
-def register(**args):
+def epic(**args):
     """ Yeni bir etkinlik kaydedin. """
     pattern = args.get('pattern', None)
     disable_edited = args.get('disable_edited', False)
