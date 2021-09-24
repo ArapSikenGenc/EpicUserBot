@@ -4,7 +4,7 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-# EpicUserBot - ByMisakiMey - Erdembey
+# EpicUserBot - ByMisakiMey - Erdembey.
 
 from datetime import datetime
 from userbot import tgbot, bot
