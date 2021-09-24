@@ -13,12 +13,13 @@ from userbot import tgbot, OWNER_ID
 from userbot.utils.events import register
 import asyncio
 
-@register(incoming=True, pattern="/ping")
+@register(incoming=True, from_users=OWNER_ID, pattern="^/ping")
 async def evnt (e):
     start = datetime.now()
     msg = await e.reply("Pong!")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     await msg.edit(f"**Pong!!**\n `{ms} ms`")
+    
     
 
