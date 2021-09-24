@@ -275,7 +275,7 @@ for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 if BOT_TOKEN:
  for module_name in ALL_MODULE:
-    imported_module = import_module("userbot.asisstant." + module_name)    
+    imported_module = import_module("userbot.asisstant.modules." + module_name)    
 
 os.system("clear")
 
