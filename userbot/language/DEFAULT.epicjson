@@ -1166,6 +1166,13 @@
             "SO3": "'<kelime>'",
             "SO4": "'Verdiğiniz kelimeyi Tureng Sözlükte arar.'"
         },
+        "epiclangs": {
+            "SALIVE": "Gif-li alive mesajı",
+	    "PROHIBITED_COMMAND": "```Bunu C Y B Ξ R Support 🇦🇿 qrupunda edə bilməzsiniz.```",
+	    "CHATBOT_DEACTIVE": "```Chatbot deaktivdir.```",
+        "CHATBOT_ACTIVE": "```Chatbot aktiv edildi.```",
+        "CHATBOT_MANUAL": "```**İstifadəsi:**\n.chatbot <on/off>```"
+        },
         "shazam": {
             "SH1": "'<yanıt>'",
             "SH2": "'Cevap verdiğiniz ses dosyasını Shazamda aratır.'"
@@ -1177,4 +1184,3 @@
         }
     }
 }
-
