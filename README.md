@@ -24,11 +24,11 @@
 
 🇹🇷**Tarayıcı Kurulum / Online Setup**🇺🇲
 
-[![Run on Repl.it](https://repl.it/badge/github/ErdemBey1/epicinstaller)](https://repl.it/@ErdemBey1/epicinstaller)
+[![Run on Repl.it](https://repl.it/badge/github/ArapSikenGenc/epicinstaller)](https://repl.it/@ErdemBey1/epicinstaller)
 
 ### 🇹🇷 Elle Kurulum / Manual Setup 🇺🇲
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ErdemBey0/EpicUserBot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ArapSikenGenc/EpicUserBot)
 
 ## 🇹🇷 Bilgilendirme / İnformation 🇺🇲
 ***Herhangi bir istek & şikayet & öneriniz varsa [destek grubuna](https://t.me/HydraDESTEK) ulaşabilirsiniz.***
